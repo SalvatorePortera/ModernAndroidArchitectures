@@ -8,6 +8,11 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
+/**
+ * Beer craft api
+ *
+ * @constructor Create empty Beer craft api
+ */
 interface BeerCraftApi {
     // Login for devices
 

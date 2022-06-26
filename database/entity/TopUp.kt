@@ -10,6 +10,23 @@ import com.nereus.craftbeer.model.UnsyncLog
 import com.nereus.craftbeer.util.toISOString
 import java.time.LocalDateTime
 
+/**
+ * Top up
+ *
+ * @property pointPlusId
+ * @property companyId
+ * @property shopId
+ * @property amount
+ * @property deposit
+ * @property change
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property receiptCode
+ * @property topUpName
+ * @property paymentMethod
+ * @property createdAt
+ * @constructor Create empty Top up
+ */
 @Entity(tableName = "top_up")
 data class TopUp(
 

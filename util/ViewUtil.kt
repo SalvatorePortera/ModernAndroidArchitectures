@@ -31,6 +31,13 @@ import com.nereus.craftbeer.realm.RealmApplication
 import java.util.concurrent.Callable
 
 
+/**
+ * Display toast
+ *
+ * @param context
+ * @param message
+ * @param length
+ */
 fun displayToast(context: Context?, message: String, length: Int = Toast.LENGTH_LONG) {
     val toast = Toast.makeText(context, message, length)
 
@@ -41,25 +48,51 @@ fun displayToast(context: Context?, message: String, length: Int = Toast.LENGTH_
     toast.show()
 }
 
+/**
+ * Display error
+ *
+ * @param messages
+ * @param callback
+ */
 fun AppCompatActivity.displayError(messages: List<String>, callback: Callable<Unit>? = null) {
     displayError(messages.joinToString(BREAK_LINE), callback = callback)
 }
 
+/**
+ * Display error with retry action
+ *
+ * @param messages
+ */
 fun AppCompatActivity.displayErrorWithRetryAction(messages: List<String>) {
     displayError(messages.joinToString(BREAK_LINE))
 }
 
+/**
+ * Set fragment
+ *
+ * @param fragment
+ */
 fun AppCompatActivity.setFragment(fragment: Fragment) {
     val fragmentTransaction = supportFragmentManager.beginTransaction()
     fragmentTransaction.add(android.R.id.content, fragment)
     fragmentTransaction.commit()
 }
 
+/**
+ * Get notificationdialog
+ *
+ * @return
+ */
 fun AppCompatActivity.getNotificationdialog(): DialogFragment {
     val dialog = supportFragmentManager.findFragmentByTag("notification_dialog")
     return (dialog ?: NotificationFragmentDialog()) as DialogFragment
 }
 
+/**
+ * Handle loading
+ *
+ * @param loadingState
+ */
 fun AppCompatActivity.handleLoading(loadingState: Int) {
     if (loadingState == CommonConst.LOADING_VISIBLE) {
         findNavController(R.id.nav_host_fragment).navigate(
@@ -72,6 +105,15 @@ fun AppCompatActivity.handleLoading(loadingState: Int) {
     }
 }
 
+/**
+ * Display error
+ *
+ * @param message
+ * @param duration
+ * @param color
+ * @param bgColor
+ * @param callback
+ */
 fun AppCompatActivity.displayError(
     message: String,
     duration: Int = Snackbar.LENGTH_LONG,
@@ -107,6 +149,12 @@ fun AppCompatActivity.displayError(
     }
 }
 
+/**
+ * Set on click debounce
+ *
+ * @param listener
+ * @receiver
+ */
 fun View.setOnClickDebounce(listener: () -> Unit) {
     setOnClickListener {
         if (debounce()) {
@@ -117,6 +165,12 @@ fun View.setOnClickDebounce(listener: () -> Unit) {
     }
 }
 
+/**
+ * Set on check debounce
+ *
+ * @param listener
+ * @receiver
+ */
 fun View.setOnCheckDebounce(listener: () -> Unit) {
     setOnCheckDebounce {
         if (debounce()) {
@@ -127,24 +181,49 @@ fun View.setOnCheckDebounce(listener: () -> Unit) {
     }
 }
 
+/**
+ * Hide keyboard
+ *
+ * @param context
+ */
 fun View.hideKeyboard(context: Context) {
     val imm: InputMethodManager =
         context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(windowToken, 0)
 }
 
+/**
+ * Get empty view visibility
+ *
+ * @return
+ */
 fun List<Any>.getEmptyViewVisibility(): Int {
     return if (isEmpty()) View.VISIBLE else View.GONE
 }
 
+/**
+ * Get recycler view visibility
+ *
+ * @return
+ */
 fun List<Any>.getRecyclerViewVisibility(): Int {
     return !getEmptyViewVisibility()
 }
 
+/**
+ * As view visibility
+ *
+ * @return
+ */
 fun Short.asViewVisibility(): Int {
     return if (this > 1) View.VISIBLE else View.GONE
 }
 
+/**
+ * Debounce
+ *
+ * @return
+ */
 private fun View.debounce(): Boolean {
     val DELAY_IN_MS: Long = 900
     if (!isClickable) {
@@ -196,6 +275,17 @@ fun makeStatusNotification(message: String, context: Context) {
     NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, builder.build())
 }
 
+/**
+ * Combine with
+ *
+ * @param T
+ * @param K
+ * @param R
+ * @param liveData
+ * @param block
+ * @receiver
+ * @return
+ */
 fun <T, K, R> LiveData<T>.combineWith(
     liveData: LiveData<K>,
     block: (T?, K?) -> R

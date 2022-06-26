@@ -21,14 +21,31 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.BeerShopViewModel
 import java.io.File
 
+/**
+ * More info fragment
+ *
+ * @constructor Create empty More info fragment
+ */
 class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: BeerShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_more_info_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
         viewModel.selected_beer.value?.let {
@@ -57,6 +74,10 @@ class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopV
         setUpChart()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnBack.setOnClickDebounce {
             findNavController().navigate(R.id.beerShopFragment)
@@ -67,6 +88,10 @@ class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopV
     }
 
 
+    /**
+     * Set up chart
+     *
+     */
     private fun setUpChart() {
 
         binding.chart1.apply {
@@ -127,6 +152,10 @@ class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopV
 
     }
 
+    /**
+     * Setup beer percentage
+     *
+     */
     private fun setupBeerPercentage() {
         val beerPercentage = viewModel.beerPercentage.value
         if (beerPercentage != null) {
@@ -168,6 +197,10 @@ class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopV
         }
     }
 
+    /**
+     * Setup video
+     *
+     */
     private fun setupVideo() {
         val color = viewModel.selected_beer.value?.colour
         val filename = File(

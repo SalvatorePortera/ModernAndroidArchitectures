@@ -6,6 +6,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nereus.craftbeer.R
 
+/**
+ * Cart view holder
+ *
+ * @constructor
+ *
+ * @param itemView
+ */
 class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var foodNameView: TextView
     var priceView: TextView

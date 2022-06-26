@@ -6,6 +6,25 @@ import com.nereus.craftbeer.util.getDeviceInfoPref
 import com.nereus.craftbeer.util.getShopInfoPref
 import java.time.LocalDateTime
 
+/**
+ * Shop info
+ *
+ * @property id
+ * @property shopName
+ * @property shopCode
+ * @property logo1Url
+ * @property logo2Url
+ * @property receiptHeader
+ * @property receiptFooter
+ * @property receiptStamp
+ * @property address
+ * @property postalCode
+ * @property phoneNumber
+ * @property beerPouringErrorCorrectionValue
+ * @property createAt
+ * @property timestamp
+ * @constructor Create empty Shop info
+ */
 data class ShopInfo constructor(
 
     var id: String? = null,

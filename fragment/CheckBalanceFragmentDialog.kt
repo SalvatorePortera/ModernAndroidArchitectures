@@ -16,14 +16,32 @@ import com.nereus.craftbeer.util.livedata.EventObserver
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Check balance fragment dialog
+ *
+ * @constructor Create empty Check balance fragment dialog
+ */
 class CheckBalanceFragmentDialog :
     BaseFragmentDialog<FragmentCheckBalanceDialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
+
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_check_balance_dialog
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)

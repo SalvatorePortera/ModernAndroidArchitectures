@@ -13,6 +13,13 @@ import com.nereus.craftbeer.util.TLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * Base view model
+ *
+ * @constructor
+ *
+ * @param application
+ */
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {
     private val _loadingState = MutableLiveData<Int>()
     private val _successMessages = MutableLiveData<MessagesModel>()
@@ -37,24 +44,50 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     val successMessages: LiveData<MessagesModel>
         get() = this._successMessages
 
+    /**
+     * Set loading state
+     *
+     * @param state
+     */
     fun setLoadingState(state: Int) {
         _loadingState.value = state
     }
 
+    /**
+     * Set exception
+     *
+     * @param ex
+     */
     fun setException(ex: Exception?) {
         _exception.value = ex
     }
 
+    /**
+     * Set success message
+     *
+     * @param resId
+     * @param formatArgs
+     */
     fun setSuccessMessage(@StringRes resId: Int, vararg formatArgs: String) {
         _successMessages.postValue(MessagesModel(resId, *formatArgs))
     }
 
+    /**
+     * Send error log
+     *
+     * @param messageModel
+     */
     fun sendErrorLog(messageModel: MessagesModel) {
         viewModelScope.launch(Dispatchers.IO) {
             errorLogRepository.sendErrorLog(messageModel)
         }
     }
 
+    /**
+     * Send message log
+     *
+     * @param messageModel
+     */
     fun sendMessageLog(messageModel: MessagesModel) {
         viewModelScope.launch(Dispatchers.IO) {
             errorLogRepository.sendMessageLog(messageModel)

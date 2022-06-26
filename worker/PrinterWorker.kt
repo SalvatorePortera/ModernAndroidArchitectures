@@ -31,6 +31,15 @@ import com.nereus.craftbeer.util.printer.getReceiptGenerator
 import retrofit2.HttpException
 import timber.log.Timber
 
+/**
+ * Printer worker
+ *
+ * @property shopRepository
+ * @constructor
+ *
+ * @param ctx
+ * @param params
+ */
 class PrinterWorker @WorkerInject constructor(
     @Assisted ctx: Context,
     @Assisted params: WorkerParameters,
@@ -40,6 +49,11 @@ class PrinterWorker @WorkerInject constructor(
         const val WORK_NAME = "com.nereus.craftbeer.worker.PrinterWorker"
     }
 
+    /**
+     * Do work
+     *
+     * @return
+     */
     override suspend fun doWork(): Result {
         val appContext = applicationContext
         makeStatusNotification("--- Printing receipt...", appContext)

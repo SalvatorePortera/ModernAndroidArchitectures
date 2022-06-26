@@ -5,12 +5,22 @@ import com.nereus.craftbeer.enums.PaymentMethod
 import com.nereus.craftbeer.model.MessagesModel
 import java.time.LocalDateTime
 
+/**
+ * Payment strategy
+ *
+ * @constructor Create empty Payment strategy
+ */
 interface PaymentStrategy {
     suspend fun pay(payment: Payment) : PaymentResult
 
     suspend fun getBalance(payment: Payment) : Int
 }
 
+/**
+ * Payment
+ *
+ * @constructor Create empty Payment
+ */
 abstract class Payment {
     var total: Int = 0
 
@@ -20,6 +30,15 @@ abstract class Payment {
     var receiptTimestamp: LocalDateTime?= null
 }
 
+/**
+ * Payment result
+ *
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property isSuccess
+ * @property paymentMethod
+ * @constructor Create empty Payment result
+ */
 open class PaymentResult(
     // Balance after payment
     val balanceBefore: Int = 0,
@@ -31,6 +50,12 @@ open class PaymentResult(
     var paymentMethod: PaymentMethod = PaymentMethod.PAYMENT_HOUSE_MONEY
 )
 
+/**
+ * Failed payment result
+ *
+ * @property isSuccess
+ * @constructor Create empty Failed payment result
+ */
 data class FailedPaymentResult(
     override var isSuccess: Boolean = false
 ) : PaymentResult()

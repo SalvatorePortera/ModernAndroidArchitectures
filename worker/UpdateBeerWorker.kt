@@ -31,6 +31,14 @@ import retrofit2.HttpException
 import timber.log.Timber
 import java.io.File
 
+/**
+ * Update beer worker
+ *
+ * @constructor
+ *
+ * @param ctx
+ * @param params
+ */
 class UpdateBeerWorker @WorkerInject constructor(
     @Assisted ctx: Context,
     @Assisted params: WorkerParameters
@@ -56,6 +64,11 @@ class UpdateBeerWorker @WorkerInject constructor(
         }
     }
 
+    /**
+     * Do work
+     *
+     * @return
+     */
     override suspend fun doWork(): Result {
         val appContext = applicationContext
         makeStatusNotification("Updating Beer Data ...", appContext)
@@ -80,6 +93,10 @@ class UpdateBeerWorker @WorkerInject constructor(
     }
 
 
+    /**
+     * Download beer video
+     *
+     */
     private fun downloadBeerVideo() {
         deleteInternalStorageVideo()
         checkFolder(context = applicationContext)
@@ -99,6 +116,11 @@ class UpdateBeerWorker @WorkerInject constructor(
     }
 }
 
+/**
+ * Check folder
+ *
+ * @param context
+ */
 fun checkFolder(context: Context) {
     val path: String =
         context.getExternalFilesDir(null)?.absolutePath.toString() + "/DownloadedVideo/"
@@ -112,6 +134,10 @@ fun checkFolder(context: Context) {
     }
 }
 
+/**
+ * Delete internal storage video
+ *
+ */
 fun deleteInternalStorageVideo() {
     val color = arrayListOf("yellow", "red", "black", "white", "orange", "sour", "highball")
     for (item in color) {

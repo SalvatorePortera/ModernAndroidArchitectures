@@ -17,19 +17,34 @@ import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 import kotlin.math.floor
 
+/**
+ * Realm application
+ *
+ * @constructor Create empty Realm application
+ */
 @HiltAndroidApp
 class RealmApplication : Application(), Configuration.Provider {
     private var mPrinterManager: PrinterManager? = null
 
+    /**
+     * Application scope
+     */
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 
     companion object {
         lateinit var instance: RealmApplication private set
     }
 
+    /**
+     * Worker factory
+     */
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
+    /**
+     * On create
+     *
+     */
     override fun onCreate() {
         super.onCreate()
 //        Realm.init(this)
@@ -45,6 +60,10 @@ class RealmApplication : Application(), Configuration.Provider {
         //TLogger.writeln(this.javaClass.name)
     }
 
+    /**
+     * Delayed init
+     *
+     */
     private fun delayedInit() {
         applicationScope.launch {
         }
@@ -58,14 +77,29 @@ class RealmApplication : Application(), Configuration.Provider {
     }
 
 
+    /**
+     * Set printer manager
+     *
+     * @param manager
+     */
     fun setPrinterManager(manager: PrinterManager) {
         mPrinterManager = manager
     }
 
+    /**
+     * Get printer manager
+     *
+     * @return
+     */
     fun getPrinterManager(): PrinterManager? {
         return mPrinterManager
     }
 
+    /**
+     * Get printer status
+     *
+     * @return
+     */
     fun getPrinterStatus(): Boolean {
         if (mPrinterManager == null) {
             return false

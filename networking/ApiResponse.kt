@@ -9,6 +9,7 @@ import java.util.regex.Pattern
 /**
  * Common class used by API responses.
  * @param <T> the type of the response object
+ *
 </T> */
 @Suppress("unused")
 sealed class ApiResponse<T> {
@@ -73,6 +74,7 @@ sealed class ApiResponse<T> {
 
 /**
  * separate class for HTTP 204 responses so that we can make ApiSuccessResponse's body non-null.
+ *
  */
 class ApiEmptyResponse<T> : ApiResponse<T>()
 
@@ -106,6 +108,11 @@ data class ApiSuccessResponse<T>(
         private val PAGE_PATTERN = Pattern.compile("\\bpage=(\\d+)")
         private const val NEXT_LINK = "next"
 
+        /**
+         * Extract links
+         *
+         * @return
+         */
         private fun String.extractLinks(): Map<String, String> {
             val links = mutableMapOf<String, String>()
             val matcher = LINK_PATTERN.matcher(this)
@@ -122,6 +129,31 @@ data class ApiSuccessResponse<T>(
     }
 }
 
+/**
+ * Api error response
+ *
+ * @param T
+ * @property body
+ * @constructor Create empty Api error response
+ */
 data class ApiErrorResponse<T>(val body: ErrorBody) : ApiResponse<T>()
+
+/**
+ * Error body
+ *
+ * @property statusCode
+ * @property message
+ * @property error
+ * @constructor Create empty Error body
+ */
 data class ErrorBody(val statusCode: Int, val message: List<String>, val error: String?)
+
+/**
+ * Single message error body
+ *
+ * @property statusCode
+ * @property message
+ * @property error
+ * @constructor Create empty Single message error body
+ */
 data class SingleMessageErrorBody(val statusCode: Int, val message: String, val error: String?)

@@ -15,16 +15,30 @@ import javax.smartcardio.CardTerminal
 
 var cardTerminal: CardTerminal? = null
 
+/**
+ * Read customer code activity
+ *
+ * @constructor Create empty Read customer code activity
+ */
 @AndroidEntryPoint
 class ReadCustomerCodeActivity :
     BaseController<ActivityNfcEmptyBinding, DefaultViewModel>() {
 
     override val viewModel: DefaultViewModel by viewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_nfc_empty
     }
 
+    /**
+     * On resume
+     *
+     */
     override fun onResume() {
         super.onResume()
         if (!UpdateBeerWorker.checkFile()) {
@@ -32,6 +46,11 @@ class ReadCustomerCodeActivity :
         }
     }
 
+    /**
+     * On create
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             super.onCreate(savedInstanceState)
@@ -41,6 +60,10 @@ class ReadCustomerCodeActivity :
         }
     }
 
+    /**
+     * Setup updating work
+     *
+     */
     private fun setupUpdatingWork() {
         UpdateBeerWorker.countDownloadFile = 0
         val workManager = WorkManager.getInstance(applicationContext)

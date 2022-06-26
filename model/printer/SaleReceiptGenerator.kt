@@ -9,11 +9,23 @@ import com.nereus.craftbeer.util.toThousandSeparatorString
 import kotlin.math.roundToInt
 import timber.log.Timber
 
+/**
+ * Sale receipt generator
+ *
+ * @property receipt
+ * @constructor Create empty Sale receipt generator
+ */
 class SaleReceiptGenerator(val receipt: SaleReceipt) : ReceiptGenerator(receipt = receipt) {
     override fun getCanvasHeight(): Int {
         return SALE_RECEIPT_HEIGHT_DEFAULT + receipt.goods.size * RECEIPT_LINE_SPACE
     }
 
+    /**
+     * Build body
+     *
+     * @param takeAway
+     * @return
+     */
     override fun buildBody(takeAway: Boolean): List<PdfLine> {
         return ArrayList<PdfLine>().let { lines ->
             lines.addAll(receipt.goods.map { item -> item.buildGoodsUnitLine(takeAway) })
@@ -22,6 +34,11 @@ class SaleReceiptGenerator(val receipt: SaleReceipt) : ReceiptGenerator(receipt 
         }
     }
 
+    /**
+     * Build tax info
+     *
+     * @return
+     */
     override fun buildTaxInfo(): List<PdfLine> {
         return ArrayList<PdfLine>().apply {
             // Tax 8%
@@ -114,6 +131,12 @@ class SaleReceiptGenerator(val receipt: SaleReceipt) : ReceiptGenerator(receipt 
 
     }
 
+    /**
+     * Build goods unit line
+     *
+     * @param takeAway
+     * @return
+     */
     fun CombinationGoodsInfo.buildGoodsUnitLine(takeAway: Boolean): PdfLine {
 
         return PdfLine().apply {

@@ -28,14 +28,34 @@ import io.socket.client.Socket
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
+/**
+ * Base fragment
+ *
+ * @param TBinding
+ * @param TViewModel
+ * @constructor Create empty Base fragment
+ */
 abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewModel> :
     Fragment() {
 
     protected lateinit var binding: TBinding
     protected abstract val viewModel: TViewModel
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     abstract fun getLayout(): Int
 
+    /**
+     * On create view
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,6 +71,12 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
 
     open fun afterBinding() {}
 
+    /**
+     * Setup binding
+     *
+     * @param inflater
+     * @param container
+     */
     private fun setupBinding(inflater: LayoutInflater, container: ViewGroup?) {
         binding = DataBindingUtil.inflate(
             inflater,
@@ -67,6 +93,10 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         setAdditionalViewModelListener()
     }
 
+    /**
+     * Hide navigation bar
+     *
+     */
     fun hideNavigationBar() {
         val decorView = activity?.window?.decorView
         val uiOptions = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -78,6 +108,10 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         decorView?.systemUiVisibility = uiOptions
     }
 
+    /**
+     * Hide action bar
+     *
+     */
     fun hideActionBar() {
         (activity as BaseController<*, *>)?.apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -85,6 +119,10 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         }
     }
 
+    /**
+     * On editor action listener
+     *
+     */
     fun onEditorActionListener() =
         TextView.OnEditorActionListener { textView, i, keyEvent ->
             if (i == EditorInfo.IME_ACTION_DONE) {
@@ -94,6 +132,10 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         }
 
 
+    /**
+     * Connect alive socket
+     *
+     */
     suspend fun connectAliveSocket() {
         val sharedPreference = requireActivity().getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
         val token = sharedPreference.getString(ACCESS_TOKEN, EMPTY_STRING)?.split(" ")?.get(1)
@@ -103,12 +145,22 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         }
     }
 
+    /**
+     * Dismiss keyboard
+     *
+     * @param windowToken
+     */
     fun dismissKeyboard(windowToken: IBinder) {
         val imm =
             requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(windowToken, 0)
     }
 
+    /**
+     * Is network available
+     *
+     * @return
+     */
     fun isNetworkAvailable(): Boolean {
         val connectivityManager =
             requireActivity().applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -129,6 +181,11 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         }
     }
 
+    /**
+     * Notify message for network
+     *
+     * @param message
+     */
     fun notifyMessageForNetwork(message: String?) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setMessage(message).setPositiveButton(
@@ -141,10 +198,22 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
         dialog.show()
     }
 
+    /**
+     * Get shared preferences
+     *
+     * @param name
+     * @param mode
+     * @return
+     */
     fun getSharedPreferences(name: String?, mode: Int): SharedPreferences? {
         return requireActivity().getSharedPreferences(name, mode)
     }
 
+    /**
+     * Check token
+     *
+     * @return
+     */
     fun checkToken(): Boolean {
         val sharedPreference = getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
         return sharedPreference!!.getString(ACCESS_TOKEN, EMPTY_STRING)!!.isNotBlank()

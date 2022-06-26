@@ -20,12 +20,10 @@ import timber.log.Timber;
 
 import static com.nereus.craftbeer.constant.Constants.RESPONSE_REQUEST_CODE;
 
-
 /**
  * Utility of string class.
  */
 public class PrinterUtil {
-
     /**
      * Check if it is empty.
      *
@@ -46,7 +44,6 @@ public class PrinterUtil {
 
         return result;
     }
-
     /**
      * Check if it is empty.
      *
@@ -71,7 +68,6 @@ public class PrinterUtil {
     public static int getInt(String str) {
         return getInt(str, 0);
     }
-
     /**
      * String -> int
      *
@@ -89,7 +85,6 @@ public class PrinterUtil {
 
         return value;
     }
-
     /**
      * Get date string
      *

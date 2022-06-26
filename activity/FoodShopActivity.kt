@@ -16,18 +16,36 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+/**
+ * Food shop activity
+ *
+ * @constructor Create empty Food shop activity
+ */
 @AndroidEntryPoint
 class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewModel>() {
     override val viewModel: FoodShopViewModel by viewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_food_shop
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         viewModel.context = this
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         this.viewModel.currentBarcode.observe(this, EventObserver {
             viewModel.handleBarcode(it)
@@ -54,8 +72,17 @@ class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewMod
         })
     }
 
+    /**
+     * Barcode
+     */
     var barcode = EMPTY_STRING
 
+    /**
+     * Dispatch key event
+     *
+     * @param e
+     * @return
+     */
     override fun dispatchKeyEvent(e: KeyEvent): Boolean {
         if (e.action == KeyEvent.ACTION_DOWN) {
             Timber.i("dispatchKeyEvent: $e")
@@ -70,11 +97,21 @@ class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewMod
         return true
     }
 
+    /**
+     * On new intent
+     *
+     * @param intent
+     */
     override fun onNewIntent(intent: Intent) {
         setUpPrinterListener(intent)
         super.onNewIntent(intent)
     }
 
+    /**
+     * Set up printer listener
+     *
+     * @param intent
+     */
     private fun setUpPrinterListener(intent: Intent) {
         val isActivityLaunchedFromActionView = intent.action == Intent.ACTION_VIEW
         if (isActivityLaunchedFromActionView && isFromPrinter(intent.data)) {
@@ -102,6 +139,12 @@ class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewMod
         }
     }
 
+    /**
+     * Is from printer
+     *
+     * @param data
+     * @return
+     */
     private fun isFromPrinter(data: Uri?): Boolean {
         val uriString = data?.let {
             "${it.scheme}://${it.host}"

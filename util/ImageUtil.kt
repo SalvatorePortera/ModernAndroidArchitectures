@@ -15,6 +15,11 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 
+/**
+ * Load image
+ *
+ * @param url
+ */
 fun ImageView.loadImage(url: String?) {
     if (url != null && url.isNotEmpty()) {
         try {
@@ -26,6 +31,11 @@ fun ImageView.loadImage(url: String?) {
     }
 }
 
+/**
+ * Write tofile
+ *
+ * @param filename
+ */
 fun Bitmap.writeTofile(filename: String) {
     try {
         FileOutputStream(filename).use { out ->
@@ -36,6 +46,12 @@ fun Bitmap.writeTofile(filename: String) {
     }
 }
 
+/**
+ * Write file on internal storage
+ *
+ * @param sFileName
+ * @return
+ */
 fun Bitmap.writeFileOnInternalStorage(sFileName: String): File {
     val dir =
         RealmApplication.instance.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
@@ -57,6 +73,12 @@ fun Bitmap.writeFileOnInternalStorage(sFileName: String): File {
 
 }
 
+/**
+ * Write file on internal storage
+ *
+ * @param sFileName
+ * @return
+ */
 fun File.writeFileOnInternalStorage(sFileName: String): File {
     val dir =
         RealmApplication.instance.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
@@ -78,6 +100,13 @@ fun File.writeFileOnInternalStorage(sFileName: String): File {
 
 }
 
+/**
+ * Get bitmap
+ *
+ * @param path
+ * @param width
+ * @return
+ */
 suspend fun getBitmap(path: String, width: Int): Bitmap {
     return withContext(Dispatchers.IO) {
         val bitmap = Picasso.get()

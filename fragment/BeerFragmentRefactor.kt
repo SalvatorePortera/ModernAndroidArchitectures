@@ -20,9 +20,17 @@ import com.nereus.craftbeer.viewmodel.BeerShopViewModel
 import timber.log.Timber
 
 
+/**
+ * Beer fragment refactor
+ *
+ * @constructor Create empty Beer fragment refactor
+ */
 class BeerFragmentRefactor :
     BaseFragment<ActivityBeerFragmentRefactorBinding, BeerShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: BeerShopViewModel by activityViewModels()
 
     override fun getLayout(): Int {

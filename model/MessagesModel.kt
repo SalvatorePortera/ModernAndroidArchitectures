@@ -6,6 +6,11 @@ import com.nereus.craftbeer.enums.ErrorLogCode
 import com.nereus.craftbeer.enums.MessageLogCode
 import com.nereus.craftbeer.util.getStringResource
 
+/**
+ * Messages model
+ *
+ * @constructor Create empty Messages model
+ */
 class MessagesModel {
     private var tabletMessages = mutableListOf<String>()
 

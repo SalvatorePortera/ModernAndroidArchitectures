@@ -11,19 +11,40 @@ import com.nereus.craftbeer.util.getRecyclerViewVisibility
 import com.nereus.craftbeer.viewmodel.BaseViewModel
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Food fragment
+ *
+ * @constructor Create empty Food fragment
+ */
 class FoodFragment : BaseFragment<ActivityFoodFragmentBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_food_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
         configRecyclerView()
     }
 
+    /**
+     * Set view model listener
+     *
+     */
     override fun setViewModelListener() {
         this.viewModel.foods.observe(binding.lifecycleOwner!!, Observer { foods ->
             binding.recyclerViewFoodList.visibility = foods.getRecyclerViewVisibility()
@@ -40,6 +61,10 @@ class FoodFragment : BaseFragment<ActivityFoodFragmentBinding, FoodShopViewModel
         })
     }
 
+    /**
+     * Config recycler view
+     *
+     */
     private fun configRecyclerView() {
         binding.recyclerViewFoodList.adapter =
             FoodViewAdapter(this.requireContext(), viewModel)

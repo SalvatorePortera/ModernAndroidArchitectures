@@ -23,16 +23,31 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import kotlin.math.roundToInt
 
+
+/**
+ * Beer pouring fragment new
+ *
+ * @constructor Create empty Beer pouring fragment new
+ */
 @AndroidEntryPoint
 class BeerPouringFragmentNew :
     BaseFragment<ActivityBeerPouringFragmentBinding, BeerShopViewModel>() {
 
     override val viewModel: BeerShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_beer_pouring_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         Timber.i("Pouring after binding")
         binding.viewModel = viewModel
@@ -65,12 +80,20 @@ class BeerPouringFragmentNew :
         }
     }
 
+    /**
+     * On destroy view
+     *
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         Timber.i("==== card unlocked onDestroyView")
         viewModel.unlockCard()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.infoClose.setOnClickDebounce {
             viewModel.cleanCardData()
@@ -79,6 +102,10 @@ class BeerPouringFragmentNew :
         }
     }
 
+    /**
+     * Set view model listener
+     *
+     */
     override fun setViewModelListener() {
         this.viewModel.beerShopFlowHandler.observe(this, EventObserver {
             Timber.i("Pouring isPouringFinished: %s, isExecuted: %s, true & false is finish flag", it.isPouringFinished.toString(), it.isExecuted.toString())
@@ -114,6 +141,10 @@ class BeerPouringFragmentNew :
 
     }
 
+    /**
+     * Setup tick views
+     *
+     */
     private fun setupTickViews() {
         val digitalFont = Typeface.createFromAsset(requireActivity().assets, "fonts/digital.ttf")
         listOf(binding.tickerViewBalance, binding.tickerViewTotal, binding.tickerViewMl).forEach {
@@ -124,9 +155,11 @@ class BeerPouringFragmentNew :
         }
     }
 
+    /**
+     * Setup beer percentage
+     *
+     */
     private fun setupBeerPercentage() {
-
-
         val beerPercentage = viewModel.beerPercentage.value
         if (beerPercentage != null) {
             when (beerPercentage) {
@@ -168,6 +201,10 @@ class BeerPouringFragmentNew :
     }
 
 
+    /**
+     * Set beer pos
+     *
+     */
     private fun setBeerPos() {
         var posVal = viewModel.beerPos.value
         var beersSize = viewModel.beersNoFilter.value!!.size
@@ -185,12 +222,19 @@ class BeerPouringFragmentNew :
     }
 
 
-    // TODO Setup Mock pouring beer process not using for deploy
+    /**
+     * TODO Setup Mock pouring beer process not using for deploy
+     */
     var balance = 5000
     var ml = 0
     var isDone = false
     var isExecuted = false
 
+    /**
+     * Setup pouring listener
+     *
+     * @param price
+     */
     @SuppressLint("ClickableViewAccessibility")
     private fun setupPouringListener(price: Double) {
         Timber.i("Pouring setupPouringListener")
@@ -231,6 +275,9 @@ class BeerPouringFragmentNew :
             }
         }
 
+        /**
+         * Payment action
+         */
         val paymentAction = Runnable {
             Timber.i("Pouring isDone: %s, isExecuted: %s, true & false is finish flag", isDone.toString(), isExecuted.toString())
             if (isDone && !isExecuted) {

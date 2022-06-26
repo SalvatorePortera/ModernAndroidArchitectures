@@ -6,6 +6,13 @@ import com.nereus.craftbeer.constant.EMPTY_STRING
 import com.nereus.craftbeer.util.formatMessage
 import com.nereus.craftbeer.util.getStringResource
 
+/**
+ * Error log code
+ *
+ * @property tabletMessageId
+ * @property coreMessageId
+ * @constructor Create empty Error log code
+ */
 enum class ErrorLogCode(
     @StringRes private val tabletMessageId: Int?,
     @StringRes private val coreMessageId: Int?

@@ -5,6 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
+/**
+ * Endless recycler view scroll listener
+ *
+ * @constructor Create empty Endless recycler view scroll listener
+ */
 abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener {
     // The minimum amount of items to have below your current scroll position
     // before loading more.
@@ -37,6 +42,12 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
         visibleThreshold = visibleThreshold * layoutManager.spanCount
     }
 
+    /**
+     * Get last visible item
+     *
+     * @param lastVisibleItemPositions
+     * @return
+     */
     fun getLastVisibleItem(lastVisibleItemPositions: IntArray): Int {
         var maxSize = 0
         for (i in lastVisibleItemPositions.indices) {
@@ -49,9 +60,15 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
         return maxSize
     }
 
-    // This happens many times a second during a scroll, so be wary of the code you place here.
-    // We are given a few useful parameters to help us work out if we need to load some more data,
-    // but first we check if we are waiting for the previous load to finish.
+    /**
+     * On scrolled
+     * This happens many times a second during a scroll, so be wary of the code you place here.
+     * We are given a few useful parameters to help us work out if we need to load some more data,
+     * but first we check if we are waiting for the previous load to finish.
+     * @param view
+     * @param dx
+     * @param dy
+     */
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
         var lastVisibleItemPosition = 0
         val totalItemCount = mLayoutManager.itemCount
@@ -96,13 +113,22 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
         }
     }
 
-    // Call this method whenever performing new searches
+    /**
+     * Reset state
+     * Call this method whenever performing new searches
+     */
     fun resetState() {
         currentPage = startingPageIndex
         previousTotalItemCount = 0
         loading = true
     }
 
-    // Defines the process for actually loading more data based on page
+    /**
+     * On load more
+     * Defines the process for actually loading more data based on page
+     * @param page
+     * @param totalItemsCount
+     * @param view
+     */
     abstract fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?)
 }

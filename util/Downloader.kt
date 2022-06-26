@@ -1,8 +1,10 @@
+@file:Suppress("DEPRECATION")
+
 package com.nereus.craftbeer.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.AsyncTask
-import com.nereus.craftbeer.BuildConfig
 import com.nereus.craftbeer.worker.UpdateBeerWorker.Companion.countDownloadFile
 import timber.log.Timber
 import java.io.*
@@ -10,6 +12,10 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 
+/**
+ * Context
+ */
+@SuppressLint("StaticFieldLeak")
 private lateinit var context: Context
 
 class Downloader(contexts: Context) : AsyncTask<String, Int, String>() {
@@ -21,6 +27,7 @@ class Downloader(contexts: Context) : AsyncTask<String, Int, String>() {
         context = contexts
     }
 
+    @Deprecated("Deprecated in Java")
     override fun doInBackground(vararg sUrl: String?): String? {
 
 
@@ -38,7 +45,7 @@ class Downloader(contexts: Context) : AsyncTask<String, Int, String>() {
             val fileLength: Int = connection.getContentLength()
             input = connection.inputStream
             //常にパス階層の先頭ファイル名を指すように修正
-            var cnt = url.toString().split("/").count() - 1
+            val cnt = url.toString().split("/").count() - 1
             fileN = url.toString().split("/")[cnt]
             val filename = File(
                 context.getExternalFilesDir(null)?.absolutePath.toString() + "/DownloadedVideo/",
@@ -72,6 +79,11 @@ class Downloader(contexts: Context) : AsyncTask<String, Int, String>() {
     }
 
 
+    /**
+     * On post execute
+     *
+     * @param result
+     */
     override fun onPostExecute(result: String?) {
         if (result != null) {
             Timber.d("Download error: $result")

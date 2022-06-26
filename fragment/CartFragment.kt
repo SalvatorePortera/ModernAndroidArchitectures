@@ -12,12 +12,24 @@ import timber.log.Timber
 
 class CartFragment : BaseFragment<ActivityCartFragmentBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_cart_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
 //        configRecyclerView()
@@ -31,6 +43,10 @@ class CartFragment : BaseFragment<ActivityCartFragmentBinding, FoodShopViewModel
         }
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnCheckout.setOnClickDebounce {
             Timber.i("--------------aaaaaaaaaaaaaaaaa")
@@ -61,6 +77,10 @@ class CartFragment : BaseFragment<ActivityCartFragmentBinding, FoodShopViewModel
         }
     }
 
+    /**
+     * Set view model listener
+     *
+     */
     override fun setViewModelListener() {
 
         this.viewModel.foods.observe(binding.lifecycleOwner!!, Observer { foods ->

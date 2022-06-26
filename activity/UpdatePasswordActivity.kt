@@ -7,11 +7,21 @@ import com.nereus.craftbeer.databinding.ActivityUpdatePasswordBinding
 import com.nereus.craftbeer.viewmodel.UpdatePasswordViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Update password activity
+ *
+ * @constructor Create empty Update password activity
+ */
 @AndroidEntryPoint
 class UpdatePasswordActivity :
     BaseController<ActivityUpdatePasswordBinding, UpdatePasswordViewModel>() {
     override val viewModel: UpdatePasswordViewModel by viewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_update_password
     }

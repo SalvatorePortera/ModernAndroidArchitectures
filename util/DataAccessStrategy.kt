@@ -7,6 +7,19 @@ import com.nereus.craftbeer.util.Resource
 import com.nereus.craftbeer.util.Resource.Status.*
 import kotlinx.coroutines.Dispatchers
 
+/**
+ * Perform get operation
+ *
+ * @param T
+ * @param A
+ * @param databaseQuery
+ * @param networkCall
+ * @param saveCallResult
+ * @receiver
+ * @receiver
+ * @receiver
+ * @return
+ */
 fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
                                networkCall: suspend () -> Resource<A>,
                                saveCallResult: suspend (A) -> Unit): LiveData<Resource<T>> =
@@ -24,6 +37,15 @@ fun <T, A> performGetOperation(databaseQuery: () -> LiveData<T>,
             emitSource(source)
         }
     }
+
+/**
+ * Perform get operation db
+ *
+ * @param T
+ * @param databaseQuery
+ * @receiver
+ * @return
+ */
 fun <T> performGetOperationDb(databaseQuery: () -> LiveData<T>): LiveData<Resource<T>> =
     liveData(Dispatchers.IO) {
         emit(Resource.loading())

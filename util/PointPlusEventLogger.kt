@@ -10,6 +10,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.lang.Exception
 
+/**
+ * Point plus event logger
+ *
+ * @property errorLogRepository
+ * @constructor Create empty Point plus event logger
+ */
 class PointPlusEventLogger(private val errorLogRepository: ErrorLogRepository) : HttpLoggingInterceptor.Logger {
     private val KEYWORDS = listOf("request", "response")
     override fun log(message: String) {

@@ -14,15 +14,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import timber.log.Timber
 
+/**
+ * Payment method fragment dialog
+ *
+ * @constructor Create empty Payment method fragment dialog
+ */
 class PaymentMethodFragmentDialog :
     BaseFragmentDialog<FragmentPaymentMethodBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_payment_method
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
         //Reset payment method
@@ -61,6 +78,10 @@ class PaymentMethodFragmentDialog :
         }
     }
 
+    /**
+     * Checkout
+     *
+     */
     private fun checkout() {
         val paymentMethod = viewModel.customerAttribute.value!!.paymentMethod
         Timber.i("--------paymentMethod %d", paymentMethod)
@@ -71,6 +92,11 @@ class PaymentMethodFragmentDialog :
         navigate(PaymentMethod.getByValue(paymentMethod)!!)
     }
 
+    /**
+     * Navigate
+     *
+     * @param paymentMethod
+     */
     private fun navigate(paymentMethod: PaymentMethod) {
         when (paymentMethod) {
             PaymentMethod.PAYMENT_HOUSE_MONEY -> findNavController().navigate(R.id.houseMoneyCheckoutFragment)

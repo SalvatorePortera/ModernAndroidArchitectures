@@ -3,6 +3,11 @@ package com.nereus.craftbeer.model
 import com.nereus.craftbeer.constant.DEFAULT_API_LIMIT
 import com.nereus.craftbeer.constant.DEFAULT_API_PAGE
 
+/**
+ * Pagination
+ *
+ * @constructor Create empty Pagination
+ */
 abstract class Pagination {
 
     var page: Int = DEFAULT_API_PAGE

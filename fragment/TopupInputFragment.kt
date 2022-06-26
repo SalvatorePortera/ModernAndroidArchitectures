@@ -14,13 +14,31 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import java.math.BigInteger
 
+/**
+ * Topup input fragment
+ *
+ * @constructor Create empty Topup input fragment
+ */
 class TopupInputFragment : BaseFragmentDialog<FragmentTopupBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
+
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_topup
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         binding.viewModel = viewModel
@@ -28,6 +46,10 @@ class TopupInputFragment : BaseFragmentDialog<FragmentTopupBinding, FoodShopView
         viewModel.inputTopUpAmount(KeyPad.KeyPadValue.DELETE_ALL)
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnCharge.setOnClickDebounce {
 //            viewModel.setTopupAmount()
@@ -49,6 +71,10 @@ class TopupInputFragment : BaseFragmentDialog<FragmentTopupBinding, FoodShopView
         setupKeypadViewListener()
     }
 
+    /**
+     * Setup keypad view listener
+     *
+     */
     private fun setupKeypadViewListener() {
         binding.tableNumpad.children.forEach { row ->
             (row as TableRow).children.forEach { cell ->

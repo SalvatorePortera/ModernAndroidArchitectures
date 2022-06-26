@@ -1,10 +1,5 @@
 package com.nereus.craftbeer.util
 
-import javax.smartcardio.CardChannel
-import javax.smartcardio.ResponseAPDU
-import android.content.Context
-import android.os.Environment
-import com.nereus.craftbeer.BuildConfig
 import com.nereus.craftbeer.realm.RealmApplication
 import java.io.File
 import java.io.FileWriter
@@ -13,9 +8,21 @@ import java.time.format.DateTimeFormatter
 
 object TLogger {
     var _logfilename : String? = null
+
+    /**
+     * Init
+     *
+     * @param logfilename
+     */
     fun Init(logfilename : String){
         _logfilename = logfilename
     }
+
+    /**
+     * Writeln
+     *
+     * @param logString
+     */
     fun writeln(logString: String) {
         try {
             /*

@@ -18,20 +18,38 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import com.noowenz.customdatetimepicker.CustomDateTimePicker
 import java.util.*
 
+/**
+ * Receipt printer by date time fragment dialog
+ *
+ * @constructor Create empty Receipt printer by date time fragment dialog
+ */
 class ReceiptPrinterByDateTimeFragmentDialog :
     BaseFragmentDialog<FragmentReceiptPrinterByDateTimeDialogBinding, FoodShopViewModel>() {
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_receipt_printer_by_date_time_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         configRecyclerView()
         viewModel.initPrinterByDateTimeDialog()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)
@@ -62,6 +80,10 @@ class ReceiptPrinterByDateTimeFragmentDialog :
         }
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         this.viewModel.receipts.observe(binding.lifecycleOwner!!, { receipts ->
             binding.recyclerViewPrinterLogList.visibility = receipts.getRecyclerViewVisibility()
@@ -77,6 +99,10 @@ class ReceiptPrinterByDateTimeFragmentDialog :
         })
     }
 
+    /**
+     * Config recycler view
+     *
+     */
     private fun configRecyclerView() {
         binding.recyclerViewPrinterLogList.adapter =
             PrinterLogViewAdapter(this.requireContext(), viewModel)
@@ -102,6 +128,7 @@ class ReceiptPrinterByDateTimeFragmentDialog :
      * We can change 24 hour format
      * We can set min and max selection date
      * and also can set max and nin selection time
+     *
      */
     private fun EditText.showDateTimePicker(setCalendar: (m: Calendar) -> Unit) {
         CustomDateTimePicker(

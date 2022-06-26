@@ -20,18 +20,43 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
 
+/**
+ * Food shop fragment
+ *
+ * @constructor Create empty Food shop fragment
+ */
 class FoodShopFragment : BaseFragment<FoodShopFragmentBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.food_shop_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
     }
 
+    /**
+     * On create view
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +73,10 @@ class FoodShopFragment : BaseFragment<FoodShopFragmentBinding, FoodShopViewModel
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.apply {
             btnManualInput.setOnClickDebounce {

@@ -5,6 +5,13 @@ import com.nereus.craftbeer.constant.SEPARATOR
 import com.nereus.craftbeer.util.getStringResource
 import com.nereus.craftbeer.util.toThousandSeparatorString
 
+/**
+ * Top up cash receipt payment
+ *
+ * @constructor
+ *
+ * @param receipt
+ */
 class TopUpCashReceiptPayment(receipt: Receipt) :
     ReceiptPayment(receipt = receipt) {
     override fun build(): List<PdfLine> {
@@ -63,6 +70,13 @@ class TopUpCashReceiptPayment(receipt: Receipt) :
     }
 }
 
+/**
+ * Top up default receipt payment
+ *
+ * @constructor
+ *
+ * @param receipt
+ */
 class TopUpDefaultReceiptPayment(receipt: Receipt) :
     ReceiptPayment(receipt = receipt) {
     override fun build(): List<PdfLine> {

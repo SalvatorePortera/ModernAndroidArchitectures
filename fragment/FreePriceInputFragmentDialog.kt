@@ -20,21 +20,42 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import kotlin.math.roundToInt
 
+/**
+ * Free price input fragment dialog
+ *
+ * @constructor Create empty Free price input fragment dialog
+ */
 class FreePriceInputFragmentDialog :
     BaseFragmentDialog<FragmentFreePriceInputDialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_free_price_input_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         binding.viewModel = viewModel
         // viewModel.setPaymentStrategy(CashPaymentStrategy())
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             viewModel.resetFreeAmount()
@@ -58,6 +79,10 @@ class FreePriceInputFragmentDialog :
         setupKeypadViewListener()
     }
 
+    /**
+     * Setup keypad view listener
+     *
+     */
     private fun setupKeypadViewListener() {
 
         binding.tableNumpad.children.forEach { row ->

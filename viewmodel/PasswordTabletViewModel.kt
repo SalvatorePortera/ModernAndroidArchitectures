@@ -22,6 +22,16 @@ import com.nereus.craftbeer.util.setupSyncShopInfoRecurringWork
 import kotlinx.coroutines.launch
 import java.util.concurrent.Callable
 
+/**
+ * Password tablet view model
+ *
+ * @property authRepository
+ * @property savedStateHandle
+ * @property _errorLogRepository
+ * @constructor
+ *
+ * @param application
+ */
 class PasswordTabletViewModel @ViewModelInject constructor(
     private val authRepository: AuthRepository,
     @Assisted var savedStateHandle: SavedStateHandle,
@@ -44,6 +54,10 @@ class PasswordTabletViewModel @ViewModelInject constructor(
     val loginRequest: LiveData<LoginRequest>
         get() = this._loginRequest
 
+    /**
+     * Login
+     *
+     */
     fun login() {
         _loginRequest.value?.let {
             viewModelScope.launch {
@@ -68,10 +82,20 @@ class PasswordTabletViewModel @ViewModelInject constructor(
     val password: LiveData<String>
         get() = this._password
 
+    /**
+     * Set password
+     *
+     * @param value
+     */
     fun setPassword(value: String) {
         _password.value = value
     }
 
+    /**
+     * Set login request
+     *
+     * @param request
+     */
     fun setLoginRequest(request: LoginRequest) {
         _loginRequest.value = request
     }

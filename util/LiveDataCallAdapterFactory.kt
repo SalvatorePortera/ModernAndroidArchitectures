@@ -24,6 +24,11 @@ import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
+/**
+ * Live data call adapter factory
+ *
+ * @constructor Create empty Live data call adapter factory
+ */
 class LiveDataCallAdapterFactory : Factory() {
     override fun get(
         returnType: Type,

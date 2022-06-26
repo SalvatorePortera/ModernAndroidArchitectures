@@ -12,6 +12,15 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import androidx.fragment.app.activityViewModels
 import timber.log.Timber
 
+/**
+ * Goods shop
+ *
+ * @property sellingPrice
+ * @property goodsShortName
+ * @property imageKey
+ * @property imageUrl
+ * @constructor Create empty Goods shop
+ */
 data class GoodsShop(
     val sellingPrice: Double,
     val goodsShortName: String,
@@ -19,6 +28,26 @@ data class GoodsShop(
     val imageUrl: String?,
 )
 
+/**
+ * Goods info list
+ *
+ * @property id
+ * @property goodsCode
+ * @property janCode
+ * @property goodsName
+ * @property goodsShortName
+ * @property description
+ * @property imageKey
+ * @property imageUrl
+ * @property sellingPrice
+ * @property purchaseCost
+ * @property taxReduction
+ * @property taxRate
+ * @property handlingFlag
+ * @property soldOutFlag
+ * @property goodsShop
+ * @constructor Create empty Goods info list
+ */
 data class GoodsInfoList(
     val id: String,
     val goodsCode: String,
@@ -37,6 +66,11 @@ data class GoodsInfoList(
     val goodsShop: List<GoodsShop>?
 )
 
+/**
+ * As combination goods info
+ *
+ * @return
+ */
 fun GoodsInfoList.asCombinationGoodsInfo(): CombinationGoodsInfo {
     val cFood = CombinationGoodsInfo(id = id, janCode = janCode)
     val taxRate = taxRate?: if (janCode == "0000000000000") { 0.0 } else if (taxReduction == 1) DEFAULT_REDUCTION_TAX_RATE else DEFAULT_TAX_RATE

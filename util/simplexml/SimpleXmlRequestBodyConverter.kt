@@ -8,6 +8,15 @@ import retrofit2.Converter
 import java.io.IOException
 import java.io.OutputStreamWriter
 
+/**
+ * Simple xml request body converter
+ *
+ * @param T
+ * @property serializer
+ * @property mediaType
+ * @property charset
+ * @constructor Create empty Simple xml request body converter
+ */
 internal class SimpleXmlRequestBodyConverter<T>(
     private val serializer: Serializer,
     private val mediaType: MediaType,

@@ -13,21 +13,42 @@ import com.nereus.craftbeer.util.keyboard.getKeyPadValue
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Cash payment fragment dialog
+ *
+ * @constructor Create empty Cash payment fragment dialog
+ */
 class CashPaymentFragmentDialog :
     BaseFragmentDialog<FragmentCashPaymentDialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_cash_payment_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         binding.viewModel = viewModel
         viewModel.setPaymentStrategy(CashPaymentStrategy())
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.paymentMethodFragmentDialog)
@@ -40,6 +61,10 @@ class CashPaymentFragmentDialog :
         setupKeypadViewListener()
     }
 
+    /**
+     * Setup keypad view listener
+     *
+     */
     private fun setupKeypadViewListener() {
         binding.tableNumpad.children.forEach { row ->
             (row as TableRow).children.forEach { cell ->

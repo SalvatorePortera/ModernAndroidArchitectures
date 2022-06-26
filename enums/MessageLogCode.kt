@@ -6,6 +6,13 @@ import com.nereus.craftbeer.constant.EMPTY_STRING
 import com.nereus.craftbeer.util.formatMessage
 import com.nereus.craftbeer.util.getStringResource
 
+/**
+ * Message log code
+ *
+ * @property tabletMessageId
+ * @property coreMessageId
+ * @constructor Create empty Message log code
+ */
 enum class MessageLogCode(
     @StringRes private val tabletMessageId: Int?,
     @StringRes private val coreMessageId: Int?
@@ -33,7 +40,12 @@ enum class MessageLogCode(
     UNKNOWN(R.string.Unknown_Tablet, R.string.Unknown);
 
 
-
+    /**
+     * Get tablet message
+     *
+     * @param args
+     * @return
+     */
     fun getTabletMessage(vararg args: Any): String {
         return if (tabletMessageId != null) formatMessage(
             getStringResource(tabletMessageId),
@@ -41,6 +53,12 @@ enum class MessageLogCode(
         ) else EMPTY_STRING
     }
 
+    /**
+     * Get core message
+     *
+     * @param args
+     * @return
+     */
     fun getCoreMessage(vararg args: Any): String {
         return if (coreMessageId != null) formatMessage(
             getStringResource(coreMessageId),
@@ -48,10 +66,20 @@ enum class MessageLogCode(
         ) else EMPTY_STRING
     }
 
+    /**
+     * Has core message
+     *
+     * @return
+     */
     fun hasCoreMessage(): Boolean {
         return coreMessageId != null
     }
 
+    /**
+     * Has tablet message
+     *
+     * @return
+     */
     fun hasTabletMessage(): Boolean {
         return tabletMessageId != null
     }

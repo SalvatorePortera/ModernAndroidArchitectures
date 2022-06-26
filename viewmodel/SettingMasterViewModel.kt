@@ -38,6 +38,19 @@ import timber.log.Timber
 import java.time.LocalDateTime
 import java.util.concurrent.Callable
 
+/**
+ * Setting master view model
+ *
+ * @property savedStateHandle
+ * @property goodsRepository
+ * @property saleLogRepository
+ * @property topUpRepository
+ * @property _errorLogRepository
+ * @property mSocket
+ * @constructor
+ *
+ * @param application
+ */
 class SettingMasterViewModel @ViewModelInject constructor(
     @Assisted var savedStateHandle: SavedStateHandle,
     application: Application,
@@ -83,6 +96,10 @@ class SettingMasterViewModel @ViewModelInject constructor(
         _beerPouring.value = BeerPouring()
     }
 
+    /**
+     * Load sale logs
+     *
+     */
     fun loadSaleLogs() {
         viewModelScope.launch() {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -109,6 +126,10 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Load beers
+     *
+     */
     fun loadBeers() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -142,6 +163,11 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Update beers status
+     *
+     * @param beersInfo
+     */
     fun updateBeersStatus(beersInfo: CombinationBeersInfo) {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -158,6 +184,10 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Send sale logs
+     *
+     */
     fun sendSaleLogs() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -175,10 +205,21 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Build sale log requests
+     *
+     * @return
+     */
     private fun buildSaleLogRequests(): List<SaleLogCreateRequest> {
         return _unsyncSaleLogs.value?.asSaleLogRequests() ?: ArrayList()
     }
 
+    /**
+     * Update tap beer server
+     *
+     * @param updateTapBeerId
+     * @param updateRequest
+     */
     fun updateTapBeerServer(updateTapBeerId: String, updateRequest: UpdateTapBeerServerRequest) {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -197,11 +238,20 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Build top up requests
+     *
+     * @return
+     */
     private fun buildTopUpRequests(): List<TopUpCreateRequest> {
         return _unsyncSaleLogs.value?.asTopUpRequests() ?: ArrayList()
 
     }
 
+    /**
+     * Connect socket
+     *
+     */
     fun connectSocket() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -226,6 +276,9 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Pour beer
+     */
     private val pourBeer =
         Emitter.Listener { args ->
             viewModelScope.launch {
@@ -243,6 +296,11 @@ class SettingMasterViewModel @ViewModelInject constructor(
             }
         }
 
+    /**
+     * Pour beer
+     *
+     * @param amount
+     */
     fun pourBeer(amount: Int) {
         _beerPouring.value?.let {
             val beerPouring = BeerPouring(
@@ -257,6 +315,9 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Approve open
+     */
     val approveOpen =
         Emitter.Listener { args ->
             viewModelScope.launch {
@@ -273,11 +334,20 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
 
 
+    /**
+     * Initial event socket
+     *
+     */
     fun initialEventSocket() {
         mSocket.on("pourBeerNow", pourBeer)
         mSocket.on("approveOpen", approveOpen)
     }
 
+    /**
+     * Emit open beer
+     *
+     * @param tabBeerId
+     */
     fun emitOpenBeer(tabBeerId: String) {
         val maximumBeerAmount = -1
         val jsonObject = JSONObject()
@@ -296,6 +366,11 @@ class SettingMasterViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Setup pouring beer
+     *
+     * @param tabBeerId
+     */
     fun setupPouringBeer(tabBeerId: String) {
         _beerPouring.value = BeerPouring(
             balance = 0,
@@ -305,6 +380,11 @@ class SettingMasterViewModel @ViewModelInject constructor(
         emitOpenBeer(tabBeerId)
     }
 
+    /**
+     * Force stop socket
+     *
+     * @param obnizId
+     */
     fun forceStopSocket(obnizId: String) {
         Timber.i("forceStopSocket: obnizId: " + obnizId)
         mSocket.emit("forceStop", obnizId)
@@ -321,10 +401,19 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Simulate pour out gross beer
+     *
+     */
     fun simulatePourOutGrossBeer() {
         pourBeer(300)
     }
 
+    /**
+     * Handle pour beer gross
+     *
+     * @param beer
+     */
     fun handlePourBeerGross(beer: CombinationBeersInfo) {
         if (_beerPouring.value!!.amountInMl != 0) {
             viewModelScope.launch {
@@ -342,6 +431,11 @@ class SettingMasterViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Build sale log
+     *
+     * @return
+     */
     private fun buildSaleLog(): com.nereus.craftbeer.database.entity.SaleLog {
 
         return com.nereus.craftbeer.database.entity.SaleLog(

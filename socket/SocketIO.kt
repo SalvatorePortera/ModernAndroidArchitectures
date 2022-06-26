@@ -12,6 +12,11 @@ object SocketIO {
     private var aliveSocket: Socket? = null
 
 
+    /**
+     * Get socket
+     *
+     * @return
+     */
     fun getSocket(): Socket? {
         Timber.d("Obniz URL %s", BuildConfig.OBNIZ_SOCKET_URL)
         mSocket = try {
@@ -22,6 +27,12 @@ object SocketIO {
         return mSocket
     }
 
+    /**
+     * Get alive socket
+     *
+     * @param tokenValue
+     * @return
+     */
     fun getAliveSocket(tokenValue: String): Socket? {
 
         if (aliveSocket != null && aliveSocket!!.connected()) {

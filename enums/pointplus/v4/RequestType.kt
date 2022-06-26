@@ -9,10 +9,21 @@ enum class RequestType(private val value: String, private val requiredFields: Li
     VALUE_PAYMENT("value_payment", REQUIRED_FIELDS_CARD),
     VALUE_PAYMENT_CANCELLATION("value_payment_cancel", REQUIRED_FIELDS_CARD);
 
+    /**
+     * Get value
+     *
+     * @return
+     */
     fun getValue(): String {
         return this.value
     }
 
+    /**
+     * Is require
+     *
+     * @param field
+     * @return
+     */
     fun isRequire(field: String): Boolean {
         return this.requiredFields.contains(field)
     }

@@ -24,6 +24,15 @@ import timber.log.Timber
 import java.time.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * Sale log repository
+ *
+ * @property apiService
+ * @property saleLogDao
+ * @property saleLogDetailDao
+ * @property saleLogListDao
+ * @constructor Create empty Sale log repository
+ */
 class SaleLogRepository
 @Inject constructor(
     private val apiService: CoreApiWithoutLiveData,
@@ -31,6 +40,13 @@ class SaleLogRepository
     private val saleLogDetailDao: SaleLogDetailDao,
     private val saleLogListDao: SaleLogListDao
 ) {
+
+    /**
+     * Save sale log
+     *
+     * @param saleLog
+     * @param goods
+     */
     suspend fun saveSaleLog(
         saleLog: com.nereus.craftbeer.database.entity.SaleLog,
         goods: List<CombinationGoodsInfo>
@@ -48,6 +64,12 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Save sale log
+     *
+     * @param saleLog
+     * @param beer
+     */
     suspend fun saveSaleLog(
         saleLog: com.nereus.craftbeer.database.entity.SaleLog,
         beer: CombinationBeersInfo
@@ -63,6 +85,11 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Set sale logs printed
+     *
+     * @param saleLogId
+     */
     suspend fun setSaleLogsPrinted(
         saleLogId: String
     ) {
@@ -79,6 +106,11 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Set sale logs issued
+     *
+     * @param saleLogId
+     */
     suspend fun setSaleLogsIssued(
         saleLogId: String
     ) {
@@ -94,6 +126,11 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Get unsync sale logs
+     *
+     * @return
+     */
     suspend fun getUnsyncSaleLogs(): List<UnsyncLog> {
         Timber.d("---------------- getUnsyncSaleLogs")
         return try {
@@ -108,6 +145,16 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Get many
+     *
+     * @param pointPlusId
+     * @param startTime
+     * @param endTime
+     * @param page
+     * @param limit
+     * @return
+     */
     suspend fun getMany(
         pointPlusId: String? = null,
         startTime: LocalDateTime? = null,
@@ -146,6 +193,10 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Send sale logs
+     *
+     */
     suspend fun sendSaleLogs() {
         try {
             val saleLogs = withContext(Dispatchers.IO) {
@@ -160,6 +211,11 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Send sale logs
+     *
+     * @param saleLogs
+     */
     suspend fun sendSaleLogs(saleLogs: List<SaleLogCreateRequest>) {
 
         if (saleLogs.isEmpty()) {
@@ -199,6 +255,13 @@ class SaleLogRepository
 
     }
 
+    /**
+     * Send sale log
+     *
+     * @param saleLog
+     * @param goods
+     * @return
+     */
     suspend fun sendSaleLog(
         saleLog: com.nereus.craftbeer.database.entity.SaleLog,
         goods: List<CombinationGoodsInfo>
@@ -229,6 +292,13 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Send beer sale log
+     *
+     * @param saleLog
+     * @param beers
+     * @return
+     */
     suspend fun sendBeerSaleLog(
         saleLog: com.nereus.craftbeer.database.entity.SaleLog,
         beers: List<CombinationBeersInfo>
@@ -260,6 +330,13 @@ class SaleLogRepository
     }
 
 
+    /**
+     * Send beer sale log maintain
+     *
+     * @param saleLog
+     * @param beers
+     * @return
+     */
     suspend fun sendBeerSaleLogMaintain(
         saleLog: com.nereus.craftbeer.database.entity.SaleLog,
         beers: List<CombinationBeersInfo>
@@ -290,6 +367,12 @@ class SaleLogRepository
         }
     }
 
+    /**
+     * Insert
+     *
+     * @param saleLog
+     * @return
+     */
     suspend fun insert(saleLog: com.nereus.craftbeer.database.entity.SaleLog): Long {
         return saleLogDao.insert(saleLog)
     }

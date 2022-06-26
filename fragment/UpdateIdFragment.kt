@@ -18,27 +18,53 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.UpdateIdViewModel
 import kotlinx.android.synthetic.main.fragment_update_id.*
 
+/**
+ * Update id fragment
+ *
+ * @constructor Create empty Update id fragment
+ */
 class UpdateIdFragment :
     BaseFragment<FragmentUpdateIdBinding, UpdateIdViewModel>(),
     AdapterView.OnItemSelectedListener {
 
+    /**
+     * View model
+     */
     override val viewModel: UpdateIdViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_update_id
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
         viewModel.loadDevices()
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         viewModel.listDevicesResponse.observe(this, Observer {
             setupList(it)
         })
     }
 
+    /**
+     * Setup list
+     *
+     * @param list
+     */
     private fun setupList(list: List<String>) {
         val adapter: ArrayAdapter<String> =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, list)
@@ -46,6 +72,10 @@ class UpdateIdFragment :
         binding.spDevice.adapter = adapter
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnOkUpdateId.setOnClickDebounce() {
             var sharedPreference =
@@ -99,16 +129,32 @@ class UpdateIdFragment :
         }
     }
 
+    /**
+     * On change shop code
+     *
+     */
     private fun onChangeShopCode() {
         viewModel.setShopCode(binding.editShopCode.text.toString())
         viewModel.loadDevices()
     }
 
+    /**
+     * On change company code
+     *
+     */
     private fun onChangeCompanyCode() {
         viewModel.setCompanyCode(binding.editCompanyCode.text.toString())
         viewModel.loadDevices()
     }
 
+    /**
+     * On item selected
+     *
+     * @param arg0
+     * @param arg1
+     * @param position
+     * @param id
+     */
     override fun onItemSelected(
         arg0: AdapterView<*>?,
         arg1: View?,
@@ -120,6 +166,11 @@ class UpdateIdFragment :
         }
     }
 
+    /**
+     * On nothing selected
+     *
+     * @param arg0
+     */
     override fun onNothingSelected(arg0: AdapterView<*>?) {
         hideNavigationBar()
     }

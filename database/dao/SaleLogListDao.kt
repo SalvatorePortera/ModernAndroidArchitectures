@@ -5,6 +5,11 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.nereus.craftbeer.database.entity.SaleLogWithSaleLogDetail
 
+/**
+ * Sale log list dao
+ *
+ * @constructor Create empty Sale log list dao
+ */
 @Dao
 interface SaleLogListDao {
     @Transaction

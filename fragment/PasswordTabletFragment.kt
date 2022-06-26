@@ -22,15 +22,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.PasswordTabletViewModel
 import kotlinx.coroutines.runBlocking
 
+/**
+ * Password tablet fragment
+ *
+ * @constructor Create empty Password tablet fragment
+ */
 class PasswordTabletFragment :
     BaseFragment<FragmentPasswordTabletBinding, PasswordTabletViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: PasswordTabletViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_password_tablet
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.apply {
             txtPassword.setOnEditorActionListener { _, i, _ ->
@@ -51,6 +68,10 @@ class PasswordTabletFragment :
         }
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         viewModel.password.observe(this, Observer { newPassword ->
             if (newPassword != CommonConst.EMPTY_STRING) {

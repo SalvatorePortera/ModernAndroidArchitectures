@@ -1,9 +1,31 @@
 package com.nereus.craftbeer.model.obniz
 
+/**
+ * Obniz data
+ *
+ * @property data
+ * @constructor Create empty Obniz data
+ */
 data class ObnizData(
     val data: List<ObnizInfo>
 )
 
+/**
+ * Obniz info
+ *
+ * @property id
+ * @property updatedAt
+ * @property deletedAt
+ * @property serverCode
+ * @property obnizId
+ * @property validFlag
+ * @property isOnline
+ * @property startUsingAt
+ * @property shopId
+ * @property companyId
+ * @property createdAt
+ * @constructor Create empty Obniz info
+ */
 data class ObnizInfo(
     val id: String,
     val updatedAt: String,

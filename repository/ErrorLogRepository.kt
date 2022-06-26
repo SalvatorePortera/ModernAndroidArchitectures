@@ -20,6 +20,13 @@ import timber.log.Timber
 import java.time.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * Error log repository
+ *
+ * @property apiService
+ * @property errorLogDao
+ * @constructor Create empty Error log repository
+ */
 class ErrorLogRepository
 @Inject constructor(
     private val apiService: CoreApiForLogger,
@@ -28,6 +35,7 @@ class ErrorLogRepository
 
     /**
      * Send Error Log to core server, save to tablet DB if sending failed
+     *
      */
     suspend fun sendErrorLog(messageModel: MessagesModel) {
         var errorLog: ErrorLog? = null
@@ -63,6 +71,11 @@ class ErrorLogRepository
     }
 
 
+    /**
+     * Send message log
+     *
+     * @param messageModel
+     */
     suspend fun sendMessageLog(messageModel: MessagesModel) {
         var messageLog: MessageLog? = null
         try {
@@ -96,6 +109,7 @@ class ErrorLogRepository
 
     /**
      * Send Unsync Error Logs to core server in case had been failed to send before
+     *
      */
     suspend fun sendErrorLogs() {
         try {
@@ -111,6 +125,11 @@ class ErrorLogRepository
         }
     }
 
+    /**
+     * Save error log
+     *
+     * @param errorLog
+     */
     private suspend fun saveErrorLog(
         errorLog: ErrorLog
     ) {
@@ -119,6 +138,11 @@ class ErrorLogRepository
         }
     }
 
+    /**
+     * Get unsync error logs
+     *
+     * @return
+     */
     private suspend fun getUnsyncErrorLogs(): List<ErrorLog> {
         Timber.d("---------------- getUnsyncErrorLogs")
         return try {
@@ -133,6 +157,11 @@ class ErrorLogRepository
         }
     }
 
+    /**
+     * Send error logs
+     *
+     * @param errorLogs
+     */
     private suspend fun sendErrorLogs(errorLogs: List<ErrorLog>) {
 
         if (errorLogs.isEmpty()) {
@@ -151,6 +180,12 @@ class ErrorLogRepository
 
     }
 
+    /**
+     * Send error log
+     *
+     * @param it
+     * @param messagesModel
+     */
     private suspend fun sendErrorLog(
         it: ErrorLog,
         messagesModel: MessagesModel
@@ -172,6 +207,12 @@ class ErrorLogRepository
         }
     }
 
+    /**
+     * Send log
+     *
+     * @param it
+     * @param messagesModel
+     */
     private suspend fun sendLog(
         it: MessageLog,
         messagesModel: MessagesModel

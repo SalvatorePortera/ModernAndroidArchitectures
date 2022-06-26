@@ -16,21 +16,47 @@ import okhttp3.ResponseBody
 import timber.log.Timber
 import javax.inject.Inject
 
+/**
+ * Auth repository
+ *
+ * @property apiService
+ * @property coreApiWithoutLiveData
+ * @constructor Create empty Auth repository
+ */
 class AuthRepository @Inject constructor(
+
     private val apiService: BeerCraftApi,
     private val coreApiWithoutLiveData: CoreApiWithoutLiveData
 ) {
     companion object {
+
+        /**
+         * Get access token
+         *
+         * @return
+         */
         fun getAccessToken(): String {
             return RealmApplication.instance.getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
                 .getString(ACCESS_TOKEN, NO_TOKEN) ?: CommonConst.EMPTY_STRING
         }
+
+        /**
+         * Get device id
+         *
+         * @return
+         */
         fun getDeviceId(): String {
             return RealmApplication.instance.getSharedPreferences(PREF_DEVICE_FILE, Context.MODE_PRIVATE)
                 .getString(PREF_DEVICE_ID, EMPTY_STRING) ?: CommonConst.EMPTY_STRING
         }
     }
 
+    /**
+     * Check login
+     *
+     * @param request
+     * @return
+     */
     suspend fun checkLogin(request: LoginRequest): LoginResponse {
         val result = withContext(Dispatchers.IO) {
             coreApiWithoutLiveData.checkLogin(request)
@@ -49,6 +75,12 @@ class AuthRepository @Inject constructor(
         }
     }
 
+    /**
+     * Change device password
+     *
+     * @param request
+     * @return
+     */
     suspend fun changeDevicePassword(request: UpdatePassRequest): ResponseBody {
         val result = withContext(Dispatchers.IO) {
             coreApiWithoutLiveData.changeDevicePass(request)

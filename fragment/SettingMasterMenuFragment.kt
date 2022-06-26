@@ -14,15 +14,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
 import timber.log.Timber
 
+/**
+ * Setting master menu fragment
+ *
+ * @constructor Create empty Setting master menu fragment
+ */
 class SettingMasterMenuFragment :
     BaseFragment<FragmentSettingMasterMenuBinding, SettingMasterViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: SettingMasterViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_setting_master_menu
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.apply {
             txtUpdatePassword.setOnClickDebounce {

@@ -34,14 +34,25 @@ import javax.smartcardio.*
 import kotlin.jvm.Throws
 
 
+/**
+ * Nfc fragment
+ *
+ * @constructor Create empty Nfc fragment
+ */
 class NfcFragment :
     BaseFragment<ActivityReadCustomerCodeBinding, DefaultViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: DefaultViewModel by activityViewModels()
 
     val TAG = "BLUETOOTH_MAIN_ACTIVITY"
 
 
+    /**
+     * Update terminal selector on change task
+     */
     private var UpdateTerminalSelectorOnChangeTask: NfcFragment.UpdateTerminalSelectorOnChange? =
         null
 
@@ -67,16 +78,29 @@ class NfcFragment :
      */
     private var mTerminalAdapter: TerminalAdapter? = null
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_read_customer_code
     }
 
+    /**
+     * On destroy
+     *
+     */
     override fun onDestroy() {
         super.onDestroy()
         BluetoothSmartCard.getInstance(context).onStop()
     }
 
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         // Get the Bluetooth terminal manager
         mManager = BluetoothSmartCard.getInstance(context).manager
@@ -93,10 +117,19 @@ class NfcFragment :
 
     }
 
+    /**
+     * Ui State
+     *
+     * @constructor Create empty Ui State
+     */
     internal enum class UI_STATE {
         DISCONNECTED, READYTOCONNECT, DIRECT, CONNECTED
     }
 
+    /**
+     * On resume
+     *
+     */
     override fun onResume() {
         enableBluetooth()
         refreshTerminalSelector()
@@ -107,6 +140,10 @@ class NfcFragment :
     }
 
 
+    /**
+     * Initialize u i
+     *
+     */
     private fun InitializeUI() {
 
         btnRefreshTerminal =
@@ -203,6 +240,10 @@ class NfcFragment :
     private val REQUEST_ENABLE_BT = 1
     private val REQUEST_FINE_LOCATION = 3
 
+    /**
+     * Enable bluetooth
+     *
+     */
     private fun enableBluetooth() {
         val mBtAdapter = BluetoothAdapter.getDefaultAdapter()
         if (mBtAdapter == null) {
@@ -309,6 +350,10 @@ class NfcFragment :
         }
     }
 
+    /**
+     * Start terminal auto refresh
+     *
+     */
     private fun StartTerminalAutoRefresh() {
         if (UpdateTerminalSelectorOnChangeTask == null) {
             UpdateTerminalSelectorOnChangeTask = UpdateTerminalSelectorOnChange()
@@ -317,8 +362,11 @@ class NfcFragment :
     }
 
     /**
-     * This Async Task monitor for terminal attach detach, updates selector
+     * This Async Task monitor for terminal attach detach, updates selector./
      */
+
+
+
     inner class UpdateTerminalSelectorOnChange : AsyncTask<CardTerminals?, String?, Void?>() {
         override fun onProgressUpdate(vararg values: String?) {
             Timber.tag(TAG).i(values[0])

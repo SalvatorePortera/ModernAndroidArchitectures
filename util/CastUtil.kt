@@ -9,6 +9,14 @@ import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.util.*
 
+/**
+ * Cast to t
+ *
+ * @param T
+ * @param obj
+ * @param default
+ * @return
+ */
 fun <T> castToT(obj: Any?, default: T? = null): T? {
     return try {
         if (obj == null) {
@@ -21,6 +29,11 @@ fun <T> castToT(obj: Any?, default: T? = null): T? {
     }
 }
 
+/**
+ * To receipt date time string
+ *
+ * @return
+ */
 fun LocalDateTime.toReceiptDateTimeString(): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(RECEIPT_TIMESTAMP_FORMAT)
     return return try {
@@ -31,6 +44,11 @@ fun LocalDateTime.toReceiptDateTimeString(): String {
     }
 }
 
+/**
+ * To displayed date time string
+ *
+ * @return
+ */
 fun LocalDateTime?.toDisplayedDateTimeString(): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(DISPLAYED_TIMESTAMP_FORMAT)
     return try {
@@ -41,6 +59,11 @@ fun LocalDateTime?.toDisplayedDateTimeString(): String {
     }
 }
 
+/**
+ * To displayed date time string
+ *
+ * @return
+ */
 fun Calendar.toDisplayedDateTimeString(): String {
     return return try {
         LocalDateTime.ofInstant(toInstant(), ZoneId.systemDefault()).toDisplayedDateTimeString()
@@ -50,6 +73,11 @@ fun Calendar.toDisplayedDateTimeString(): String {
     }
 }
 
+/**
+ * To ISO string
+ *
+ * @return
+ */
 fun LocalDateTime.toISOString(): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(ISO_TIMESTAMP_FORMAT)
     return try {
@@ -60,6 +88,11 @@ fun LocalDateTime.toISOString(): String {
     }
 }
 
+/**
+ * Parse ISO date time
+ *
+ * @return
+ */
 fun String.parseISODateTime(): LocalDateTime? {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(ISO_TIMESTAMP_FORMAT)
     return try {
@@ -70,6 +103,11 @@ fun String.parseISODateTime(): LocalDateTime? {
     }
 }
 
+/**
+ * To point plus date format
+ *
+ * @return
+ */
 fun LocalDateTime.toPointPlusDateFormat(): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(POINT_PLUS_YMD_FORMAT)
     return try {
@@ -80,6 +118,11 @@ fun LocalDateTime.toPointPlusDateFormat(): String {
     }
 }
 
+/**
+ * To point plus time format
+ *
+ * @return
+ */
 fun LocalDateTime.toPointPlusTimeFormat(): String {
     val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern(POINT_PLUS_HMS_FORMAT)
     return try {
@@ -90,18 +133,38 @@ fun LocalDateTime.toPointPlusTimeFormat(): String {
     }
 }
 
+/**
+ * Not
+ *
+ * @return
+ */
 operator fun Int.not(): Int {
     return if (this == 0) return 1 else 0
 }
 
+/**
+ * To boolean
+ *
+ * @return
+ */
 fun Short.toBoolean(): Boolean {
     return this != 0.toShort()
 }
 
+/**
+ * To base date time
+ *
+ * @return
+ */
 fun LocalDateTime.toBaseDateTime(): LocalDateTime {
     return atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime()
 }
 
+/**
+ * To device date time
+ *
+ * @return
+ */
 fun LocalDateTime.toDeviceDateTime(): LocalDateTime {
     return atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime()
 }

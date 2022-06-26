@@ -16,6 +16,16 @@ import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 import java.util.concurrent.Callable
 
+/**
+ * Update password view model
+ *
+ * @property authRepository
+ * @property savedStateHandle
+ * @property _errorLogRepository
+ * @constructor
+ *
+ * @param application
+ */
 class UpdatePasswordViewModel @ViewModelInject constructor(
     private val authRepository: AuthRepository,
     @Assisted var savedStateHandle: SavedStateHandle,

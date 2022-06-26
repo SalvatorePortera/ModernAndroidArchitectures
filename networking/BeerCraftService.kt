@@ -7,8 +7,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BeerCraftService {
 
+    /**
+     * Base Url
+     */
     private const val BASE_URL = "http://alb-dev-apne1-cfbeer-01-87699778.ap-northeast-1.elb.amazonaws.com"
 
+    /**
+     * Create
+     *
+     * @return
+     */
     fun create(): BeerCraftApi {
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

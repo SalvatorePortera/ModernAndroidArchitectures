@@ -3,6 +3,11 @@ package com.nereus.craftbeer.util
 import java.util.*
 import javax.smartcardio.ATR
 
+/**
+ * Ble
+ *
+ * @constructor Create empty Ble
+ */
 class BLE {
     companion object {
         private const val ATR_FeliCa = "11 00 3B"

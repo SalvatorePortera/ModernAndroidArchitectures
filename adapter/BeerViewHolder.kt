@@ -8,6 +8,13 @@ import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.nereus.craftbeer.R
 
+/**
+ * Beer view holder
+ *
+ * @constructor
+ *
+ * @param itemView
+ */
 class BeerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var flagView: ImageView
     var beerIconView: ImageView

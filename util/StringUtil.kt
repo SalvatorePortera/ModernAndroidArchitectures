@@ -20,6 +20,14 @@ import kotlin.jvm.Throws
 import kotlin.random.Random
 
 
+/**
+ * Parse json
+ *
+ * @param T
+ * @param jsonString
+ * @param clazz
+ * @return
+ */
 fun <T> parseJson(
     jsonString: String?,
     clazz: Class<T>
@@ -28,6 +36,12 @@ fun <T> parseJson(
     return g.fromJson(jsonString, clazz)
 }
 
+/**
+ * Gen random string
+ *
+ * @param length
+ * @return
+ */
 fun genRandomString(length: Int): String {
     val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
     return (1..length)
@@ -36,10 +50,26 @@ fun genRandomString(length: Int): String {
         .joinToString("")
 }
 
+/**
+ * Format string
+ *
+ * @param T
+ * @param formatter
+ * @param args
+ * @return
+ */
 fun <T> formatString(formatter: String, vararg args: T): String {
     return String.format(formatter, args)
 }
 
+/**
+ * Format message
+ *
+ * @param T
+ * @param formatter
+ * @param args
+ * @return
+ */
 fun <T> formatMessage(formatter: String, vararg args: T): String {
     return try {
         MessageFormat.format(formatter, *args)
@@ -49,15 +79,31 @@ fun <T> formatMessage(formatter: String, vararg args: T): String {
     }
 }
 
+/**
+ * To half width string
+ *
+ * @return
+ */
 fun String.toHalfWidthString(): String {
     val transliterator = Transliterator.getInstance("Fullwidth-Halfwidth")
     return transliterator.transliterate(this)
 }
 
+/**
+ * Is full width char
+ *
+ * @param char
+ * @return
+ */
 fun isFullWidthChar(char: Char): Boolean {
     return (0xff00 and char.toInt()) == 0xff00
 }
 
+/**
+ * Body to string
+ *
+ * @return
+ */
 fun RequestBody.bodyToString(): String {
     return try {
         Buffer().use { buffer ->
@@ -121,6 +167,11 @@ fun Char.isFullWidth(): Boolean {
     }
 }
 
+/**
+ * Length advanced
+ *
+ * @return
+ */
 fun String.lengthAdvanced(): Int {
     return toCharArray().fold(0) { length, char ->
         length + if (char.isFullWidth()) {
@@ -129,6 +180,13 @@ fun String.lengthAdvanced(): Int {
     }
 }
 
+/**
+ * Ellipsize
+ *
+ * @param limit
+ * @param placeholder
+ * @return
+ */
 fun String.ellipsize(
     limit: Int,
     placeholder: String = ELLIPSIS
@@ -147,6 +205,13 @@ fun String.ellipsize(
     return result.formatStringWithIndent(limit)
 }
 
+/**
+ * Format string with indent
+ *
+ * @param limit
+ * @param isFilledLeft
+ * @return
+ */
 fun String.formatStringWithIndent(
     limit: Int,
     isFilledLeft: Boolean = false
@@ -170,23 +235,48 @@ fun String.formatStringWithIndent(
     return result
 }
 
+/**
+ * Get string resource
+ *
+ * @param stringRes
+ * @param formatArgs
+ * @return
+ */
 fun getStringResource(@StringRes stringRes: Int, vararg formatArgs: Any): String {
     return if (formatArgs.isEmpty()) {
         RealmApplication.instance.getString(stringRes)
     } else RealmApplication.instance.getString(stringRes, *formatArgs)
 }
 
+/**
+ * Convert u t f8to shift j
+ *
+ * @param utf8Bytes
+ * @return
+ */
 @Throws(IllegalCharsetNameException::class)
 private fun convertUTF8ToShiftJ(utf8Bytes: ByteArray): ByteArray {
     val s = String(utf8Bytes, StandardCharsets.UTF_8)
     return s.toByteArray(Charset.forName("SHIFT-JIS"))
 }
 
+/**
+ * To shift j i s string
+ *
+ * @return
+ */
 fun String.toShiftJISString(): String {
     return String(toByteArray(), Charset.forName("SHIFT-JIS"))
 }
 
 
+/**
+ * Gen receipt code
+ *
+ * @param companyCode
+ * @param shopCode
+ * @return
+ */
 fun genReceiptCode(companyCode: String, shopCode: String): String {
     return StringBuilder(RECEIPT_CODE_PREFIX)
 //        .append(companyCode)
@@ -197,24 +287,51 @@ fun genReceiptCode(companyCode: String, shopCode: String): String {
         .toString()
 }
 
+/**
+ * To thousand separator string
+ *
+ * @param prefix
+ * @param suffix
+ * @return
+ */
 fun Int.toThousandSeparatorString(prefix: String = YEN, suffix: String = EMPTY_STRING): String {
     return StringBuilder().append(prefix)
         .append(DecimalFormat(THOUSAND_DECIMAL_FORMAT).format(this)).append(suffix).toString()
 }
 
 
+/**
+ * To thousand separator string without prefix
+ *
+ * @return
+ */
 fun Int.toThousandSeparatorStringWithoutPrefix(): String {
     return DecimalFormat(THOUSAND_DECIMAL_FORMAT).format(this)
 }
 
+/**
+ * To thousand separator string
+ *
+ * @return
+ */
 fun Double.toThousandSeparatorString(): String {
     return DecimalFormat(THOUSAND_DECIMAL_FORMAT).format(this)
 }
 
+/**
+ * To thousand separator string
+ *
+ * @return
+ */
 fun BigInteger.toThousandSeparatorString(): String {
     return DecimalFormat(THOUSAND_DECIMAL_FORMAT).format(this)
 }
 
+/**
+ * To editable
+ *
+ * @return
+ */
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
 

@@ -8,6 +8,16 @@ import com.nereus.craftbeer.model.LogCreateRequest
 import com.nereus.craftbeer.util.toISOString
 import java.time.LocalDateTime
 
+/**
+ * Message log
+ *
+ * @property eventTime
+ * @property obnizID
+ * @property deviceCode
+ * @property message
+ * @property eventType
+ * @constructor Create empty Message log
+ */
 @Entity(tableName = "message_logs")
 data class MessageLog(
 

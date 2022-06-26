@@ -14,8 +14,20 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import kotlin.jvm.Throws
 
+/**
+ * Point plus payment strategy
+ *
+ * @constructor Create empty Point plus payment strategy
+ */
 class PointPlusPaymentStrategy : PaymentStrategy {
+    /**
+     * Pay
+     *
+     * @param payment
+     * @return
+     */
     @Throws(MessageException::class)
+
     override suspend fun pay(payment: Payment): PaymentResult {
         val ePayment = payment as EMoneyPayment
         val balance = getBalance(payment)
@@ -26,6 +38,12 @@ class PointPlusPaymentStrategy : PaymentStrategy {
         return PaymentResult(balanceAfter = response.newValue, balanceBefore = response.oldValue)
     }
 
+    /**
+     * Get balance
+     *
+     * @param payment
+     * @return
+     */
     override suspend fun getBalance(payment: Payment): Int {
         val payment = payment as EMoneyPayment
         val transactions = BasedCardRequestTransactions(RequestType.QUERY_BALANCE)
@@ -37,10 +55,22 @@ class PointPlusPaymentStrategy : PaymentStrategy {
         return response.newValue
     }
 
+    /**
+     * Is valid balance
+     *
+     * @param balance
+     * @return
+     */
     private fun EMoneyPayment.isValidBalance(balance: Int): Boolean {
         return balance >= total
     }
 
+    /**
+     * Pay point plus
+     *
+     * @param payment
+     * @return
+     */
     private suspend fun payPointPlus(payment: EMoneyPayment): BasedCardResponseTransaction {
         val transactions = BasedCardRequestTransactions(RequestType.VALUE_PAYMENT)
         transactions.fillPaymentRequest(
@@ -57,6 +87,15 @@ class PointPlusPaymentStrategy : PaymentStrategy {
     }
 }
 
+/**
+ * E money payment
+ *
+ * @property pointPlusId
+ * @property cardAuthInfo
+ * @property repository
+ * @property receivedAmount
+ * @constructor Create empty E money payment
+ */
 data class EMoneyPayment(
     var pointPlusId: String,
     var cardAuthInfo: String,

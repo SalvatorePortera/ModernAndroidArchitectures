@@ -2,6 +2,11 @@ package com.nereus.craftbeer.util
 
 import com.nereus.craftbeer.BuildConfig
 
+/**
+ * Card util
+ *
+ * @constructor Create empty Card util
+ */
 class CardUtil {
 
     /**

@@ -12,6 +12,27 @@ import com.nereus.craftbeer.util.toDisplayedDateTimeString
 import com.nereus.craftbeer.util.toDeviceDateTime
 import java.time.LocalDateTime
 
+/**
+ * Receipt
+ *
+ * @property id
+ * @property isSelected
+ * @property countPrinted
+ * @property isIssued
+ * @property shopId
+ * @property companyId
+ * @property shop
+ * @property company
+ * @property pointPlusId
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property receiptCode
+ * @property receiptType
+ * @property paymentMethod
+ * @property isFirstPrinting
+ * @property createdAt
+ * @constructor Create empty Receipt
+ */
 abstract class Receipt constructor(
 
     open var id: String = EMPTY_STRING,

@@ -14,11 +14,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+/**
+ * Shop repository
+ *
+ * @property apiService
+ * @constructor Create empty Shop repository
+ */
 class ShopRepository
 @Inject constructor(
     private val apiService: CoreApiWithoutLiveData
 ) {
 
+    /**
+     * Get company
+     *
+     * @param companyId
+     * @return
+     */
     suspend fun getCompany(companyId: String): Company {
         val company = withContext(Dispatchers.IO) {
             apiService.getCompanyInfo(
@@ -40,6 +52,12 @@ class ShopRepository
         }
     }
 
+    /**
+     * Get shop
+     *
+     * @param shopId
+     * @return
+     */
     suspend fun getShop(shopId: String): ShopInfo {
         val shop = withContext(Dispatchers.IO) {
             apiService.getShopInfo(token = AuthRepository.getAccessToken(), shopId = shopId)
@@ -58,6 +76,13 @@ class ShopRepository
         }
     }
 
+    /**
+     * Get devices
+     *
+     * @param companyCode
+     * @param shopCode
+     * @return
+     */
     suspend fun getDevices(companyCode: String, shopCode: String): List<Device> {
         if (shopCode.isBlank() || companyCode.isBlank()) {
             throw MessageException(MessagesModel(R.string.msg_internal_exception))

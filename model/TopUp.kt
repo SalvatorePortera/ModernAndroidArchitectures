@@ -10,6 +10,26 @@ import com.nereus.craftbeer.model.printer.TopUpReceipt
 import com.nereus.craftbeer.util.getStringResource
 import java.time.LocalDateTime
 
+/**
+ * Top up
+ *
+ * @property id
+ * @property pointPlusId
+ * @property cardAuthInfo
+ * @property receiptCode
+ * @property companyId
+ * @property shopId
+ * @property deposit
+ * @property change
+ * @property amount
+ * @property countPrinted
+ * @property isIssued
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property paymentMethod
+ * @property createdAt
+ * @constructor Create empty Top up
+ */
 data class TopUp(
 
     var id: String = EMPTY_STRING,

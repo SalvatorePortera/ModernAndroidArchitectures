@@ -20,11 +20,23 @@ import timber.log.Timber
 import java.time.LocalDateTime
 import javax.inject.Inject
 
+/**
+ * Top up repository
+ *
+ * @property apiService
+ * @property topUpDao
+ * @constructor Create empty Top up repository
+ */
 class TopUpRepository
 @Inject constructor(
     private val apiService: CoreApiWithoutLiveData,
     private val topUpDao: TopUpDao
 ) {
+    /**
+     * Save top up
+     *
+     * @param topUp
+     */
     private suspend fun saveTopUp(
         topUp: com.nereus.craftbeer.database.entity.TopUp
     ) {
@@ -41,6 +53,11 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Get unsync top ups
+     *
+     * @return
+     */
     suspend fun getUnsyncTopUps(): List<UnsyncLog> {
         Timber.d("---------------- getUnsyncSaleLogs")
         return try {
@@ -55,6 +72,16 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Get many
+     *
+     * @param pointPlusId
+     * @param startTime
+     * @param endTime
+     * @param page
+     * @param limit
+     * @return
+     */
     suspend fun getMany(
         pointPlusId: String? = null,
         startTime: LocalDateTime? = null,
@@ -93,6 +120,10 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Send top ups
+     *
+     */
     suspend fun sendTopUps() {
         try {
             val topUps = withContext(Dispatchers.IO) {
@@ -107,6 +138,11 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Send top ups
+     *
+     * @param topUps
+     */
     suspend fun sendTopUps(topUps: List<TopUpCreateRequest>) {
 
         if (topUps.isEmpty()) {
@@ -139,6 +175,12 @@ class TopUpRepository
 
     }
 
+    /**
+     * Send top up
+     *
+     * @param topUp
+     * @return
+     */
     suspend fun sendTopUp(topUp: com.nereus.craftbeer.database.entity.TopUp): String {
         try {
             val result = withContext(Dispatchers.IO) {
@@ -165,10 +207,21 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Insert
+     *
+     * @param topUp
+     * @return
+     */
     suspend fun insert(topUp: com.nereus.craftbeer.database.entity.TopUp): Long {
         return topUpDao.insert(topUp)
     }
 
+    /**
+     * Set topups printed
+     *
+     * @param topUpId
+     */
     suspend fun setTopupsPrinted(
         topUpId: String
     ) {
@@ -185,6 +238,11 @@ class TopUpRepository
         }
     }
 
+    /**
+     * Set topups issued
+     *
+     * @param topUpId
+     */
     suspend fun setTopupsIssued(
         topUpId: String
     ) {

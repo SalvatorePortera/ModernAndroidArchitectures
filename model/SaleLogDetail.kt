@@ -5,6 +5,20 @@ import com.nereus.craftbeer.enums.ProducType
 import com.nereus.craftbeer.util.getStringResource
 import timber.log.Timber
 
+/**
+ * Sale log detail
+ *
+ * @property id
+ * @property saleLogId
+ * @property goodsId
+ * @property goodsData
+ * @property tapBeerId
+ * @property tapBeerData
+ * @property amount
+ * @property purchaseCost
+ * @property sellingPrice
+ * @constructor Create empty Sale log detail
+ */
 data class SaleLogDetail constructor(
 
     var id: String,

@@ -32,6 +32,16 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import timber.log.Timber
 
+/**
+ * Sync sale logs to core server worker
+ *
+ * @property saleLogRepository
+ * @property topupRepository
+ * @constructor
+ *
+ * @param ctx
+ * @param params
+ */
 class SyncSaleLogsToCoreServerWorker @WorkerInject constructor(
     @Assisted ctx: Context,
     @Assisted params: WorkerParameters,
@@ -42,6 +52,11 @@ class SyncSaleLogsToCoreServerWorker @WorkerInject constructor(
         const val WORK_NAME = "com.nereus.craftbeer.worker.SyncSaleLogsToCoreServerWorker"
     }
 
+    /**
+     * Do work
+     *
+     * @return
+     */
     override suspend fun doWork(): Result {
         val appContext = applicationContext
         makeStatusNotification("Synchronizing sale logs ...", appContext)

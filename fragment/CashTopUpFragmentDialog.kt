@@ -15,15 +15,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 import timber.log.Timber
 
+/**
+ * Cash top up fragment dialog
+ *
+ * @constructor Create empty Cash top up fragment dialog
+ */
 class CashTopUpFragmentDialog :
     BaseFragmentDialog<FragmentCashTopUpDialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_cash_top_up_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         binding.viewModel = viewModel
@@ -32,6 +49,10 @@ class CashTopUpFragmentDialog :
         viewModel.inputTopUpDeposit(KeyPad.KeyPadValue.DELETE_ALL)
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)
@@ -91,6 +112,10 @@ class CashTopUpFragmentDialog :
 //        }
 //    }
 
+    /**
+     * Setup keypad view listener
+     *
+     */
     private fun setupKeypadViewListener() {
         binding.tableNumpad.children.forEach { row ->
             (row as TableRow).children.forEach { cell ->

@@ -15,6 +15,14 @@ import com.nereus.craftbeer.util.displayToast
 import com.nereus.craftbeer.util.loadImage
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Food view adapter
+ *
+ * @property viewModel
+ * @constructor
+ *
+ * @param context
+ */
 class FoodViewAdapter(
     context: Context,
     val viewModel: FoodShopViewModel
@@ -25,31 +33,66 @@ class FoodViewAdapter(
         this.context = context
     }
 
+    /**
+     * Submit list
+     *
+     * @param list
+     */
     override fun submitList(list: MutableList<CombinationGoodsInfo>?) {
         super.submitList(list)
     }
 
+    /**
+     * On create view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(viewModel, parent)
     }
 
+    /**
+     * On bind view holder
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.binding.imageViewFlag.loadImage(item.imageUrl)
         holder.bind(item, viewModel.customerAttribute.value!!)
     }
 
-    // Click on RecyclerView Item.
+    /**
+     * Handle recycler item click
+     * Click on RecyclerView Item.
+     * @param recyclerView
+     * @param itemView
+     */
     private fun handleRecyclerItemClick(recyclerView: RecyclerView, itemView: View) {
         val itemPosition = recyclerView.getChildLayoutPosition(itemView)
         val food = getItem(itemPosition)
         displayToast(context, food.goodsName, Toast.LENGTH_LONG)
     }
 
+    /**
+     * View holder
+     *
+     * @property binding
+     * @constructor Create empty View holder
+     */
     class ViewHolder private constructor(val binding: RecyclerviewItemLayoutBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ) {
+        /**
+         * Bind
+         *
+         * @param item
+         * @param customerAttribute
+         */
         fun bind(item: CombinationGoodsInfo, customerAttribute: CustomerAttribute) {
             binding.food = item
             binding.customerAttribute = customerAttribute
@@ -57,10 +100,12 @@ class FoodViewAdapter(
         }
 
         companion object {
+
             fun from(viewModel: FoodShopViewModel, parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RecyclerviewItemLayoutBinding.inflate(layoutInflater, parent, false)
                 binding.callback = object : FoodClickCallback {
+
                     override fun onClick(food: CombinationGoodsInfo?) {
                         println("[APP LOG] - onclick")
                     }
@@ -95,6 +140,11 @@ class FoodViewAdapter(
     }
 }
 
+/**
+ * Food diff call back
+ *
+ * @constructor Create empty Food diff call back
+ */
 class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
     override fun areItemsTheSame(
         oldItem: CombinationGoodsInfo,
@@ -111,9 +161,37 @@ class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
     }
 }
 
+/**
+ * Food click callback
+ *
+ * @constructor Create empty Food click callback
+ */
 internal interface FoodClickCallback {
+    /**
+     * On click
+     *
+     * @param food
+     */
     fun onClick(food: CombinationGoodsInfo?)
+
+    /**
+     * On remove
+     *
+     * @param food
+     */
     fun onRemove(food: CombinationGoodsInfo?)
+
+    /**
+     * On count up
+     *
+     * @param food
+     */
     fun onCountUp(food: CombinationGoodsInfo?)
+
+    /**
+     * On count down
+     *
+     * @param food
+     */
     fun onCountDown(food: CombinationGoodsInfo?)
 }

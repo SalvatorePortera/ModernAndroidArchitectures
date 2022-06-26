@@ -44,6 +44,14 @@ private var tabletId: String = ""
 var colorList = ArrayList<String>()
 
 
+/**
+ * Beer view adapter
+ *
+ * @property viewModel
+ * @constructor
+ *
+ * @param context
+ */
 class BeerViewAdapter(
     context: Context,
     val viewModel: BeerShopViewModel
@@ -51,12 +59,25 @@ class BeerViewAdapter(
     private val context: Context = context
 
 
+    /**
+     * On create view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(viewModel, parent)
 
     }
 
 
+    /**
+     * On bind view holder
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item, viewModel)
@@ -79,6 +100,12 @@ class BeerViewAdapter(
         }
     }
 
+    /**
+     * View holder
+     *
+     * @property binding
+     * @constructor Create empty View holder
+     */
     class ViewHolder private constructor(val binding: RecyclerviewBeersLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -361,6 +388,11 @@ class BeerViewAdapter(
     }
 }
 
+/**
+ * Beer click call back
+ *
+ * @constructor Create empty Beer click call back
+ */
 internal interface BeerClickCallBack {
     fun onClick(beer: CombinationBeersInfo)
     fun onClickMoreInfo(beer: CombinationBeersInfo)

@@ -11,35 +11,80 @@ import com.nereus.craftbeer.databinding.RecyclerviewSaleLogItemLayoutBinding
 import com.nereus.craftbeer.model.UnsyncLog
 import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
 
+/**
+ * Unsync sale log view adapter
+ *
+ * @property viewModel
+ * @constructor
+ *
+ * @param context
+ */
 class UnsyncSaleLogViewAdapter(
     context: Context,
     val viewModel: SettingMasterViewModel
 ) : ListAdapter<UnsyncLog, UnsyncSaleLogViewAdapter.ViewHolder>(SaLeLogDiffCallBack()) {
+
+    /**
+     * Context
+     */
     private val context: Context
 
     init {
         this.context = context
     }
 
+    /**
+     * On create view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(viewModel, parent)
     }
 
+    /**
+     * On bind view holder
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
+    /**
+     * View holder
+     *
+     * @property binding
+     * @constructor Create empty View holder
+     */
     class ViewHolder private constructor(val binding: RecyclerviewSaleLogItemLayoutBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ) {
+
+        /**
+         * Bind
+         *
+         * @param item
+         */
         fun bind(item: UnsyncLog) {
             binding.unsyncLog = item
             binding.executePendingBindings()
         }
 
         companion object {
+
+            /**
+             * From
+             *
+             * @param viewModel
+             * @param parent
+             * @return
+             */
             fun from(viewModel: SettingMasterViewModel, parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding =
@@ -55,7 +100,20 @@ class UnsyncSaleLogViewAdapter(
     }
 }
 
+/**
+ * Sa le log diff call back
+ *
+ * @constructor Create empty Sa le log diff call back
+ */
 class SaLeLogDiffCallBack : DiffUtil.ItemCallback<UnsyncLog>() {
+
+    /**
+     * Are items the same
+     *
+     * @param oldItem
+     * @param newItem
+     * @return
+     */
     override fun areItemsTheSame(
         oldItem: UnsyncLog,
         newItem: UnsyncLog
@@ -63,6 +121,13 @@ class SaLeLogDiffCallBack : DiffUtil.ItemCallback<UnsyncLog>() {
         return oldItem.receiptCode == newItem.receiptCode
     }
 
+    /**
+     * Are contents the same
+     *
+     * @param oldItem
+     * @param newItem
+     * @return
+     */
     override fun areContentsTheSame(
         oldItem: UnsyncLog,
         newItem: UnsyncLog
@@ -71,6 +136,11 @@ class SaLeLogDiffCallBack : DiffUtil.ItemCallback<UnsyncLog>() {
     }
 }
 
+/**
+ * Unsync log click callback
+ *
+ * @constructor Create empty Unsync log click callback
+ */
 internal interface UnsyncLogClickCallback {
     fun onClick(saleLog: UnsyncLog?)
 }

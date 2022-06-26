@@ -6,6 +6,11 @@ import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
 
+/**
+ * Based card response transactions
+ *
+ * @constructor Create empty Based card response transactions
+ */
 @Root(name = "transactions", strict = false)
 class BasedCardResponseTransactions() : ResponseTransactions() {
 
@@ -13,6 +18,10 @@ class BasedCardResponseTransactions() : ResponseTransactions() {
     var transaction = BasedCardResponseTransaction()
 }
 
+/**
+ * Fill balance inquiry response
+ *
+ */
 fun BasedCardResponseTransactions.fillBalanceInquiryResponse() {
     transaction.apply {
         requestType = RequestType.QUERY_BALANCE.getValue()

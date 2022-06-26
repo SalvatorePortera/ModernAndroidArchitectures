@@ -10,6 +10,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import timber.log.Timber
 import java.lang.Exception
 
+/**
+ * Core api event logger
+ *
+ * @property errorLogRepository
+ * @constructor Create empty Core api event logger
+ */
 class CoreApiEventLogger(private val errorLogRepository: ErrorLogRepository) : HttpLoggingInterceptor.Logger {
     private val KEYWORDS = listOf("{","-->","<--")
     override fun log(message: String) {

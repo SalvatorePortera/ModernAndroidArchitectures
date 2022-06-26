@@ -4,6 +4,14 @@ import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
 import com.nereus.craftbeer.repository.ErrorLogRepository
 
+/**
+ * Default view model
+ *
+ * @property _errorLogRepository
+ * @constructor
+ *
+ * @param application
+ */
 class DefaultViewModel @ViewModelInject constructor(
     application: Application,
     override var _errorLogRepository: ErrorLogRepository

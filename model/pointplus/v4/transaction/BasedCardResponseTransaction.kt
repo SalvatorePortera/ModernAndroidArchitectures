@@ -4,6 +4,11 @@ import com.nereus.craftbeer.model.pointplus.v4.transaction.CommonResponseTransac
 import org.simpleframework.xml.Attribute
 
 
+/**
+ * Based card response transaction
+ *
+ * @constructor Create empty Based card response transaction
+ */
 class BasedCardResponseTransaction : CommonResponseTransaction() {
     /*START from request*/
 

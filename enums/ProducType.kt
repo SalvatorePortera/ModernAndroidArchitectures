@@ -11,19 +11,41 @@ enum class ProducType(private val text: String, private val value: Short, @Strin
     TAP_BEER(getStringResource(R.string.tap_beer), 2, R.string.formatedMililiter),
     TOP_UP(getStringResource(R.string.tap_beer), 3, R.string.formatedTopUpAmount);
 
+    /**
+     * Get name
+     *
+     * @return
+     */
     fun getName(): String {
         return this.text
     }
 
+    /**
+     * Get value
+     *
+     * @return
+     */
     fun getValue(): Short {
         return this.value
     }
 
+    /**
+     * Formated amount
+     *
+     * @return
+     */
     fun formatedAmount(): Int {
         return this.formatedAmount
     }
 
     companion object {
+
+        /**
+         * Get by value
+         *
+         * @param value
+         * @return
+         */
         fun getByValue(value: Short): ProducType? {
             return try {
                 values().first { it.value == value }
@@ -33,6 +55,12 @@ enum class ProducType(private val text: String, private val value: Short, @Strin
             }
         }
 
+        /**
+         * Get display name
+         *
+         * @param value
+         * @return
+         */
         fun getDisplayName(value: Short): String {
             return getByValue(value)?.getName() ?: EMPTY_STRING
         }

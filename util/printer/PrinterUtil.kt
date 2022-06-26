@@ -23,6 +23,11 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.io.*
 
+/**
+ * Get shop info pref
+ *
+ * @return
+ */
 fun getShopInfoPref(): SharedPreferences {
     return RealmApplication.instance.getSharedPreferences(
         SHARED_PREF_RECEIPT_FILE,
@@ -30,6 +35,11 @@ fun getShopInfoPref(): SharedPreferences {
     )
 }
 
+/**
+ * Get device info pref
+ *
+ * @return
+ */
 fun getDeviceInfoPref(): SharedPreferences {
     return RealmApplication.instance.getSharedPreferences(
         PREF_DEVICE_FILE,
@@ -37,6 +47,13 @@ fun getDeviceInfoPref(): SharedPreferences {
     )
 }
 
+/**
+ * Encode file to base64binary
+ *
+ * @param outputStream
+ * @param pdfRawRes
+ * @return
+ */
 fun encodeFileToBase64Binary(
     outputStream: ByteArrayOutputStream,
     @RawRes pdfRawRes: Int = 0
@@ -52,6 +69,15 @@ fun encodeFileToBase64Binary(
     }
 }
 
+/**
+ * Send data to print agent
+ *
+ * @param outputStream
+ * @param receiptId
+ * @param isMultiplePrinting
+ * @param isIssued
+ * @param isTopUp
+ */
 fun Context.sendDataToPrintAgent(
     outputStream: ByteArrayOutputStream,
     receiptId: String = EMPTY_STRING,
@@ -76,6 +102,14 @@ fun Context.sendDataToPrintAgent(
 }
 
 
+/**
+ * Draw
+ *
+ * @param canvas
+ * @param top
+ * @param start
+ * @return
+ */
 private suspend fun PdfPrintModel.draw(
     canvas: Canvas,
     top: Int,
@@ -125,6 +159,13 @@ private suspend fun PdfPrintModel.draw(
     }
 }
 
+/**
+ * Build pdf
+ *
+ * @param lines
+ * @param canvasHeight
+ * @return
+ */
 suspend fun buildPdf(lines: List<PdfLine>, canvasHeight: Int): PdfDocument {
     val doc = PdfDocument()
     // start a page
@@ -151,6 +192,13 @@ suspend fun buildPdf(lines: List<PdfLine>, canvasHeight: Int): PdfDocument {
     return doc
 }
 
+/**
+ * Get height from build pdf
+ *
+ * @param lines
+ * @param canvasHeight
+ * @return
+ */
 suspend fun getHeightFromBuildPdf(lines: List<PdfLine>, canvasHeight: Int): Int {
     val doc = PdfDocument()
     // start a page
@@ -176,14 +224,27 @@ suspend fun getHeightFromBuildPdf(lines: List<PdfLine>, canvasHeight: Int): Int 
     doc.finishPage(page)
     return topPos
 }
-
-
+/**
+ * Start new page
+ *
+ * @param canvasHeight
+ * @return
+ */
 private fun PdfDocument.startNewPage(canvasHeight: Int): PdfDocument.Page {
     val pageInfo =
         PageInfo.Builder(RECEIPT_WIDTH_DEFAULT, canvasHeight, pages.size + 1).create()
     return startPage(pageInfo)
 }
 
+/**
+ * Draw bitmap in rect
+ *
+ * @param photoUrl
+ * @param top
+ * @param imageWidth
+ * @param nextOffset
+ * @return
+ */
 suspend fun Canvas.drawBitmapInRect(
     photoUrl: String,
     top: Int,
@@ -214,6 +275,18 @@ suspend fun Canvas.drawBitmapInRect(
     }
 }
 
+/**
+ * Draw multi lines text
+ *
+ * @param content
+ * @param letterPerLine
+ * @param top
+ * @param start
+ * @param nextOffset
+ * @param textAlign
+ * @param textSize
+ * @return
+ */
 fun Canvas.drawMultiLinesText(
     content: String,
     letterPerLine: Int,
@@ -258,6 +331,17 @@ fun Canvas.drawMultiLinesText(
     return nextTop.toInt()
 }
 
+/**
+ * Draw text with frame
+ *
+ * @param content
+ * @param letterPerLine
+ * @param top
+ * @param start
+ * @param nextOffset
+ * @param textSize
+ * @return
+ */
 fun Canvas.drawTextWithFrame(
     content: String,
     letterPerLine: Int,
@@ -300,6 +384,17 @@ fun Canvas.drawTextWithFrame(
     return drawRectangle(width = width.toInt(), height = height.toInt(), top = top)
 }
 
+/**
+ * Draw normal text
+ *
+ * @param content
+ * @param top
+ * @param start
+ * @param nextOffset
+ * @param textAlign
+ * @param textSize
+ * @return
+ */
 fun Canvas.drawNormalText(
     content: String,
     top: Int,
@@ -326,11 +421,26 @@ fun Canvas.drawNormalText(
     return top + nextOffset
 }
 
+/**
+ * Get alignment
+ *
+ * @param start
+ */
 private fun getAlignment(start: XAxisPosition) =
     if (start == XAxisPosition.COLUMN_2 || start == XAxisPosition.COLUMN_4) {
         Paint.Align.RIGHT
     } else Paint.Align.LEFT
 
+/**
+ * Draw rectangle
+ *
+ * @param width
+ * @param height
+ * @param top
+ * @param start
+ * @param nextYOffset
+ * @return
+ */
 fun Canvas.drawRectangle(
     width: Int,
     height: Int,
@@ -345,6 +455,16 @@ fun Canvas.drawRectangle(
     return top + height + nextYOffset
 }
 
+/**
+ * Draw separator
+ *
+ * @param top
+ * @param startOffset
+ * @param start
+ * @param end
+ * @param nextYOffset
+ * @return
+ */
 fun Canvas.drawSeparator(
     top: Int,
     startOffset: Int = 0,
@@ -361,6 +481,12 @@ fun Canvas.drawSeparator(
     return top + nextYOffset
 }
 
+/**
+ * Write file on internal storage
+ *
+ * @param sFileName
+ * @return
+ */
 fun PdfDocument.writeFileOnInternalStorage(sFileName: String?): String {
     val dir =
         RealmApplication.instance.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
@@ -384,6 +510,10 @@ fun PdfDocument.writeFileOnInternalStorage(sFileName: String?): String {
     return ""
 }
 
+/**
+ * Write to internal storage
+ *
+ */
 suspend fun List<PdfDocument>.writeToInternalStorage() {
     forEachIndexed { index, document ->
         withContext(Dispatchers.IO) {
@@ -393,6 +523,15 @@ suspend fun List<PdfDocument>.writeToInternalStorage() {
     }
 }
 
+/**
+ * Print receipt
+ *
+ * @param document
+ * @param receiptId
+ * @param isMultiplePrinting
+ * @param isIssued
+ * @param isTopUp
+ */
 suspend fun Context.printReceipt(
     document: PdfDocument,
     receiptId: String = EMPTY_STRING,
@@ -419,6 +558,13 @@ suspend fun Context.printReceipt(
     }
 }
 
+/**
+ * Build pdf document
+ *
+ * @param receipt
+ * @param canvasHeight
+ * @return
+ */
 suspend fun buildPdfDocument(
     receipt: List<PdfLine>,
     canvasHeight: Int
@@ -428,6 +574,13 @@ suspend fun buildPdfDocument(
     }
 }
 
+/**
+ * Get height from build pdf document
+ *
+ * @param receipt
+ * @param canvasHeight
+ * @return
+ */
 suspend fun getHeightFromBuildPdfDocument(
     receipt: List<PdfLine>,
     canvasHeight: Int
@@ -437,6 +590,15 @@ suspend fun getHeightFromBuildPdfDocument(
     }
 }
 
+/**
+ * Build printer u r i
+ *
+ * @param isMultiplePrinting
+ * @param isIssued
+ * @param isTopupReceipt
+ * @param receiptId
+ * @return
+ */
 fun buildPrinterURI(
     isMultiplePrinting: Boolean = false,
     isIssued: Boolean = false,
@@ -452,6 +614,12 @@ fun buildPrinterURI(
     return uri.toString()
 }
 
+/**
+ * Extract receipt id from printer path
+ *
+ * @param path
+ * @return
+ */
 fun extractReceiptIdFromPrinterPath(path: String): String {
     var receiptId = EMPTY_STRING
     path.replace("\\d.*".toRegex()) { receiptId = it.value; EMPTY_STRING }

@@ -5,6 +5,13 @@ import com.nereus.craftbeer.model.Company
 import com.nereus.craftbeer.model.ShopInfo
 import com.nereus.craftbeer.model.printer.*
 
+/**
+ * Get receipt generator
+ *
+ * @param companyInfo
+ * @param shopInfo
+ * @return
+ */
 fun Receipt.getReceiptGenerator(companyInfo: Company, shopInfo: ShopInfo): ReceiptGenerator {
     company = companyInfo
     shop = shopInfo
@@ -15,6 +22,13 @@ fun Receipt.getReceiptGenerator(companyInfo: Company, shopInfo: ShopInfo): Recei
     }
 }
 
+/**
+ * Get issued receipt generator
+ *
+ * @param companyInfo
+ * @param shopInfo
+ * @return
+ */
 fun Receipt.getIssuedReceiptGenerator(
     companyInfo: Company,
     shopInfo: ShopInfo

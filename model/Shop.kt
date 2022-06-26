@@ -2,6 +2,18 @@ package com.nereus.craftbeer.model
 
 import com.nereus.craftbeer.constant.EMPTY_STRING
 
+/**
+ * Shop
+ *
+ * @property companyName
+ * @property shopName
+ * @property shopId
+ * @property companyId
+ * @property phone
+ * @property postalCode
+ * @property address
+ * @constructor Create empty Shop
+ */
 data class Shop(
 
     var companyName: String = EMPTY_STRING,

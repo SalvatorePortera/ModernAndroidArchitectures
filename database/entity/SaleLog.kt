@@ -12,6 +12,25 @@ import com.nereus.craftbeer.util.getStringResource
 import com.nereus.craftbeer.util.toISOString
 import java.time.LocalDateTime
 
+/**
+ * Sale log
+ *
+ * @property pointPlusId
+ * @property companyId
+ * @property shopId
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property receiptCode
+ * @property saleLogName
+ * @property paymentMethod
+ * @property takeAway
+ * @property totalSellingPrice
+ * @property totalAmount
+ * @property tax
+ * @property productType
+ * @property createdAt
+ * @constructor Create empty Sale log
+ */
 @Entity(tableName = "sale_logs")
 data class SaleLog(
 

@@ -14,15 +14,32 @@ import com.nereus.craftbeer.viewmodel.DefaultViewModel
 import com.nereus.craftbeer.worker.deleteInternalStorageVideo
 import kotlinx.coroutines.runBlocking
 
+/**
+ * Splash fragment
+ *
+ * @constructor Create empty Splash fragment
+ */
 class SplashFragment :
     BaseFragment<FragmentSplashBinding, DefaultViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: DefaultViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_splash
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         if (!isNetworkAvailable()) {
             notifyMessageForNetwork(getString(R.string.msg_network_not_available))
@@ -37,6 +54,10 @@ class SplashFragment :
         }
     }
 
+    /**
+     * Check tablet id
+     *
+     */
     private fun checkTabletId() {
         val sharedPreference = getSharedPreferences(PREF_DEVICE_FILE, Context.MODE_PRIVATE)
         val tabletId = sharedPreference?.getString(PREF_DEVICE_CODE, EMPTY_STRING)

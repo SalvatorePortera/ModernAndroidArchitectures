@@ -10,6 +10,11 @@ import com.nereus.craftbeer.database.converter.LocalDateTimeConverter
 import com.nereus.craftbeer.database.dao.*
 import com.nereus.craftbeer.database.entity.*
 
+/**
+ * Craft beer database
+ *
+ * @constructor Create empty Craft beer database
+ */
 @Database(entities = [SaleLog::class, Goods::class, SaleLogDetail::class, TopUp::class, ErrorLog::class], version =  14, exportSchema = false)
 @TypeConverters(LocalDateTimeConverter::class)
 abstract class CraftBeerDatabase : RoomDatabase() {

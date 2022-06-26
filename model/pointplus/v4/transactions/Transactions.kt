@@ -6,6 +6,7 @@ import org.simpleframework.xml.Root
 
 /**
  * Define XML base models for Point+ Plus API v4.0.3
+ *
  */
 @Root(name = "transactions")
 abstract class Transactions {
@@ -14,6 +15,11 @@ abstract class Transactions {
     var type: String? = null
 }
 
+/**
+ * Request transactions
+ *
+ * @constructor Create empty Request transactions
+ */
 abstract class RequestTransactions : Transactions() {
 
     init {
@@ -22,6 +28,11 @@ abstract class RequestTransactions : Transactions() {
 
 }
 
+/**
+ * Response transactions
+ *
+ * @constructor Create empty Response transactions
+ */
 abstract class ResponseTransactions() : Transactions() {
 
     init {
@@ -29,6 +40,11 @@ abstract class ResponseTransactions() : Transactions() {
     }
 }
 
+/**
+ * Transaction
+ *
+ * @constructor Create empty Transaction
+ */
 abstract class Transaction
 
 

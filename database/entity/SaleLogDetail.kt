@@ -8,6 +8,18 @@ import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import com.nereus.craftbeer.model.SaleLogCreateRequest
 
+/**
+ * Sale log detail
+ *
+ * @property saleLogId
+ * @property goodsId
+ * @property tapBeerId
+ * @property amount
+ * @property taxRate
+ * @property purchaseCost
+ * @property sellingPrice
+ * @constructor Create empty Sale log detail
+ */
 @Entity(tableName = "sale_logs_detail")
 data class SaleLogDetail(
     @ColumnInfo(name = "sale_log_id")

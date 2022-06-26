@@ -10,14 +10,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.DefaultViewModel
 
 
+/**
+ * Notification fragment dialog
+ *
+ * @constructor Create empty Notification fragment dialog
+ */
 class NotificationFragmentDialog :
     BaseFragmentDialog<FragmentNotificationBinding, DefaultViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: DefaultViewModel by activityViewModels()
+
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_notification
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(1.0, 0.125)
 
@@ -34,6 +52,10 @@ class NotificationFragmentDialog :
         )
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             dismiss()

@@ -32,6 +32,13 @@ import com.nereus.craftbeer.util.displayToast
 import com.nereus.craftbeer.viewmodel.BaseViewModel
 import timber.log.Timber
 
+/**
+ * Base controller
+ *
+ * @param TBinding
+ * @param TViewModel
+ * @constructor Create empty Base controller
+ */
 abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewModel>() :
     AppCompatActivity() {
     private val REQUEST_PRINTER = 1
@@ -52,6 +59,11 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         return true
     }
 
+    /**
+     * On create
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         Timber.i(
             "========= savedInstanceState?.get(example) %s",
@@ -69,6 +81,10 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         afterBinding()
     }
 
+    /**
+     * Check token
+     *
+     */
     private fun checkToken() {
         if (!isTokenRequired()) {
             return
@@ -87,16 +103,28 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         }
     }
 
+    /**
+     * Setup binding
+     *
+     */
     private fun setupBinding() {
         binding = DataBindingUtil.setContentView(this, getLayout())
         binding.lifecycleOwner = this
     }
 
+    /**
+     * On resume
+     *
+     */
     public override fun onResume() {
         super.onResume()
         hideNavigationBar()
     }
 
+    /**
+     * On back pressed
+     *
+     */
     override fun onBackPressed() {
         displayToast(
             applicationContext,
@@ -105,13 +133,26 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         )
     }
 
+    /**
+     * On window focus changed
+     *
+     * @param hasFocus
+     */
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         hideNavigationBar()
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     open fun setAdditionalViewModelListener() {}
 
+    /**
+     * Set view model listener
+     *
+     */
     fun setViewModelListener() {
         // Handle Loading dialog
         viewModel.loadingState.observe(this, Observer { loadingState ->
@@ -170,6 +211,11 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         setAdditionalViewModelListener()
     }
 
+    /**
+     * Handle error log message
+     *
+     * @param messageModel
+     */
     private fun handleErrorLogMessage(
         messageModel: MessagesModel
     ) {
@@ -190,6 +236,12 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         }
     }
 
+    /**
+     * Handle log message
+     *
+     * @param messageModel
+     * @param it
+     */
     private fun handleLogMessage(
         messageModel: MessagesModel,
         it: MessageException
@@ -212,6 +264,10 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         }
     }
 
+    /**
+     * Hide navigation bar
+     *
+     */
     private fun hideNavigationBar() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 // Set the content to appear under the system bars so that the
@@ -224,15 +280,28 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
 
+    /**
+     * Hide action bar
+     *
+     */
     private fun hideActionBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
     }
 
+    /**
+     * Set on done keyboard listener
+     *
+     * @param textView
+     */
     fun setOnDoneKeyboardListener(textView: TextView) {
         textView.setOnEditorActionListener(onEditorActionListener())
     }
 
+    /**
+     * On editor action listener
+     *
+     */
     fun onEditorActionListener() =
         TextView.OnEditorActionListener { textView, i, keyEvent ->
             if (i == EditorInfo.IME_ACTION_DONE) {
@@ -241,6 +310,12 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
             false
         }
 
+    /**
+     * Notify message general
+     *
+     * @param message
+     * @param activity
+     */
     fun notifyMessageGeneral(message: String?, activity: Activity? = null) {
         val builder2 = AlertDialog.Builder(this)
         builder2.setMessage(message).setPositiveButton(
@@ -258,6 +333,10 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         dialog2.show()
     }
 
+    /**
+     * On destroy
+     *
+     */
     override fun onDestroy() {
         super.onDestroy()
         if (mLoadingdialog != null) {
@@ -266,6 +345,12 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         }
     }
 
+    /**
+     * Handle loading dialog
+     *
+     * @param loadingState
+     * @param baseController
+     */
     private fun handleLoadingDialog(
         loadingState: Int?,
         baseController: BaseController<TBinding, TViewModel>
@@ -282,6 +367,11 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
         }
     }
 
+    /**
+     * Create custom loading dialog
+     *
+     * @return
+     */
     private fun createCustomLoadingDialog(): AlertDialog {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         val inflater: LayoutInflater = this.layoutInflater

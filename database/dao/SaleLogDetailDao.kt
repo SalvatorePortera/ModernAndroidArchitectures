@@ -10,18 +10,35 @@ import com.nereus.craftbeer.database.entity.SaleLogDetail
 
 @Dao
 interface SaleLogDetailDao {
-    // Do insert in background (suspend)
+    /**
+     * Insert
+     * Do insert in background (suspend)
+     * @param saleLogDetail
+     */
     @Insert
     suspend fun insert(saleLogDetail: SaleLogDetail)
 
+    /**
+     * Insert all
+     *
+     * @param saleLogDetail
+     */
     @Insert
     suspend fun insertAll(saleLogDetail: List<SaleLogDetail>)
 
-    // Do insert in mainthread (just For test)
+    /**
+     * Insert without coroutine
+     * Do insert in mainthread (just For test)
+     * @param saleLogDetail
+     */
     @Insert
     fun insertWithoutCoroutine(saleLogDetail: SaleLogDetail)
 
-    // Do update in background (suspend)
+    /**
+     * Update
+     * Do update in background (suspend)
+     * @param saleLogDetail
+     */
     @Update
     suspend fun update(saleLogDetail: SaleLogDetail)
 }

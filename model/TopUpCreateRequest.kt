@@ -3,6 +3,21 @@ package com.nereus.craftbeer.model
 import androidx.room.ColumnInfo
 import com.nereus.craftbeer.database.entity.TopUp
 
+/**
+ * Top up create request
+ *
+ * @property pointPlusId
+ * @property amount
+ * @property deposit
+ * @property change
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property receiptCode
+ * @property paymentMethod
+ * @property createdAt
+ * @property topUp
+ * @constructor Create empty Top up create request
+ */
 data class TopUpCreateRequest(
 
     val pointPlusId: String,

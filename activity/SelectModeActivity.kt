@@ -11,6 +11,11 @@ import com.nereus.craftbeer.worker.UpdateBeerWorker
 import com.nereus.craftbeer.worker.UpdateBeerWorker.Companion.countDownloadFile
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Select mode activity
+ *
+ * @constructor Create empty Select mode activity
+ */
 @AndroidEntryPoint
 class SelectModeActivity : BaseController<ActivitySelectModeBinding, DefaultViewModel>() {
     override val viewModel: DefaultViewModel by viewModels()
@@ -18,6 +23,10 @@ class SelectModeActivity : BaseController<ActivitySelectModeBinding, DefaultView
         return R.layout.activity_select_mode
     }
 
+    /**
+     * On resume
+     *
+     */
     override fun onResume() {
         super.onResume()
         if (!UpdateBeerWorker.checkFile()) {
@@ -25,6 +34,10 @@ class SelectModeActivity : BaseController<ActivitySelectModeBinding, DefaultView
         }
     }
 
+    /**
+     * Setup updating work
+     *
+     */
     private fun setupUpdatingWork() {
         countDownloadFile = 0
         val workManager = WorkManager.getInstance(applicationContext)

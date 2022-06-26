@@ -2,6 +2,22 @@ package com.nereus.craftbeer.model
 
 import com.nereus.craftbeer.database.entity.SaleLog
 
+/**
+ * Sale log create request
+ *
+ * @property pointPlusId
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property receiptCode
+ * @property paymentMethod
+ * @property totalSellingPrice
+ * @property totalTax
+ * @property saleLogDetails
+ * @property createdAt
+ * @property saleLog
+ * @property takeAway
+ * @constructor Create empty Sale log create request
+ */
 data class SaleLogCreateRequest(
 
     val pointPlusId: String,

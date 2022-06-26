@@ -52,6 +52,20 @@ import kotlin.math.floor
 import kotlin.math.roundToInt
 
 
+/**
+ * Beer shop view model
+ *
+ * @property savedStateHandle
+ * @property goodsRepository
+ * @property saleLogRepository
+ * @property shopRepository
+ * @property pointPlusRepository
+ * @property _errorLogRepository
+ * @property mSocket
+ * @constructor
+ *
+ * @param application
+ */
 class BeerShopViewModel @ViewModelInject constructor(
     @Assisted var savedStateHandle: SavedStateHandle,
     application: Application,
@@ -119,6 +133,11 @@ class BeerShopViewModel @ViewModelInject constructor(
         get() = this._lockHandler
 
 
+    /**
+     * Set selected beer
+     *
+     * @param beersInfo
+     */
     fun setSelectedBeer(beersInfo: CombinationBeersInfo) {
         TLogger.writeln(this.javaClass.name + "::setSelectedBeer() START")
         _selectedBeer.value = beersInfo
@@ -135,6 +154,11 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::setSelectedBeer() END")
     }
 
+    /**
+     * Add correction amount
+     *
+     * @return
+     */
     fun addCorrectionAmount(): Int {
         TLogger.writeln(this.javaClass.name + "::addCorrectionAmount() START")
         if (!_beerShopFlowHandler.value!!.peekContent().isBeerPouringCorrectionDone) {
@@ -146,6 +170,11 @@ class BeerShopViewModel @ViewModelInject constructor(
         return 0
     }
 
+    /**
+     * Pour beer
+     *
+     * @param amount
+     */
     @Synchronized
     fun pourBeer(amount: Int) {
         TLogger.writeln(this.javaClass.name + "::pourBeer() START")
@@ -235,12 +264,22 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::pourBeer() END")
     }
 
+    /**
+     * Set beer percentage
+     *
+     * @param percentage
+     */
     fun setBeerPercentage(percentage: Int) {
         TLogger.writeln(this.javaClass.name + "::setBeerPercentage() START")
         _beerPercentag.value = percentage
         TLogger.writeln(this.javaClass.name + "::setBeerPercentage() END")
     }
 
+    /**
+     * Set beer pos
+     *
+     * @param pos
+     */
     fun setBeerPos(pos: Int) {
         TLogger.writeln(this.javaClass.name + "::setBeerPos() START")
         _beerPos.value = pos
@@ -248,30 +287,57 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Set payment
+     *
+     * @param payment
+     */
     fun setPayment(payment: Payment) {
         TLogger.writeln(this.javaClass.name + "::setPayment() START")
         _payment.value = Event(payment)
         TLogger.writeln(this.javaClass.name + "::setPayment() END")
     }
 
+    /**
+     * Get balance string
+     *
+     * @param balance
+     * @return
+     */
     fun getBalanceString(balance: Int): String {
         TLogger.writeln(this.javaClass.name + "::getBalanceString() START")
         TLogger.writeln(this.javaClass.name + "::getBalanceString() END")
         return balance.toThousandSeparatorStringWithoutPrefix()
     }
 
+    /**
+     * Get amount in ml string
+     *
+     * @param amountInMl
+     * @return
+     */
     fun getAmountInMlString(amountInMl: Number): String {
         TLogger.writeln(this.javaClass.name + "::getAmountInMlString() START")
         TLogger.writeln(this.javaClass.name + "::getAmountInMlString() END")
         return DecimalFormat(ML_THOUSAND_DECIMAL_FORMAT).format(amountInMl)
     }
 
+    /**
+     * Get total string
+     *
+     * @param total
+     * @return
+     */
     fun getTotalString(total: Number): String {
         TLogger.writeln(this.javaClass.name + "::getTotalString() START")
         TLogger.writeln(this.javaClass.name + "::getTotalString() START")
         return DecimalFormat(THOUSAND_DECIMAL_FORMAT).format(total)
     }
 
+    /**
+     * Load beers
+     *
+     */
     fun loadBeers() {
         viewModelScope.launch {
             TLogger.writeln(this.javaClass.name + "::loadBeers() START")
@@ -298,6 +364,12 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Get shop info
+     *
+     * @param receipt
+     * @return
+     */
     private suspend fun getShopInfo(receipt: Receipt? = null): ShopInfo {
         TLogger.writeln(this.javaClass.name + "::getShopInfo() START")
         return if (receipt == null || receipt.shopId.isBlank()) {
@@ -307,6 +379,12 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Get company info
+     *
+     * @param receipt
+     * @return
+     */
     private suspend fun getCompanyInfo(receipt: Receipt? = null): Company {
         TLogger.writeln(this.javaClass.name + "::getCompanyInfo() START")
         return if (receipt == null || receipt.companyId.isBlank()) {
@@ -316,6 +394,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Pay
+     *
+     */
     fun pay() {
         viewModelScope.launch {
             TLogger.writeln(this.javaClass.name + "::pay() START")
@@ -358,6 +440,11 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Get chart data
+     *
+     * @return
+     */
     fun getChartData(): RadarData {
         TLogger.writeln(this.javaClass.name + "::getChartData() START")
         val entries1 = ArrayList<RadarEntry>()
@@ -395,6 +482,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         return data
     }
 
+    /**
+     * Check balance
+     *
+     */
     fun checkBalance() {
         viewModelScope.launch {
             TLogger.writeln(this.javaClass.name + "::checkBalance() START")
@@ -415,6 +506,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Connect socket
+     *
+     */
     fun connectSocket() {
         TLogger.writeln(this.javaClass.name + "::connectSocket() START")
         Timber.i(this.javaClass.name + "::connectSocket() START")
@@ -446,6 +541,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::connectSocket() END")
     }
 
+    /**
+     * Initial event socket
+     *
+     */
     private fun initialEventSocket() {
         mSocket.on("pourBeerNow", pourBeer)
         mSocket.on("approveOpen", approveOpen)
@@ -453,6 +552,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         mSocket.on("error", error)
     }
 
+    /**
+     * Emit open beer
+     *
+     */
     private fun emitOpenBeer() {
         TLogger.writeln(this.javaClass.name + "::emitOpenBeer() START")
         // 残高
@@ -549,7 +652,13 @@ class BeerShopViewModel @ViewModelInject constructor(
             }
         }
 
-    /*  Divide amount to pour beer for better display */
+    /**
+     * Divide to pour
+     *Divide amount to pour beer for better display
+     * @param amountInMl
+     * @param mlPerTime
+     * @param delayInMs
+     */
     private suspend fun divideToPour(amountInMl: Int, mlPerTime: Int = 2, delayInMs: Long = 0) {
         TLogger.writeln(this.javaClass.name + "::divideToPour() START")
 
@@ -565,6 +674,9 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::divideToPour() END")
     }
 
+    /**
+     * Locked
+     */
     private val locked =
         Emitter.Listener { args ->
             viewModelScope.launch {
@@ -601,6 +713,9 @@ class BeerShopViewModel @ViewModelInject constructor(
             }
         }
 
+    /**
+     * Approve open
+     */
     val approveOpen =
         Emitter.Listener { args ->
             viewModelScope.launch {
@@ -634,6 +749,9 @@ class BeerShopViewModel @ViewModelInject constructor(
             }
         }
 
+    /**
+     * Error
+     */
     val error =
         Emitter.Listener { args ->
             viewModelScope.launch {
@@ -722,6 +840,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::paymentAction() END")
     }
 
+    /**
+     * Send sale log
+     *
+     */
     private suspend fun sendSaleLog() {
         TLogger.writeln(this.javaClass.name + "::sendSaleLog() START")
         Timber.i("------ Save Sale Log --------")
@@ -733,12 +855,21 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::sendSaleLog() END")
     }
 
+    /**
+     * Close socket
+     *
+     */
     fun closeSocket() {
         TLogger.writeln(this.javaClass.name + "::closeSocket() START")
         mSocket.close()
         TLogger.writeln(this.javaClass.name + "::closeSocket() END")
     }
 
+    /**
+     * Build sale log
+     *
+     * @return
+     */
     private fun buildSaleLog(): com.nereus.craftbeer.database.entity.SaleLog {
         TLogger.writeln(this.javaClass.name + "::buildSaleLog() START")
         var pointPlusId = _payment.value?.let {
@@ -768,6 +899,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         return slog
     }
 
+    /**
+     * Handle post payment
+     *
+     */
     fun handlePostPayment() {
         viewModelScope.launch {
             try {
@@ -784,6 +919,10 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Setup pouring beer
+     *
+     */
     fun setupPouringBeer() {
         TLogger.writeln(this.javaClass.name + "::setupPouringBeer() START")
         _beerPouring.value = BeerPouring(
@@ -797,6 +936,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::setupPouringBeer() END")
     }
 
+    /**
+     * Clean up
+     *
+     */
     @SuppressLint("NullSafeMutableLiveData")
     fun cleanUp() {
         _balance.value = null
@@ -805,21 +948,38 @@ class BeerShopViewModel @ViewModelInject constructor(
         _lockHandler.value = Event(LockHandler())
     }
 
+    /**
+     * Clean card data
+     *
+     */
     @SuppressLint("NullSafeMutableLiveData")
     fun cleanCardData() {
         _balance.value = null
     }
 
+    /**
+     * Set payment timer
+     *
+     */
     private fun setPaymentTimer() {
         paymentTimerHandler.postDelayed(paymentAction, 3000)
     }
 
+    /**
+     * Remove payment timer
+     *
+     */
     private fun removePaymentTimer() {
         paymentTimerHandler.removeCallbacks(paymentAction)
 
     }
 
 
+    /**
+     * Unlock card
+     *
+     * @param payment
+     */
     fun unlockCard(payment: Payment) {
         if (payment is EMoneyPayment) {
             unlockCard(payment.pointPlusId)
@@ -827,6 +987,11 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Unlock card
+     *
+     * @param pointPlusId
+     */
     fun unlockCard(pointPlusId: String) {
         viewModelScope.launch {
             TLogger.writeln(this.javaClass.name + "::unlockCard() START")
@@ -843,6 +1008,11 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Lock card
+     *
+     * @param pointPlusId
+     */
     fun lockCard(pointPlusId: String) {
         viewModelScope.launch {
             TLogger.writeln(this.javaClass.name + "::lockCard() START")
@@ -859,6 +1029,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Setup beer payment with nfc
+     *
+     */
     private fun setupBeerPaymentWithNfc() {
         TLogger.writeln(this.javaClass.name + "::setupBeerPaymentWithNfc() START")
         val nfcUtil = NfcUtil(getApplication())
@@ -942,14 +1116,26 @@ class BeerShopViewModel @ViewModelInject constructor(
         setupBeerPaymentWithNfc()
     }
 
+    /**
+     * Start handler
+     *
+     */
     fun startHandler() {
         taskHandler.postDelayed(repeatativeTaskRunnable, 2000)
     }
 
+    /**
+     * Stop handler
+     *
+     */
     fun stopHandler() {
         taskHandler.removeCallbacks(repeatativeTaskRunnable)
     }
 
+    /**
+     * Restart handler
+     *
+     */
     fun restartHandler() {
         /*Simulate Card check*/
         if (BuildConfig.SIMULATE_CARD) {
@@ -967,6 +1153,11 @@ class BeerShopViewModel @ViewModelInject constructor(
 
     }
 
+    /**
+     * Analyze and send card info
+     *
+     * @param cardInfo
+     */
     private fun analyzeAndSendCardInfo(cardInfo: String) {
         TLogger.writeln(this.javaClass.name + "::analyzeAndSendCardInfo() START")
         val cardUtil = CardUtil()
@@ -1012,6 +1203,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::analyzeAndSendCardInfo() END")
     }
 
+    /**
+     * Unlock card
+     *
+     */
     fun unlockCard() {
         TLogger.writeln(this.javaClass.name + "::unlockCard() START")
         try {
@@ -1022,6 +1217,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::unlockCard() END")
     }
 
+    /**
+     * Lock card
+     *
+     */
     fun lockCard() {
         TLogger.writeln(this.javaClass.name + "::lockCard() START")
         _payment.value?.peekContent().let {
@@ -1036,6 +1235,10 @@ class BeerShopViewModel @ViewModelInject constructor(
         TLogger.writeln(this.javaClass.name + "::lockCard() END")
     }
 
+    /**
+     * Force stop on out of service
+     *
+     */
     fun forceStopOnOutOfService(){
         initialEventSocket()
         viewModelScope.launch {

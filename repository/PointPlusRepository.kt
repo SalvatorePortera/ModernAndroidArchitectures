@@ -17,12 +17,25 @@ import timber.log.Timber
 import javax.inject.Inject
 import kotlin.jvm.Throws
 
+/**
+ * Point plus repository
+ *
+ * @property pointPlusService
+ * @property coreService
+ * @constructor Create empty Point plus repository
+ */
 class PointPlusRepository
 @Inject constructor(
     private val pointPlusService: PointPlusApiWithoutLiveData,
     private val coreService: CoreApiWithoutLiveData
 ) {
 
+    /**
+     * Call card api
+     *
+     * @param transactions
+     * @return
+     */
     @Throws(MessageException::class)
     suspend fun callCardApi(transactions: BasedCardRequestTransactions): BasedCardResponseTransaction {
         try {
@@ -90,6 +103,11 @@ class PointPlusRepository
         }
     }
 
+    /**
+     * Check card status
+     *
+     * @param transactions
+     */
     private suspend fun checkCardStatus(transactions: BasedCardRequestTransactions) {
         val cardStatus = withContext(Dispatchers.IO) {
             coreService.getLockCardStatus(
@@ -158,6 +176,11 @@ class PointPlusRepository
         }
     }
 
+    /**
+     * Lock card
+     *
+     * @param memberCode
+     */
     suspend fun lockCard(memberCode: String) {
         TLogger.writeln("lockCard() START")
         Timber.i("--- locking card: %s", memberCode)
@@ -194,6 +217,11 @@ class PointPlusRepository
         TLogger.writeln("lockCard() END")
     }
 
+    /**
+     * Unlock card
+     *
+     * @param memberCode
+     */
     suspend fun unlockCard(memberCode: String) {
         Timber.i("--- unlocking card: %s", memberCode)
         val lockCard = withContext(Dispatchers.IO) {
@@ -228,12 +256,22 @@ class PointPlusRepository
         }
     }
 
+    /**
+     * Fill client signature
+     *
+     * @param request
+     */
     private fun fillClientSignature(request: CommonTransaction) {
         /*A key to identify the client within point + plus.
         Issued by Pointplus for each client.*/
         request.clientSignature = BuildConfig.POINT_PLUS_CLIENT_SIGNATURE
     }
 
+    /**
+     * Provide company key
+     *
+     * @return
+     */
     private fun provideCompanyKey(): String {
         return BuildConfig.POINT_PLUS_COMPANY_KEY
     }

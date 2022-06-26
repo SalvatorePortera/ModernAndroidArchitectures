@@ -8,6 +8,26 @@ import com.nereus.craftbeer.constant.DEFAULT_TAX_RATE
 import com.nereus.craftbeer.constant.EMPTY_STRING
 import com.nereus.craftbeer.model.CombinationGoodsInfo
 
+/**
+ * Goods
+ *
+ * @property goodsId
+ * @property goodsCode
+ * @property janCode
+ * @property type
+ * @property goodsName
+ * @property goodsShortName
+ * @property description
+ * @property soldOutFlag
+ * @property handlingFlag
+ * @property purchaseCost
+ * @property imageKey
+ * @property imageUrl
+ * @property sellingPrice
+ * @property taxReduction
+ * @property taxRate
+ * @constructor Create empty Goods
+ */
 @Entity(tableName = "goods")
 data class Goods(
     @ColumnInfo(name = "goods_id")

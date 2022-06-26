@@ -10,14 +10,31 @@ import com.nereus.craftbeer.model.payment.PointPlusPaymentStrategy
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * House money checkout fragment
+ *
+ * @constructor Create empty House money checkout fragment
+ */
 class HouseMoneyCheckoutFragment : BaseFragmentDialog<FragmentCheckoutBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_checkout
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.65, 0.65)
         binding.viewModel = viewModel
@@ -35,11 +52,19 @@ class HouseMoneyCheckoutFragment : BaseFragmentDialog<FragmentCheckoutBinding, F
         } else viewModel.startHandlerCheckout()
     }
 
+    /**
+     * On destroy view
+     *
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.stopHandlerCheckout()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
 //        binding.note.setOnLongClickListener {
 //            val pointPlusId = "8900000011240335"

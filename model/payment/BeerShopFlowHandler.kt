@@ -1,5 +1,16 @@
 package com.nereus.craftbeer.model.payment
 
+/**
+ * Beer shop flow handler
+ *
+ * @property isPaymentSuccess
+ * @property shouldPrintReceipt
+ * @property isPouringFinished
+ * @property isExecuted
+ * @property isBeerPouringCorrectionDone
+ * @property paymentResult
+ * @constructor Create empty Beer shop flow handler
+ */
 data class BeerShopFlowHandler(
 
     var isPaymentSuccess: Boolean = false,

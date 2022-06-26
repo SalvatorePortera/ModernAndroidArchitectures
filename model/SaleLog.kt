@@ -6,6 +6,27 @@ import com.nereus.craftbeer.model.printer.Receipt
 import com.nereus.craftbeer.model.printer.SaleReceipt
 import java.time.LocalDateTime
 
+/**
+ * Sale log
+ *
+ * @property id
+ * @property pointPlusId
+ * @property balanceBefore
+ * @property balanceAfter
+ * @property companyId
+ * @property shopId
+ * @property paymentMethod
+ * @property takeAway
+ * @property countPrinted
+ * @property isIssued
+ * @property totalSellingPrice
+ * @property purchaseCost
+ * @property tax
+ * @property createdAt
+ * @property receiptCode
+ * @property saleLogDetails
+ * @constructor Create empty Sale log
+ */
 data class SaleLog constructor(
 
     var id: String,

@@ -17,16 +17,33 @@ import com.nereus.craftbeer.util.displayToast
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.UpdatePasswordViewModel
 
+/**
+ * Update password fragment
+ *
+ * @constructor Create empty Update password fragment
+ */
 class UpdatePasswordFragment :
     BaseFragment<FragmentUpdatePasswordBinding, UpdatePasswordViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: UpdatePasswordViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_update_password
     }
 
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         viewModel.request.observe(this, Observer {
             viewModel.changePassword()
@@ -37,6 +54,10 @@ class UpdatePasswordFragment :
         })
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         val sharedPreference =
             requireActivity().getSharedPreferences(PREF_DEVICE_FILE, Context.MODE_PRIVATE)
@@ -69,6 +90,10 @@ class UpdatePasswordFragment :
         }
     }
 
+    /**
+     * Back to menu
+     *
+     */
     private fun backToMenu() {
         val intent = Intent(requireActivity(), SettingMasterActivity::class.java)
         startActivity(intent)

@@ -7,6 +7,12 @@ import com.nereus.craftbeer.constant.RECEIPT_WIDTH_DEFAULT
 import com.nereus.craftbeer.enums.printer.XAxisPosition
 import timber.log.Timber
 
+/**
+ * Pdf line
+ *
+ * @property contents
+ * @constructor Create empty Pdf line
+ */
 data class PdfLine(
     var contents: MutableList<PdfPrintModel> = ArrayList(XAxisPosition.values().size)
 ) {

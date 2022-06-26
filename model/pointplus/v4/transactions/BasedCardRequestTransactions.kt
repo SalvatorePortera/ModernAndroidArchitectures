@@ -6,6 +6,13 @@ import com.nereus.craftbeer.util.genRandomString
 import org.simpleframework.xml.Element
 import org.simpleframework.xml.Root
 
+/**
+ * Based card request transactions
+ *
+ * @constructor
+ *
+ * @param requestType
+ */
 @Root(name = "transactions", strict = false)
 class BasedCardRequestTransactions(requestType: RequestType) : RequestTransactions() {
 
@@ -13,6 +20,12 @@ class BasedCardRequestTransactions(requestType: RequestType) : RequestTransactio
     var transaction = BasedCardRequestTransaction(requestType)
 }
 
+/**
+ * Fill balance inquiry request
+ *
+ * @param poinPlusId
+ * @param cardAuthInfo
+ */
 fun BasedCardRequestTransactions.fillBalanceInquiryRequest(poinPlusId: String,
                                                            cardAuthInfo: String) {
     transaction.apply {
@@ -23,6 +36,14 @@ fun BasedCardRequestTransactions.fillBalanceInquiryRequest(poinPlusId: String,
     }
 }
 
+/**
+ * Fill payment request
+ *
+ * @param poinPlusId
+ * @param amount
+ * @param receiptCode
+ * @param cardAuthInfo
+ */
 fun BasedCardRequestTransactions.fillPaymentRequest(
     poinPlusId: String,
     amount: Int,
@@ -39,6 +60,14 @@ fun BasedCardRequestTransactions.fillPaymentRequest(
     }
 }
 
+/**
+ * Fill charge value request
+ *
+ * @param poinPlusId
+ * @param amount
+ * @param receiptCode
+ * @param cardAuthInfo
+ */
 fun BasedCardRequestTransactions.fillChargeValueRequest(
     poinPlusId: String,
     amount: Int,

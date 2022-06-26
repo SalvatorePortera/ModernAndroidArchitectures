@@ -4,6 +4,14 @@ import com.nereus.craftbeer.R
 import com.nereus.craftbeer.constant.EMPTY_STRING
 import kotlinx.android.synthetic.main.fragment_topup.view.*
 
+/**
+ * Key pad
+ *
+ * @property value
+ * @property type
+ * @property background
+ * @constructor Create empty Key pad
+ */
 class KeyPad constructor(
 
     var value: KeyPadValue,
@@ -29,6 +37,11 @@ class KeyPad constructor(
         NINE("9")
     }
 
+    /**
+     * Get background
+     *
+     * @return
+     */
     fun getBackground() : Int? {
         return when (value) {
             KeyPadValue.ONE -> R.drawable.beer

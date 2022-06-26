@@ -16,19 +16,43 @@ class PrinterLogViewAdapter(
 ) : ListAdapter<Receipt, PrinterLogViewAdapter.ViewHolder>(PrinterLogDiffCallBack()) {
     private val context: Context = context
 
+    /**
+     * On create view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(viewModel, parent)
     }
 
+    /**
+     * On bind view holder
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
 
+    /**
+     * On view recycled
+     *
+     * @param holder
+     */
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
     }
 
+    /**
+     * View holder
+     *
+     * @property binding
+     * @constructor Create empty View holder
+     */
     class ViewHolder private constructor(val binding: RecyclerviewPrinterLogItemLayoutBinding) :
         RecyclerView.ViewHolder(
             binding.root
@@ -67,12 +91,22 @@ class PrinterLogViewAdapter(
     }
 }
 
+/**
+ * Printer log click callback
+ *
+ * @constructor Create empty Printer log click callback
+ */
 internal interface PrinterLogClickCallback {
     fun onClickPayment()
     fun onSelect(receipt: Receipt?)
     fun onRemove(receipt: Receipt?)
 }
 
+/**
+ * Printer log diff call back
+ *
+ * @constructor Create empty Printer log diff call back
+ */
 class PrinterLogDiffCallBack : DiffUtil.ItemCallback<Receipt>() {
     override fun areItemsTheSame(
         oldItem: Receipt,
@@ -81,6 +115,13 @@ class PrinterLogDiffCallBack : DiffUtil.ItemCallback<Receipt>() {
         return oldItem.id == newItem.id
     }
 
+    /**
+     * Are contents the same
+     *
+     * @param oldItem
+     * @param newItem
+     * @return
+     */
     override fun areContentsTheSame(
         oldItem: Receipt,
         newItem: Receipt

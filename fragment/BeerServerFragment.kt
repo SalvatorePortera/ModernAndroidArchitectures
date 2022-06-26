@@ -13,24 +13,50 @@ import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
 import com.nereus.craftbeer.util.setOnClickDebounce
 
 
+/**
+ * Beer server fragment
+ *
+ * @constructor Create empty Beer server fragment
+ */
 class BeerServerFragment : BaseFragment<ActivityBeerServerFragmentBinding, SettingMasterViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: SettingMasterViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_beer_server_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         configRecyclerView()
         viewModel.loadBeers()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnBack.setOnClickDebounce {
             findNavController().navigate(R.id.settingMasterMenuFragment)
         }
     }
+
+    /**
+     * Set view model listener
+     *
+     */
     override fun setViewModelListener() {
         viewModel.beers.observe(viewLifecycleOwner, Observer {beers ->
             binding.recyclerViewBeerServer.visibility = beers.getRecyclerViewVisibility()
@@ -39,6 +65,10 @@ class BeerServerFragment : BaseFragment<ActivityBeerServerFragmentBinding, Setti
         })
     }
 
+    /**
+     * Config recycler view
+     *
+     */
     private fun configRecyclerView() {
         binding.recyclerViewBeerServer.adapter = BeerServerViewAdapter(this.requireContext(), viewModel)
         binding.recyclerViewBeerServer.layoutManager =

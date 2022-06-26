@@ -42,6 +42,20 @@ import javax.smartcardio.Card
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
+/**
+ * Food shop view model
+ *
+ * @property state
+ * @property goodsRepository
+ * @property saleLogRepository
+ * @property topUpRepository
+ * @property pointPlusRepository
+ * @property shopRepository
+ * @property _errorLogRepository
+ * @constructor
+ *
+ * @param application
+ */
 class FoodShopViewModel @ViewModelInject constructor(
     @Assisted private val state: SavedStateHandle,
     application: Application,
@@ -166,11 +180,21 @@ class FoodShopViewModel @ViewModelInject constructor(
         MutableLiveData<Int>(change)
     }
 
+    /**
+     * Set age range
+     *
+     * @param ageRange
+     */
     fun setAgeRange(ageRange: Int? = null) {
         Timber.i("============= ageRange")
         _customerAttribute.value?.ageRange = ageRange?.toShort()
     }
 
+    /**
+     * Set date from
+     *
+     * @param calendar
+     */
     fun setDateFrom(calendar: Calendar) {
         _printReceiptByDateTimeModel.value = Event(
             PrintReceiptByDateTimeModel(
@@ -183,6 +207,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Set date to
+     *
+     * @param calendar
+     */
     fun setDateTo(calendar: Calendar) {
         _printReceiptByDateTimeModel.value = Event(
             PrintReceiptByDateTimeModel(
@@ -195,14 +224,29 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Set gender
+     *
+     * @param gender
+     */
     fun setGender(gender: Int? = null) {
         _customerAttribute.value?.gender = gender?.toShort()
     }
 
+    /**
+     * Set payment method
+     *
+     * @param method
+     */
     fun setPaymentMethod(method: Int? = null) {
         _customerAttribute.value?.paymentMethod = method?.toShort()
     }
 
+    /**
+     * Set is take out
+     *
+     * @param isTakeOut
+     */
     fun setIsTakeOut(isTakeOut: Boolean?) {
         if (isTakeOut == null) {
             _customerAttribute.value!!.isTakeAway = null
@@ -218,6 +262,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         _customerAttribute.value = newCus
     }
 
+    /**
+     * Set topup point plus
+     *
+     * @param pointPlusId
+     * @param cardAuthInfo
+     */
     fun setTopupPointPlus(pointPlusId: String, cardAuthInfo: String) {
         _topUp.value?.let {
             it.pointPlusId = pointPlusId
@@ -226,52 +276,108 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Set topup method
+     *
+     * @param method
+     */
     fun setTopupMethod(method: Int? = null) {
         _topUp.value?.paymentMethod = method?.toShort()
     }
 
+    /**
+     * Set barcode
+     *
+     * @param barcode
+     */
     fun setBarcode(barcode: String) {
         _goodsInput.value?.barcode = barcode
     }
 
+    /**
+     * Set product cd
+     *
+     * @param productCd
+     */
     fun setProductCd(productCd: String) {
         _goodsInput.value?.productCd = productCd
     }
 
+    /**
+     * Set current barcode
+     *
+     * @param barcode
+     */
     fun setCurrentBarcode(barcode: String) {
         Timber.i("=============setCurrentBarcode: %s", barcode)
         _currentBarcode.value = Event(barcode)
     }
 
+    /**
+     * Set payment
+     *
+     * @param payment
+     */
     fun setPayment(payment: Payment) {
         _payment.value = Event(payment)
     }
 
+    /**
+     * Set payment strategy
+     *
+     * @param strategy
+     */
     fun setPaymentStrategy(strategy: PaymentStrategy) {
         _paymentStrategy.value = strategy
     }
 
+    /**
+     * Set point plus id
+     *
+     * @param pointPlusId
+     */
     fun setPointPlusId(pointPlusId: String) {
         _printReceiptHistoryModel.value = Event(PrintReceiptHistoryModel(pointPlusId))
     }
 
+    /**
+     * Set printer response
+     *
+     * @param printerResponse
+     */
     fun setPrinterResponse(printerResponse: PrinterResponse) {
         _printerResponse.value = Event(printerResponse)
     }
 
+    /**
+     * Reset goods input
+     *
+     */
     fun resetGoodsInput() {
         _goodsInput.value?.barcode = ""
 
     }
 
+    /**
+     * Reset free amount
+     *
+     */
     fun resetFreeAmount() {
         _freeAmount.value = 0
     }
 
+    /**
+     * Clear cart
+     *
+     */
     fun clearCart() {
         _foods.postValue(ArrayList())
     }
 
+    /**
+     * Hold cart
+     *
+     */
     fun holdCart() {
         // Save current session
         if (_holdFoods.value!!.isEmpty()) {
@@ -287,6 +393,10 @@ class FoodShopViewModel @ViewModelInject constructor(
         initializeCart()
     }
 
+    /**
+     * Initialize cart
+     *
+     */
     private fun initializeCart() {
         _foods.value = ArrayList()
         _holdFoods.value = ArrayList()
@@ -303,15 +413,27 @@ class FoodShopViewModel @ViewModelInject constructor(
         _freeAmount.value = 0
     }
 
+    /**
+     * Init printer by date time dialog
+     *
+     */
     fun initPrinterByDateTimeDialog() {
         _receipts.postValue(ArrayList())
         _printReceiptByDateTimeModel.value = Event(PrintReceiptByDateTimeModel())
     }
 
+    /**
+     * Init printer dialog
+     *
+     */
     fun initPrinterDialog() {
         _receipts.postValue(ArrayList())
     }
 
+    /**
+     * Reset cart
+     *
+     */
     private fun resetCart() {
         _foods.value = ArrayList()
         _receipts.value = ArrayList()
@@ -323,6 +445,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         _processingItemPosition.value = 0
     }
 
+    /**
+     * Gen list
+     *
+     * @return
+     */
     private fun genList(): List<CombinationGoodsInfo> {
         val foods = ArrayList<CombinationGoodsInfo>()
         (1..4).forEach { _ ->
@@ -331,18 +458,35 @@ class FoodShopViewModel @ViewModelInject constructor(
         return foods
     }
 
+    /**
+     * Check food exist in cart
+     *
+     * @param barcode
+     * @return
+     */
     private fun checkFoodExistInCart(barcode: String): Boolean {
         val itemIndex =
             _foods.value?.indexOfFirst { f -> barcode.equals(f.janCode, ignoreCase = true) } ?: -1
         return itemIndex != -1
     }
 
+    /**
+     * Check food exist in cart by product code
+     *
+     * @param productCode
+     * @return
+     */
     private fun checkFoodExistInCartByProductCode(productCode: String): String? {
         val goods =
             _foods.value?.firstOrNull { f -> productCode.equals(f.goodsCode, ignoreCase = true) }
         return goods?.janCode
     }
 
+    /**
+     * Add food
+     *
+     * @param addedFood
+     */
     private fun addFood(addedFood: CombinationGoodsInfo) {
         Timber.i("addFood addedFood")
         _foods.value?.toMutableList()?.let { newList ->
@@ -352,6 +496,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Add food
+     *
+     * @param barcode
+     */
     private fun addFood(barcode: String) {
         Timber.i("addFood barcode: %s", barcode )
         /**
@@ -404,6 +553,11 @@ class FoodShopViewModel @ViewModelInject constructor(
 
     }
 
+    /**
+     * Update food
+     *
+     * @param food
+     */
     fun updateFood(food: CombinationGoodsInfo) {
         val newList = _foods.value?.toMutableList()
         val itemIndex = newList?.indexOfFirst { f -> f.janCode == food.janCode }
@@ -416,6 +570,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Remove food
+     *
+     * @param food
+     */
     fun removeFood(food: CombinationGoodsInfo) {
         val newList = _foods.value?.toMutableList()
         newList?.let { newList ->
@@ -425,6 +584,13 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Gen food
+     *
+     * @param janCode
+     * @param name
+     * @return
+     */
     fun genFood(janCode: String?, name: String): CombinationGoodsInfo {
         val jan = janCode ?: genRandomString(6)
         val food = CombinationGoodsInfo(
@@ -436,6 +602,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         return food
     }
 
+    /**
+     * Get shop info
+     *
+     * @param shopId
+     * @return
+     */
     private suspend fun getShopInfo(shopId: String? = null): ShopInfo {
         return if (shopId.isNullOrBlank()) {
             ShopInfo.fromPreferences()
@@ -444,6 +616,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Get company info
+     *
+     * @param companyId
+     * @return
+     */
     private suspend fun getCompanyInfo(companyId: String? = null): Company {
         return if (companyId.isNullOrBlank()) {
             Company.fromPreferences()
@@ -452,6 +630,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Print next receipt
+     *
+     * @param receipt
+     */
     private suspend fun printNextReceipt(receipt: Receipt) {
         withContext(Dispatchers.IO) {
             receipt.getReceiptGenerator(
@@ -468,6 +651,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Issue next receipt
+     *
+     * @param receipt
+     */
     private suspend fun issueNextReceipt(receipt: Receipt) {
         withContext(Dispatchers.IO) {
             receipt.getIssuedReceiptGenerator(
@@ -485,6 +673,10 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Print receipts
+     *
+     */
     fun printReceipts() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -501,6 +693,10 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Issue receipts
+     *
+     */
     fun issueReceipts() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -517,6 +713,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Print receipt
+     *
+     * @param receipt
+     * @param receiptId
+     */
     private suspend fun printReceipt(receipt: Receipt, receiptId: String) {
         ///!!! DEBUG only
         if (BuildConfig.DEBUG) {
@@ -532,6 +734,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         context.printReceipt(doc, receiptId = receiptId)
     }
 
+    /**
+     * Select receipt history
+     *
+     * @param receipt
+     */
     fun selectReceiptHistory(receipt: Receipt) {
         _receipts.value?.filter { it.id == receipt.id }
             ?.first()
@@ -540,6 +747,10 @@ class FoodShopViewModel @ViewModelInject constructor(
             }
     }
 
+    /**
+     * Pay
+     *
+     */
     fun pay() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -582,6 +793,10 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Topup
+     *
+     */
     fun topup() {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -623,6 +838,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Charge value
+     *
+     * @param topUp
+     * @return
+     */
     private suspend fun chargeValue(topUp: TopUp): TopUpResult {
         val transactions = BasedCardRequestTransactions(RequestType.VALUE_CHARGE)
         transactions.fillChargeValueRequest(
@@ -642,6 +863,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Search sale logs
+     *
+     * @param pointPlusId
+     */
     fun searchSaleLogs(pointPlusId: String?) {
         pointPlusId?.let {
             viewModelScope.launch {
@@ -668,6 +894,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Search sale logs
+     *
+     * @param printReceiptByDateTimeModel
+     */
     fun searchSaleLogs(printReceiptByDateTimeModel: PrintReceiptByDateTimeModel?) {
         printReceiptByDateTimeModel?.let {
             if (it.startTime == null || it.endTime == null) {
@@ -703,6 +934,10 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Handle post payment
+     *
+     */
     fun handlePostPayment() {
         viewModelScope.launch {
             try {
@@ -723,12 +958,22 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Unlock card
+     *
+     * @param payment
+     */
     fun unlockCard(payment: Payment) {
         if (payment is EMoneyPayment) {
             unlockCard(payment.pointPlusId)
         }
     }
 
+    /**
+     * Unlock card
+     *
+     * @param pointPlusId
+     */
     fun unlockCard(pointPlusId: String) {
         viewModelScope.launch {
             try {
@@ -743,6 +988,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Handle post top up
+     *
+     * @param topUpResult
+     */
     fun handlePostTopUp(topUpResult: TopUpResult) {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -770,6 +1020,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Build sale log
+     *
+     * @return
+     */
     private fun buildSaleLog(): com.nereus.craftbeer.database.entity.SaleLog {
         val pointPlusId = _payment.value?.let {
             if (it.peekContent() is EMoneyPayment) {
@@ -799,6 +1054,12 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Build top up
+     *
+     * @param balance
+     * @return
+     */
     private fun buildTopUp(balance: TopUpResult): com.nereus.craftbeer.database.entity.TopUp {
         val topUp = _topUp.value!!
 
@@ -818,10 +1079,20 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Get payment result
+     *
+     * @return
+     */
     private fun getPaymentResult(): PaymentResult =
         _foodShopFlowHandler.value!!.peekContent().paymentResult
 
 
+    /**
+     * Input payment deposit
+     *
+     * @param keyPadValue
+     */
     fun inputPaymentDeposit(keyPadValue: KeyPad.KeyPadValue) {
         try {
             val newAmount = input(_cashReceived.value.toString(), keyPadValue)
@@ -832,6 +1103,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Input free amount
+     *
+     * @param keyPadValue
+     */
     fun inputFreeAmount(keyPadValue: KeyPad.KeyPadValue) {
         Timber.i("キーパッド入力")
         try {
@@ -846,6 +1122,11 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Input top up amount
+     *
+     * @param keyPadValue
+     */
     fun inputTopUpAmount(keyPadValue: KeyPad.KeyPadValue) {
         try {
             val newAmount = input(_topUpAmount.value.toString(), keyPadValue)
@@ -856,6 +1137,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Input top up deposit
+     *
+     * @param keyPadValue
+     */
     fun inputTopUpDeposit(keyPadValue: KeyPad.KeyPadValue) {
         try {
             val newAmount = input(_topUpDeposit.value.toString(), keyPadValue)
@@ -866,6 +1152,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Handle product code
+     *
+     * @param productCode
+     */
     fun handleProductCode(productCode: String) {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -912,6 +1203,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Handle barcode
+     *
+     * @param barcode
+     */
     fun handleBarcode(barcode: String) {
         if (barcode.isNullOrBlank()) {
             return
@@ -957,6 +1253,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Print next
+     *
+     * @param printerResponse
+     */
     fun printNext(printerResponse: PrinterResponse) {
         when (printerResponse.code) {
             PRINTER_SUCCESS_CODE -> handlePrintSuccess(printerResponse)
@@ -964,6 +1265,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Handle print error
+     *
+     * @param printerResponse
+     */
     private fun handlePrintError(printerResponse: PrinterResponse) {
         setException(
             MessageException(
@@ -975,6 +1281,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         )
     }
 
+    /**
+     * Handle print success
+     *
+     * @param printerResponse
+     */
     private fun handlePrintSuccess(printerResponse: PrinterResponse) {
         viewModelScope.launch {
             setLoadingState(CommonConst.LOADING_VISIBLE)
@@ -1012,11 +1323,19 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Stop and start handler top up
+     *
+     */
     private fun stopAndStartHandlerTopUp() {
         stopHandlerTopUp()
         startHandlerTopUp()
     }
 
+    /**
+     * Setup top up with nfc
+     *
+     */
     private fun setupTopUpWithNfc() {
         val nfcUtil = NfcUtil(getApplication())
         if (cardTerminal == null) {
@@ -1093,6 +1412,10 @@ class FoodShopViewModel @ViewModelInject constructor(
 
     }
 
+    /**
+     * Setup search p p with nfc
+     *
+     */
     private fun setupSearchPPWithNfc() {
         val nfcUtil = NfcUtil(getApplication())
         if (cardTerminal == null) {
@@ -1163,6 +1486,10 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
 
+    /**
+     * Setup house money checkout
+     *
+     */
     private fun setupHouseMoneyCheckout() {
         val nfcUtil = NfcUtil(getApplication())
         if (cardTerminal == null) {
@@ -1239,6 +1566,11 @@ class FoodShopViewModel @ViewModelInject constructor(
 
     }
 
+    /**
+     * Setup top up info
+     *
+     * @param cardInfo
+     */
     private fun setupTopUpInfo(cardInfo: String) {
         val cardUtil = CardUtil()
         val cardMemberCode = cardUtil.getCardMemberCode(cardInfo)
@@ -1276,6 +1608,11 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Setup search info
+     *
+     * @param cardInfo
+     */
     private fun setupSearchInfo(cardInfo: String) {
         val cardUtil = CardUtil()
         val cardMemberCode = cardUtil.getCardMemberCode(cardInfo)
@@ -1313,16 +1650,29 @@ class FoodShopViewModel @ViewModelInject constructor(
         }
     }
 
+    /**
+     * Stop and start handler search
+     *
+     */
     private fun stopAndStartHandlerSearch() {
         stopHandlerSearch()
         startHandlerSearch()
     }
 
+    /**
+     * Stop and start handler checkout
+     *
+     */
     private fun stopAndStartHandlerCheckout() {
         stopHandlerCheckout()
         startHandlerCheckout()
     }
 
+    /**
+     * Setup house money info
+     *
+     * @param cardInfo
+     */
     private fun setupHouseMoneyInfo(cardInfo: String) {
         val cardUtil = CardUtil()
         val cardMemberCode = cardUtil.getCardMemberCode(cardInfo)
@@ -1368,6 +1718,9 @@ class FoodShopViewModel @ViewModelInject constructor(
 
     private val taskHandler = Handler()
 
+    /**
+     * Top up by nfc
+     */
     private val topUpByNfc = Runnable {
         /*Simulate Card check*/
         if (BuildConfig.SIMULATE_CARD)
@@ -1376,39 +1729,74 @@ class FoodShopViewModel @ViewModelInject constructor(
             setupTopUpWithNfc()
     }
 
+    /**
+     * Start handler top up
+     *
+     */
     fun startHandlerTopUp() {
         taskHandler.postDelayed(topUpByNfc, 2000)
     }
 
+    /**
+     * Stop handler top up
+     *
+     */
     fun stopHandlerTopUp() {
         taskHandler.removeCallbacks(topUpByNfc)
     }
 
+    /**
+     * Search by nfc
+     */
     private val searchByNfc = Runnable {
         setupSearchPPWithNfc()
     }
 
+    /**
+     * Start handler search
+     *
+     */
     fun startHandlerSearch() {
         taskHandler.postDelayed(searchByNfc, 2000)
     }
 
+    /**
+     * Stop handler search
+     *
+     */
     fun stopHandlerSearch() {
         taskHandler.removeCallbacks(searchByNfc)
     }
-
-
+    /**
+     * Checkout house money by nfc
+     */
     private val checkoutHouseMoneyByNfc = Runnable {
         setupHouseMoneyCheckout()
     }
 
+    /**
+     * Start handler checkout
+     *
+     */
     fun startHandlerCheckout() {
         taskHandler.postDelayed(checkoutHouseMoneyByNfc, 2000)
     }
 
+    /**
+     * Stop handler checkout
+     *
+     */
     fun stopHandlerCheckout() {
         taskHandler.removeCallbacks(checkoutHouseMoneyByNfc)
     }
 
+    /**
+     * Is enable on hold btn
+     *
+     * @param goods
+     * @param holdFoods
+     * @return
+     */
     fun isEnableOnHoldBtn(
         goods: List<CombinationGoodsInfo>,
         holdFoods: List<CombinationGoodsInfo>

@@ -11,20 +11,41 @@ import com.nereus.craftbeer.model.MessagesModel
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Take out select fragment
+ *
+ * @constructor Create empty Take out select fragment
+ */
 class TakeOutSelectFragment :
     BaseFragmentDialog<FragmentTakeOutSelectBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_take_out_select
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
 
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)

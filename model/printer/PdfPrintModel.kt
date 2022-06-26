@@ -5,6 +5,22 @@ import android.graphics.Paint
 import com.nereus.craftbeer.constant.*
 import com.nereus.craftbeer.enums.printer.XAxisPosition
 
+/**
+ * Pdf print model
+ *
+ * @property content
+ * @property imageUrl
+ * @property lettersPerLine
+ * @property startPos
+ * @property endPos
+ * @property marginTop
+ * @property isFramed
+ * @property canMultiLines
+ * @property imageWidth
+ * @property alignment
+ * @property textSize
+ * @constructor Create empty Pdf print model
+ */
 data class PdfPrintModel(
 
     var content: String = EMPTY_STRING,
@@ -37,6 +53,11 @@ data class PdfPrintModel(
             Pair(SEPARATOR, getLogoPaint())
         )
 
+        /**
+         * Get text paint
+         *
+         * @return
+         */
         fun getTextPaint(): Paint {
             val textPaint = Paint()
             textPaint.color = Color.BLACK
@@ -44,6 +65,11 @@ data class PdfPrintModel(
             return textPaint
         }
 
+        /**
+         * Get logo paint
+         *
+         * @return
+         */
         private fun getLogoPaint(): Paint {
             val textPaint = Paint()
             textPaint.color = Color.BLACK
@@ -51,6 +77,11 @@ data class PdfPrintModel(
             return textPaint
         }
 
+        /**
+         * Get qr paint
+         *
+         * @return
+         */
         private fun getQrPaint(): Paint {
             val textPaint = Paint()
             textPaint.color = Color.BLACK

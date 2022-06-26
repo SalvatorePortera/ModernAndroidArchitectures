@@ -24,25 +24,51 @@ import com.nereus.craftbeer.worker.UpdateBeerWorker
 import java.lang.Exception
 
 
+/**
+ * Select mode fragment
+ *
+ * @constructor Create empty Select mode fragment
+ */
 class SelectModeFragment :
     BaseFragment<FragmentSelectModeBinding, DefaultViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: DefaultViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_select_mode
     }
 
+    /**
+     * On create
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
+    /**
+     * On resume
+     *
+     */
     override fun onResume() {
         super.onResume()
         colorList.clear()
         countVideo = 0
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
 
         binding.btnBeer.setOnClickDebounce {
@@ -77,6 +103,10 @@ class SelectModeFragment :
         }
     }
 
+    /**
+     * Go to core system web admin
+     *
+     */
     private fun goToCoreSystemWebAdmin() {
         val url = BuildConfig.CORE_ADMIN_URL
         val i = Intent(Intent.ACTION_VIEW)

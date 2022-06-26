@@ -20,20 +20,45 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
+/**
+ * Goods repository
+ *
+ * @property apiService
+ * @property goodsDao
+ * @constructor Create empty Goods repository
+ */
 class GoodsRepository @Inject constructor(
     private val apiService: CoreApiWithoutLiveData,
     private val goodsDao: GoodsDao
 ) {
 
+    /**
+     * Is goods exist in local db
+     *
+     * @param barcode
+     * @return
+     */
     suspend fun isGoodsExistInLocalDb(barcode: String): Boolean {
         val goods = goodsDao.get(barcode)
         return goods != null
     }
 
+    /**
+     * Get goods
+     *
+     * @param barcode
+     * @return
+     */
     suspend fun getGoods(barcode: String): Goods? {
         return goodsDao.get(barcode)
     }
 
+    /**
+     * Search goods
+     *
+     * @param query
+     * @return
+     */
     suspend fun searchGoods(query: String): CombinationGoodsInfo? {
         try {
             val goodsList = withContext(Dispatchers.IO) {
@@ -52,10 +77,21 @@ class GoodsRepository @Inject constructor(
         }
     }
 
+    /**
+     * Get goods by product code
+     *
+     * @param productCode
+     * @return
+     */
     suspend fun getGoodsByProductCode(productCode: String): Goods? {
         return goodsDao.getByGoodsCode(productCode)
     }
 
+    /**
+     * Sync goods
+     *
+     * @param token
+     */
     suspend fun syncGoods(token: String) {
         try {
             val goodsList = withContext(Dispatchers.IO) {
@@ -110,6 +146,11 @@ class GoodsRepository @Inject constructor(
         }
     }
 
+    /**
+     * Get tab beers server list
+     *
+     * @return
+     */
     suspend fun getTabBeersServerList(): List<CombinationBeersInfo> {
         val goodsList = withContext(Dispatchers.IO) {
             apiService.getTabBeersServerList(AuthRepository.getAccessToken())
@@ -170,6 +211,11 @@ class GoodsRepository @Inject constructor(
 
     }
 
+    /**
+     * Update beers status
+     *
+     * @param beersInfo
+     */
     suspend fun updateBeersStatus(beersInfo: CombinationBeersInfo) {
 
         val result = withContext(Dispatchers.IO) {
@@ -195,6 +241,11 @@ class GoodsRepository @Inject constructor(
     }
 
 
+    /**
+     * Get obniz server list
+     *
+     * @return
+     */
     suspend fun getObnizServerList(): List<ObnizInfo> {
         val obnizServerList = withContext(Dispatchers.IO) {
             apiService.getObnizServerList(AuthRepository.getAccessToken())
@@ -227,6 +278,11 @@ class GoodsRepository @Inject constructor(
         }
     }
 
+    /**
+     * Get tap beer shop list
+     *
+     * @return
+     */
     suspend fun getTapBeerShopList(): List<CombinationBeersInfo> {
         val tapBeerShopList = withContext(Dispatchers.IO) {
             apiService.getTapBeerShop(AuthRepository.getAccessToken())
@@ -280,6 +336,11 @@ class GoodsRepository @Inject constructor(
         }
     }
 
+    /**
+     * Get tap beer device
+     *
+     * @return
+     */
     suspend fun getTapBeerDevice(): List<TabBeerDeviceInfoList> {
         val tapBeerDeviceList = withContext(Dispatchers.IO) {
             apiService.getTapBeerDevice(AuthRepository.getAccessToken())
@@ -304,6 +365,12 @@ class GoodsRepository @Inject constructor(
     }
 
 
+    /**
+     * Update tap beer server
+     *
+     * @param id
+     * @param updateRequest
+     */
     suspend fun updateTapBeerServer(
         id: String,
         updateRequest: UpdateTapBeerServerRequest

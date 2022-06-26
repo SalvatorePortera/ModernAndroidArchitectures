@@ -12,6 +12,7 @@ import java.time.LocalDateTime
 
 /**
  * CommonRequestTransaction: all fields are required
+ *
  */
 open class CommonTransaction : Transaction() {
 

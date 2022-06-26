@@ -1,4 +1,4 @@
-package com.nereus.craftbeer.util;
+package com.nereus.craftbeer.util
 
 import androidx.work.*
 import com.nereus.craftbeer.constant.*
@@ -7,6 +7,12 @@ import com.nereus.craftbeer.worker.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
+/**
+ * Setup sync goods recurring work
+ *
+ * @param token
+ * @param workManager
+ */
 fun setupSyncGoodsRecurringWork(token: String, workManager: WorkManager) {
     val repeatingRequest = PeriodicWorkRequestBuilder<SyncGoodsToDatabaseWorker>(
         SYNC_REPEAT_INTERVAL,
@@ -24,6 +30,12 @@ fun setupSyncGoodsRecurringWork(token: String, workManager: WorkManager) {
     )
 }
 
+/**
+ * Setup sync sale logs recurring work
+ *
+ * @param token
+ * @param workManager
+ */
 fun setupSyncSaleLogsRecurringWork(token: String, workManager: WorkManager) {
     val repeatingRequest = PeriodicWorkRequestBuilder<SyncSaleLogsToCoreServerWorker>(
         SYNC_REPEAT_INTERVAL,
@@ -41,6 +53,12 @@ fun setupSyncSaleLogsRecurringWork(token: String, workManager: WorkManager) {
     )
 }
 
+/**
+ * Setup sync error logs recurring work
+ *
+ * @param token
+ * @param workManager
+ */
 fun setupSyncErrorLogsRecurringWork(token: String, workManager: WorkManager) {
     val repeatingRequest = PeriodicWorkRequestBuilder<SyncErrorLogsToCoreServerWorker>(
         SYNC_REPEAT_INTERVAL,
@@ -58,6 +76,14 @@ fun setupSyncErrorLogsRecurringWork(token: String, workManager: WorkManager) {
     )
 }
 
+/**
+ * Setup sync shop info recurring work
+ *
+ * @param token
+ * @param workManager
+ * @param companyId
+ * @param shopId
+ */
 fun setupSyncShopInfoRecurringWork(
     token: String,
     workManager: WorkManager,
@@ -84,6 +110,11 @@ fun setupSyncShopInfoRecurringWork(
     )
 }
 
+/**
+ * Setup update beer data recurring work
+ *
+ * @param workManager
+ */
 fun setupUpdateBeerDataRecurringWork(
     workManager: WorkManager
 ) {

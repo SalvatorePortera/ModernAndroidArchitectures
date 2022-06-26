@@ -4,14 +4,32 @@ import androidx.annotation.IdRes
 import com.nereus.craftbeer.R
 import com.nereus.craftbeer.model.keyboard.KeyPad
 
+/**
+ * Append
+ *
+ * @param value
+ * @return
+ */
 private fun String.append(value: String): String {
     return StringBuilder(this).append(value).toString()
 }
 
+/**
+ * Remove last
+ *
+ * @return
+ */
 private fun String.removeLast(): String {
     return if (length <= 1) KeyPad.KeyPadValue.ZERO.value else substring(0, lastIndex)
 }
 
+/**
+ * Input
+ *
+ * @param currentValue
+ * @param keypadCode
+ * @return
+ */
 fun input(currentValue: String, keypadCode: KeyPad.KeyPadValue): Int {
     return when (keypadCode) {
         KeyPad.KeyPadValue.DELETE -> currentValue.removeLast()
@@ -20,6 +38,12 @@ fun input(currentValue: String, keypadCode: KeyPad.KeyPadValue): Int {
     }.toIntOrNull() ?: 0
 }
 
+/**
+ * Get key pad value
+ *
+ * @param buttonId
+ * @return
+ */
 fun getKeyPadValue(@IdRes buttonId: Int): KeyPad.KeyPadValue {
     return when (buttonId) {
         R.id.btn_one -> KeyPad.KeyPadValue.ONE

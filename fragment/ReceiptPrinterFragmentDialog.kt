@@ -17,15 +17,32 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
 
+/**
+ * Receipt printer fragment dialog
+ *
+ * @constructor Create empty Receipt printer fragment dialog
+ */
 class ReceiptPrinterFragmentDialog :
     BaseFragmentDialog<FragmentReceiptPrinterDialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_receipt_printer_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.9, 0.9)
         configRecyclerView()
@@ -33,11 +50,19 @@ class ReceiptPrinterFragmentDialog :
         viewModel.startHandlerSearch()
     }
 
+    /**
+     * On destroy view
+     *
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.stopHandlerSearch()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)
@@ -60,6 +85,10 @@ class ReceiptPrinterFragmentDialog :
 //        }
     }
 
+    /**
+     * Set additional view model listener
+     *
+     */
     override fun setAdditionalViewModelListener() {
         this.viewModel.receipts.observe(binding.lifecycleOwner!!, Observer { receipts ->
             binding.recyclerViewPrinterLogList.visibility = receipts.getRecyclerViewVisibility()
@@ -78,6 +107,10 @@ class ReceiptPrinterFragmentDialog :
         })
     }
 
+    /**
+     * Config recycler view
+     *
+     */
     private fun configRecyclerView() {
         binding.recyclerViewPrinterLogList.adapter =
             PrinterLogViewAdapter(this.requireContext(), viewModel)

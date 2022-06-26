@@ -6,15 +6,33 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
+/**
+ * Point plus api without live data
+ *
+ * @constructor Create empty Point plus api without live data
+ */
 interface PointPlusApiWithoutLiveData {
-    /* Call transactions*/
+    /**
+     * Call card api
+     * Call transactions
+     * @param request
+     * @param companyKey
+     * @return
+     */
     @POST(".")
     suspend fun callCardApi(
         @Body request: BasedCardRequestTransactions,
         @Query("com_key") companyKey: String
     ): Response<BasedCardResponseTransactions>
 
-    /* Confirm 2-phases transactions */
+    /**
+     * Confirm card api
+     * Confirm 2-phases transactions
+     * @param request
+     * @param companyKey
+     * @param actionName
+     * @return
+     */
     @POST(".")
     suspend fun confirmCardApi(
         @Body request: BasedCardRequestTransactions,
@@ -22,7 +40,14 @@ interface PointPlusApiWithoutLiveData {
         @Query("actionName") actionName: String = "TransactionConfirm"
     ): Response<BasedCardResponseTransactions>
 
-    /* Transaction cancellation */
+    /**
+     * Cancel transaction
+     * Transaction cancellation
+     * @param request
+     * @param companyKey
+     * @param actionName
+     * @return
+     */
     @POST(".")
     suspend fun cancelTransaction(
         @Body request: BasedCardRequestTransactions,

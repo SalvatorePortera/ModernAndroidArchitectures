@@ -12,19 +12,40 @@ import com.nereus.craftbeer.model.MessagesModel
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
+/**
+ * Customer attribute fragmentdialog
+ *
+ * @constructor Create empty Customer attribute fragmentdialog
+ */
 class CustomerAttributeFragmentdialog :
     BaseFragmentDialog<FragmentCustomerAttributeFragmentdialogBinding, FoodShopViewModel>() {
 
+    /**
+     * View model
+     */
     override val viewModel: FoodShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.fragment_customer_attribute_fragmentdialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnClose.setOnClickDebounce {
             findNavController().navigate(R.id.foodShopFragment)

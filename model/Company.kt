@@ -4,6 +4,14 @@ import com.nereus.craftbeer.constant.*
 import com.nereus.craftbeer.util.getDeviceInfoPref
 import com.nereus.craftbeer.util.getShopInfoPref
 
+/**
+ * Company
+ *
+ * @property id
+ * @property companyName
+ * @property companyCode
+ * @constructor Create empty Company
+ */
 data class Company constructor(
 
     var id: String? = null,
@@ -13,6 +21,12 @@ data class Company constructor(
     var companyCode: String = EMPTY_STRING
 ) {
     companion object {
+
+        /**
+         * From preferences
+         *
+         * @return
+         */
         fun fromPreferences(): Company {
             val pref = getShopInfoPref()
             val companyId = pref.getString(SHARED_PREF_COMPANY_ID, "会社名")!!
@@ -25,6 +39,11 @@ data class Company constructor(
             )
         }
 
+        /**
+         * Is existed
+         *
+         * @return
+         */
         fun isExisted() : Boolean {
             return !getDeviceInfoPref().getString(SHARED_PREF_COMPANY_ID, EMPTY_STRING).isNullOrBlank()
         }

@@ -16,8 +16,19 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import kotlin.math.roundToInt
 
+/**
+ * Issued receipt generator
+ *
+ * @property receipt
+ * @constructor Create empty Issued receipt generator
+ */
 open class IssuedReceiptGenerator(private val receipt: Receipt) {
 
+    /**
+     * Generate
+     *
+     * @return
+     */
     suspend fun generate(): PdfDocument {
         val printModels1 = withContext(Dispatchers.Default) {
             buildPdfLines()
@@ -30,6 +41,12 @@ open class IssuedReceiptGenerator(private val receipt: Receipt) {
         return buildPdfDocument(printModels1, getCanvasHeight())
     }
 
+    /**
+     * Build body
+     *
+     * @param takeAway
+     * @return
+     */
     protected open fun buildBody(takeAway: Boolean = true): List<PdfLine> {
         return ArrayList<PdfLine>().apply {
             add(PdfLine().apply {

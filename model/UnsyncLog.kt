@@ -9,6 +9,19 @@ import com.nereus.craftbeer.util.getStringResource
 import com.nereus.craftbeer.util.toISOString
 import java.time.LocalDateTime
 
+/**
+ * Unsync log
+ *
+ * @property receiptCode
+ * @property totalAmount
+ * @property productType
+ * @property totalPrice
+ * @property createdAt
+ * @property logName
+ * @property saleLog
+ * @property topUp
+ * @constructor Create empty Unsync log
+ */
 data class UnsyncLog constructor(
 
     val receiptCode: String = EMPTY_STRING,

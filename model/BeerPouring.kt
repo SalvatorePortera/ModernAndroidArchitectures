@@ -1,5 +1,15 @@
 package com.nereus.craftbeer.model
 
+/**
+ * Beer pouring
+ *
+ * @property balance
+ * @property total
+ * @property tax
+ * @property amountInMl
+ * @property sellingPrice
+ * @constructor Create empty Beer pouring
+ */
 data class BeerPouring(
 
     var balance: Int = 0,//残高

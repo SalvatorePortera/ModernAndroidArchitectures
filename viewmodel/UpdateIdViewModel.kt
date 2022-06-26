@@ -14,6 +14,16 @@ import com.nereus.craftbeer.repository.ShopRepository
 import kotlinx.coroutines.launch
 import java.util.concurrent.Callable
 
+/**
+ * Update id view model
+ *
+ * @property shopRepository
+ * @property savedStateHandle
+ * @property _errorLogRepository
+ * @constructor
+ *
+ * @param application
+ */
 class UpdateIdViewModel @ViewModelInject constructor(
     private val shopRepository: ShopRepository,
     @Assisted var savedStateHandle: SavedStateHandle,

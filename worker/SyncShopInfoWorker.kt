@@ -30,6 +30,15 @@ import com.nereus.craftbeer.util.makeStatusNotification
 import retrofit2.HttpException
 import timber.log.Timber
 
+/**
+ * Sync shop info worker
+ *
+ * @property shopRepository
+ * @constructor
+ *
+ * @param ctx
+ * @param params
+ */
 class SyncShopInfoWorker @WorkerInject constructor(
     @Assisted ctx: Context,
     @Assisted params: WorkerParameters,
@@ -39,6 +48,11 @@ class SyncShopInfoWorker @WorkerInject constructor(
         const val WORK_NAME = "com.nereus.craftbeer.worker.SyncShopInfoWorker"
     }
 
+    /**
+     * Do work
+     *
+     * @return
+     */
     override suspend fun doWork(): Result {
         val appContext = applicationContext
         makeStatusNotification("Synchronizing shop info ...", appContext)
@@ -81,6 +95,12 @@ class SyncShopInfoWorker @WorkerInject constructor(
         }
     }
 
+    /**
+     * Store to preferences
+     *
+     * @param company
+     * @param shop
+     */
     private fun storeToPreferences(
         company: Company,
         shop: ShopInfo

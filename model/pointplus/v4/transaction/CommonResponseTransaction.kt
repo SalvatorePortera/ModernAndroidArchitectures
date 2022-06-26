@@ -4,7 +4,9 @@ import org.simpleframework.xml.Attribute
 
 /**
  * Define XML response models for Point+ Plus API v4.0.3
+ *
  */
+
 
 abstract class CommonResponseTransaction : CommonTransaction() {
 

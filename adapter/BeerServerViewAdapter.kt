@@ -26,6 +26,14 @@ import com.squareup.picasso.Picasso
 import timber.log.Timber
 
 
+/**
+ * Beer server view adapter
+ *
+ * @property viewModel
+ * @constructor
+ *
+ * @param context
+ */
 class BeerServerViewAdapter(
     context: Context,
     val viewModel: SettingMasterViewModel
@@ -34,11 +42,24 @@ class BeerServerViewAdapter(
 ) : ListAdapter<CombinationBeersInfo, BeerServerViewAdapter.ViewHolder>(BeerDiffCallBack()) {
     private val context: Context = context
 
+    /**
+     * On create view holder
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(viewModel, parent)
     }
 
 
+    /**
+     * On bind view holder
+     *
+     * @param holder
+     * @param position
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         viewModel.connectSocket()
         val item = getItem(position)
@@ -46,11 +67,22 @@ class BeerServerViewAdapter(
     }
 
 
+    /**
+     * View holder
+     *
+     * @property binding
+     * @constructor Create empty View holder
+     */
     class ViewHolder private constructor(val binding: RecyclerviewBeerserverItemLayoutBinding) :
         RecyclerView.ViewHolder(
             binding.root
         ) {
 
+        /**
+         * Bind
+         *
+         * @param item
+         */
         fun bind(item: CombinationBeersInfo) {
             if(!item.imageUrl.isNullOrBlank()){
                 Picasso.get().load(item.imageUrl).into(binding.imgBeerServerItem)
@@ -252,6 +284,11 @@ class BeerServerViewAdapter(
     }
 }
 
+/**
+ * Beer server click call back
+ *
+ * @constructor Create empty Beer server click call back
+ */
 internal interface BeerServerClickCallBack {
 //    fun onCheck(beer: CombinationBeersInfo)
     fun onUpdate()
@@ -259,6 +296,11 @@ internal interface BeerServerClickCallBack {
     fun onHideKeyBoard()
 }
 
+/**
+ * Beer diff call back
+ *
+ * @constructor Create empty Beer diff call back
+ */
 class BeerDiffCallBack : DiffUtil.ItemCallback<CombinationBeersInfo>() {
     override fun areItemsTheSame(
         oldItem: CombinationBeersInfo,

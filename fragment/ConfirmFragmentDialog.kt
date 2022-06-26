@@ -9,6 +9,11 @@ import com.nereus.craftbeer.databinding.FragmentConfirmDialogBinding
 import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.DefaultViewModel
 
+/**
+ * Confirm fragment dialog
+ *
+ * @constructor Create empty Confirm fragment dialog
+ */
 class ConfirmFragmentDialog :
     BaseFragmentDialog<FragmentConfirmDialogBinding, DefaultViewModel>() {
 
@@ -17,16 +22,27 @@ class ConfirmFragmentDialog :
         const val CONFIRMATION_RESULT = "isConfirmed"
     }
 
+    /**
+     * View model
+     */
     override val viewModel: DefaultViewModel by activityViewModels()
     override fun getLayout(): Int {
         return R.layout.fragment_confirm_dialog
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         setDialogSizeScale(0.5, 0.5)
         binding.content.text = arguments?.getString(MESSAGE_BUNDLE_KEY)
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.btnCancel.setOnClickDebounce {
             setFragmentResult(REQUEST_KEY, bundleOf(CONFIRMATION_RESULT to false))

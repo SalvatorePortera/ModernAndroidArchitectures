@@ -4,6 +4,11 @@ import androidx.room.*
 import com.nereus.craftbeer.database.entity.ErrorLog
 import com.nereus.craftbeer.database.entity.MessageLog
 
+/**
+ * Error log dao
+ *
+ * @constructor Create empty Error log dao
+ */
 @Dao
 interface ErrorLogDao {
     // Do insert in background (suspend)
@@ -14,12 +19,28 @@ interface ErrorLogDao {
     @Update
     suspend fun update(errorLog: ErrorLog)
 
+    /**
+     * Delete
+     *
+     * @param errorLog
+     */
     @Delete
     suspend fun delete(errorLog: ErrorLog)
 
+    /**
+     * Get
+     *
+     * @param key
+     * @return
+     */
     @Query("SELECT * from error_logs WHERE error_log_id = :key")
     fun get(key: Long): ErrorLog
 
+    /**
+     * Get all
+     *
+     * @return
+     */
     @Query("SELECT * from error_logs")
     suspend fun getAll(): List<ErrorLog>
 }

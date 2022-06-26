@@ -7,6 +7,16 @@ import com.nereus.craftbeer.model.ErrorLogCreateRequest
 import com.nereus.craftbeer.util.toISOString
 import java.time.LocalDateTime
 
+/**
+ * Error log
+ *
+ * @property errorCode
+ * @property obnizID
+ * @property deviceCode
+ * @property message
+ * @property occurredAt
+ * @constructor Create empty Error log
+ */
 @Entity(tableName = "error_logs")
 data class ErrorLog(
 

@@ -10,21 +10,43 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
+/**
+ * Core api without live data
+ *
+ * @constructor Create empty Core api without live data
+ */
 interface CoreApiWithoutLiveData {
     // Login for devices
     @POST("/auth/device/login")
     suspend fun checkLogin(@Body loginData: LoginRequest): Response<LoginResponse>
 
+    /**
+     * Check login1
+     *
+     * @param loginData
+     * @return
+     */
     @POST("/auth/device/login")
     suspend fun checkLogin1(@Body loginData: LoginRequest): LiveData<ApiResponse<LoginResponse>>
 
-    // Change Device's Password
+    /**
+     * Change device pass
+     * Change Device's Password
+     * @param changePassData
+     * @return
+     */
     @POST("auth/device/change-password")
     suspend fun changeDevicePass(
         @Body changePassData: UpdatePassRequest
     ): Response<ResponseBody>
 
-    // Get Devices List ID
+    /**
+     * Get devices
+     * Get Devices List ID
+     * @param shopCode
+     * @param companyCode
+     * @return
+     */
     @GET("/devices/search")
     suspend fun getDevices(
         @Query("shop_code") shopCode: String,

@@ -15,6 +15,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
+/**
+ * Receipt generator
+ *
+ * @property receipt
+ * @constructor Create empty Receipt generator
+ */
 abstract class ReceiptGenerator(private val receipt: Receipt) {
 
     suspend fun generate(): PdfDocument {

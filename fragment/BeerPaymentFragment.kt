@@ -18,12 +18,24 @@ import kotlin.math.roundToInt
 class BeerPaymentFragment : BaseFragment<ActivityBeerPaymentFragmentBinding, BeerShopViewModel>() {
 
 
+    /**
+     * View model
+     */
     override val viewModel: BeerShopViewModel by activityViewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_beer_payment_fragment
     }
 
+    /**
+     * After binding
+     *
+     */
     override fun afterBinding() {
         binding.viewModel = viewModel
         viewModel.selected_beer.value?.let {
@@ -41,6 +53,10 @@ class BeerPaymentFragment : BaseFragment<ActivityBeerPaymentFragmentBinding, Bee
         viewModel.restartHandler()
     }
 
+    /**
+     * Set view listener
+     *
+     */
     override fun setViewListener() {
         binding.paymentClose.setOnClickDebounce() {
             viewModel.stopHandler()
@@ -48,6 +64,10 @@ class BeerPaymentFragment : BaseFragment<ActivityBeerPaymentFragmentBinding, Bee
         }
     }
 
+    /**
+     * Set view model listener
+     *
+     */
     override fun setViewModelListener() {
         viewModel.payment.observe(viewLifecycleOwner, EventObserver {
             this.viewModel.checkBalance()
@@ -65,6 +85,10 @@ class BeerPaymentFragment : BaseFragment<ActivityBeerPaymentFragmentBinding, Bee
         })
     }
 
+    /**
+     * Setup beer percentage
+     *
+     */
     private fun setupBeerPercentage() {
         val beerPercentage = viewModel.beerPercentage.value
         if (beerPercentage != null) {

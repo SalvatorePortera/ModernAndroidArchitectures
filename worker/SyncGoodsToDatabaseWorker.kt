@@ -32,6 +32,15 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import timber.log.Timber
 
+/**
+ * Sync goods to database worker
+ *
+ * @property goodsRepository
+ * @constructor
+ *
+ * @param ctx
+ * @param params
+ */
 class SyncGoodsToDatabaseWorker @WorkerInject constructor(
     @Assisted ctx: Context,
     @Assisted params: WorkerParameters,
@@ -41,6 +50,11 @@ class SyncGoodsToDatabaseWorker @WorkerInject constructor(
         const val WORK_NAME = "com.nereus.craftbeer.worker.SyncGoodsToDatabaseWorker"
     }
 
+    /**
+     * Do work
+     *
+     * @return
+     */
     override suspend fun doWork(): Result {
         val appContext = applicationContext
         makeStatusNotification("Synchronizing goods ...", appContext)

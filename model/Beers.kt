@@ -5,6 +5,35 @@ import com.nereus.craftbeer.constant.DEFAULT_TAX_RATE
 import com.nereus.craftbeer.database.entity.SaleLog
 import com.nereus.craftbeer.database.entity.SaleLogDetail
 
+/**
+ * Tap beer
+ *
+ * @property id
+ * @property beerCode
+ * @property beerName
+ * @property beerNameEn
+ * @property taxRate
+ * @property beerShortName
+ * @property beerType
+ * @property beerStyle
+ * @property ibu
+ * @property alcohol
+ * @property brewery
+ * @property breweryEn
+ * @property description
+ * @property imageUrl
+ * @property acidity
+ * @property weight
+ * @property bitter
+ * @property sweet
+ * @property smell
+ * @property country
+ * @property purchaseCost
+ * @property sellingPrice
+ * @property colour
+ * @property tapBeerShops
+ * @constructor Create empty Tap beer
+ */
 data class TapBeer(
     val id: String,
     val beerCode: String,

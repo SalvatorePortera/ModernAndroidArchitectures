@@ -22,14 +22,30 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import kotlinx.coroutines.withContext
 
+/**
+ * Beer shop activity
+ *
+ * @constructor Create empty Beer shop activity
+ */
 @AndroidEntryPoint
 class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewModel>() {
+
     override val viewModel: BeerShopViewModel by viewModels()
 
+    /**
+     * Get layout
+     *
+     * @return
+     */
     override fun getLayout(): Int {
         return R.layout.activity_beer_shop
     }
 
+    /**
+     * On create
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
