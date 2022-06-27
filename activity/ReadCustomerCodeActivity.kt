@@ -18,7 +18,7 @@ var cardTerminal: CardTerminal? = null
 /**
  * Read customer code activity
  *
- * @constructor Create empty Read customer code activity
+ * @constructor  Read customer code activity
  */
 @AndroidEntryPoint
 class ReadCustomerCodeActivity :

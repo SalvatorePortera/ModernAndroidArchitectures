@@ -7,7 +7,7 @@ import androidx.room.*
  *
  * @property saleLog
  * @property saleList
- * @constructor Create empty Sale log with sale log detail
+ * @constructor  Sale log with sale log detail
  */
 data class SaleLogWithSaleLogDetail(
     @Embedded val saleLog: SaleLog,

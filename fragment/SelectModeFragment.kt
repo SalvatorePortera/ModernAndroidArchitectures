@@ -27,7 +27,7 @@ import java.lang.Exception
 /**
  * Select mode fragment
  *
- * @constructor Create empty Select mode fragment
+ * @constructor  Select mode fragment
  */
 class SelectModeFragment :
     BaseFragment<FragmentSelectModeBinding, DefaultViewModel>() {
@@ -104,7 +104,7 @@ class SelectModeFragment :
     }
 
     /**
-     * Go to core system web admin
+     * Go to Admin page
      *
      */
     private fun goToCoreSystemWebAdmin() {

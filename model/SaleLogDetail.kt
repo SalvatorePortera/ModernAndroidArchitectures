@@ -17,7 +17,7 @@ import timber.log.Timber
  * @property amount
  * @property purchaseCost
  * @property sellingPrice
- * @constructor Create empty Sale log detail
+ * @constructor  Sale log detail
  */
 data class SaleLogDetail constructor(
 

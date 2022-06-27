@@ -19,7 +19,7 @@ import timber.log.Timber
  *
  * @param TBinding
  * @param TViewModel
- * @constructor Create empty Base fragment dialog
+ * @constructor  Base fragment dialog
  */
 abstract class BaseFragmentDialog<TBinding : ViewDataBinding, TViewModel : BaseViewModel> :
     DialogFragment() {

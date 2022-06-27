@@ -19,7 +19,7 @@ import com.nereus.craftbeer.enums.printer.XAxisPosition
  * @property imageWidth
  * @property alignment
  * @property textSize
- * @constructor Create empty Pdf print model
+ * @constructor  Pdf print model
  */
 data class PdfPrintModel(
 

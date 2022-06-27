@@ -17,7 +17,7 @@ import timber.log.Timber
 /**
  * Setting master menu fragment
  *
- * @constructor Create empty Setting master menu fragment
+ * @constructor  Setting master menu fragment
  */
 class SettingMasterMenuFragment :
     BaseFragment<FragmentSettingMasterMenuBinding, SettingMasterViewModel>() {

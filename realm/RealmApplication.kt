@@ -20,7 +20,7 @@ import kotlin.math.floor
 /**
  * Realm application
  *
- * @constructor Create empty Realm application
+ * @constructor  Realm application
  */
 @HiltAndroidApp
 class RealmApplication : Application(), Configuration.Provider {

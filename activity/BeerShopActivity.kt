@@ -25,7 +25,7 @@ import kotlinx.coroutines.withContext
 /**
  * Beer shop activity
  *
- * @constructor Create empty Beer shop activity
+ * @constructor  Beer shop activity
  */
 @AndroidEntryPoint
 class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewModel>() {

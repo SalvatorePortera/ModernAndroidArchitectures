@@ -81,7 +81,7 @@ class FoodViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor Create empty View holder
+     * @constructor  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -143,7 +143,7 @@ class FoodViewAdapter(
 /**
  * Food diff call back
  *
- * @constructor Create empty Food diff call back
+ * @constructor  Food diff call back
  */
 class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
     override fun areItemsTheSame(
@@ -164,7 +164,7 @@ class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
 /**
  * Food click callback
  *
- * @constructor Create empty Food click callback
+ * @constructor  Food click callback
  */
 internal interface FoodClickCallback {
     /**

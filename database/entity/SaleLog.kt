@@ -29,7 +29,7 @@ import java.time.LocalDateTime
  * @property tax
  * @property productType
  * @property createdAt
- * @constructor Create empty Sale log
+ * @constructor  Sale log
  */
 @Entity(tableName = "sale_logs")
 data class SaleLog(

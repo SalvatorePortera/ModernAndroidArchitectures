@@ -10,7 +10,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Receipt printer select mode fragment dialog
  *
- * @constructor Create empty Receipt printer select mode fragment dialog
+ * @constructor  Receipt printer select mode fragment dialog
  */
 class ReceiptPrinterSelectModeFragmentDialog :
     BaseFragmentDialog<FragmentReceiptPrinterSelectModeDialogBinding, FoodShopViewModel>() {

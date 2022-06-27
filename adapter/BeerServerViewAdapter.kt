@@ -71,7 +71,7 @@ class BeerServerViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor Create empty View holder
+     * @constructor  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewBeerserverItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -287,7 +287,7 @@ class BeerServerViewAdapter(
 /**
  * Beer server click call back
  *
- * @constructor Create empty Beer server click call back
+ * @constructor  Beer server click call back
  */
 internal interface BeerServerClickCallBack {
 //    fun onCheck(beer: CombinationBeersInfo)
@@ -299,7 +299,7 @@ internal interface BeerServerClickCallBack {
 /**
  * Beer diff call back
  *
- * @constructor Create empty Beer diff call back
+ * @constructor  Beer diff call back
  */
 class BeerDiffCallBack : DiffUtil.ItemCallback<CombinationBeersInfo>() {
     override fun areItemsTheSame(

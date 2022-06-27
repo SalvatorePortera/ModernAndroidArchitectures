@@ -19,7 +19,7 @@ import timber.log.Timber
  * Receipt generator
  *
  * @property receipt
- * @constructor Create empty Receipt generator
+ * @constructor  Receipt generator
  */
 abstract class ReceiptGenerator(private val receipt: Receipt) {
 

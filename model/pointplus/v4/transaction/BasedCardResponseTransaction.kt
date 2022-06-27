@@ -7,7 +7,7 @@ import org.simpleframework.xml.Attribute
 /**
  * Based card response transaction
  *
- * @constructor Create empty Based card response transaction
+ * @constructor  Based card response transaction
  */
 class BasedCardResponseTransaction : CommonResponseTransaction() {
     /*START from request*/

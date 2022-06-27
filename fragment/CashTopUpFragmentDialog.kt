@@ -18,7 +18,7 @@ import timber.log.Timber
 /**
  * Cash top up fragment dialog
  *
- * @constructor Create empty Cash top up fragment dialog
+ * @constructor  Cash top up fragment dialog
  */
 class CashTopUpFragmentDialog :
     BaseFragmentDialog<FragmentCashTopUpDialogBinding, FoodShopViewModel>() {

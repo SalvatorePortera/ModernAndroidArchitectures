@@ -18,7 +18,7 @@ abstract class Transactions {
 /**
  * Request transactions
  *
- * @constructor Create empty Request transactions
+ * @constructor  Request transactions
  */
 abstract class RequestTransactions : Transactions() {
 
@@ -31,7 +31,7 @@ abstract class RequestTransactions : Transactions() {
 /**
  * Response transactions
  *
- * @constructor Create empty Response transactions
+ * @constructor  Response transactions
  */
 abstract class ResponseTransactions() : Transactions() {
 
@@ -43,7 +43,7 @@ abstract class ResponseTransactions() : Transactions() {
 /**
  * Transaction
  *
- * @constructor Create empty Transaction
+ * @constructor  Transaction
  */
 abstract class Transaction
 

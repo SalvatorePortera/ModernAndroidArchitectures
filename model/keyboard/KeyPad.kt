@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_topup.view.*
  * @property value
  * @property type
  * @property background
- * @constructor Create empty Key pad
+ * @constructor  Key pad
  */
 class KeyPad constructor(
 

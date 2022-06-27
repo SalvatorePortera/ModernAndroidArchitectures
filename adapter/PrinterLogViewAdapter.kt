@@ -51,7 +51,7 @@ class PrinterLogViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor Create empty View holder
+     * @constructor  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewPrinterLogItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -94,7 +94,7 @@ class PrinterLogViewAdapter(
 /**
  * Printer log click callback
  *
- * @constructor Create empty Printer log click callback
+ * @constructor  Printer log click callback
  */
 internal interface PrinterLogClickCallback {
     fun onClickPayment()
@@ -105,7 +105,7 @@ internal interface PrinterLogClickCallback {
 /**
  * Printer log diff call back
  *
- * @constructor Create empty Printer log diff call back
+ * @constructor  Printer log diff call back
  */
 class PrinterLogDiffCallBack : DiffUtil.ItemCallback<Receipt>() {
     override fun areItemsTheSame(

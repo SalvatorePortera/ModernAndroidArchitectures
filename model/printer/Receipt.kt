@@ -31,7 +31,7 @@ import java.time.LocalDateTime
  * @property paymentMethod
  * @property isFirstPrinting
  * @property createdAt
- * @constructor Create empty Receipt
+ * @constructor  Receipt
  */
 abstract class Receipt constructor(
 

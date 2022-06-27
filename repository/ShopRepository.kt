@@ -18,7 +18,7 @@ import javax.inject.Inject
  * Shop repository
  *
  * @property apiService
- * @constructor Create empty Shop repository
+ * @constructor  Shop repository
  */
 class ShopRepository
 @Inject constructor(

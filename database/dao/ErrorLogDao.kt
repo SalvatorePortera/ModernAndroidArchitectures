@@ -7,7 +7,7 @@ import com.nereus.craftbeer.database.entity.MessageLog
 /**
  * Error log dao
  *
- * @constructor Create empty Error log dao
+ * @constructor  Error log dao
  */
 @Dao
 interface ErrorLogDao {

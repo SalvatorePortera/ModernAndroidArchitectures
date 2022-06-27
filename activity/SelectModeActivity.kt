@@ -14,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * Select mode activity
  *
- * @constructor Create empty Select mode activity
+ * @constructor  Select mode activity
  */
 @AndroidEntryPoint
 class SelectModeActivity : BaseController<ActivitySelectModeBinding, DefaultViewModel>() {

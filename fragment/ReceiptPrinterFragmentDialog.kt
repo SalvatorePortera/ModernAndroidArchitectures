@@ -20,7 +20,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Receipt printer fragment dialog
  *
- * @constructor Create empty Receipt printer fragment dialog
+ * @constructor  Receipt printer fragment dialog
  */
 class ReceiptPrinterFragmentDialog :
     BaseFragmentDialog<FragmentReceiptPrinterDialogBinding, FoodShopViewModel>() {

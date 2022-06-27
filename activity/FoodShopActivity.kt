@@ -19,7 +19,7 @@ import timber.log.Timber
 /**
  * Food shop activity
  *
- * @constructor Create empty Food shop activity
+ * @constructor  Food shop activity
  */
 @AndroidEntryPoint
 class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewModel>() {

@@ -8,7 +8,7 @@ import java.time.LocalDateTime
  *
  * @property startTime
  * @property endTime
- * @constructor Create empty Print receipt by date time model
+ * @constructor  Print receipt by date time model
  */
 data class PrintReceiptByDateTimeModel constructor(
 

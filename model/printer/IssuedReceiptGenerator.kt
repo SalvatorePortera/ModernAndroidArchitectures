@@ -20,7 +20,7 @@ import kotlin.math.roundToInt
  * Issued receipt generator
  *
  * @property receipt
- * @constructor Create empty Issued receipt generator
+ * @constructor  Issued receipt generator
  */
 open class IssuedReceiptGenerator(private val receipt: Receipt) {
 

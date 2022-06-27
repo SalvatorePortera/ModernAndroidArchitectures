@@ -19,7 +19,7 @@ import timber.log.Timber
  * @property goodsShortName
  * @property imageKey
  * @property imageUrl
- * @constructor Create empty Goods shop
+ * @constructor  Goods shop
  */
 data class GoodsShop(
     val sellingPrice: Double,
@@ -46,7 +46,7 @@ data class GoodsShop(
  * @property handlingFlag
  * @property soldOutFlag
  * @property goodsShop
- * @constructor Create empty Goods info list
+ * @constructor  Goods info list
  */
 data class GoodsInfoList(
     val id: String,

@@ -134,7 +134,7 @@ abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewMod
 
     /**
      * Connect alive socket
-     *
+     * アマゾンサーバーオンラインリクエスト
      */
     suspend fun connectAliveSocket() {
         val sharedPreference = requireActivity().getSharedPreferences(TOKEN, Context.MODE_PRIVATE)

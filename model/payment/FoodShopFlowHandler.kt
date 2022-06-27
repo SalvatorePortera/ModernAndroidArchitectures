@@ -9,7 +9,7 @@ import com.nereus.craftbeer.model.TopUpResult
  * @property isTopUpSuccess
  * @property paymentResult
  * @property topUpResult
- * @constructor Create empty Food shop flow handler
+ * @constructor  Food shop flow handler
  */
 data class FoodShopFlowHandler(
 

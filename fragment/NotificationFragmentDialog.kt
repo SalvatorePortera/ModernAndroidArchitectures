@@ -13,7 +13,7 @@ import com.nereus.craftbeer.viewmodel.DefaultViewModel
 /**
  * Notification fragment dialog
  *
- * @constructor Create empty Notification fragment dialog
+ * @constructor  Notification fragment dialog
  */
 class NotificationFragmentDialog :
     BaseFragmentDialog<FragmentNotificationBinding, DefaultViewModel>() {

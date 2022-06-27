@@ -8,7 +8,7 @@ package com.nereus.craftbeer.model
  * @property tax
  * @property amountInMl
  * @property sellingPrice
- * @constructor Create empty Beer pouring
+ * @constructor  Beer pouring
  */
 data class BeerPouring(
 

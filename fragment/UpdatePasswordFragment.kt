@@ -20,7 +20,7 @@ import com.nereus.craftbeer.viewmodel.UpdatePasswordViewModel
 /**
  * Update password fragment
  *
- * @constructor Create empty Update password fragment
+ * @constructor  Update password fragment
  */
 class UpdatePasswordFragment :
     BaseFragment<FragmentUpdatePasswordBinding, UpdatePasswordViewModel>() {

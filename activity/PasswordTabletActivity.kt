@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * Password tablet activity
  *
- * @constructor Create empty Password tablet activity
+ * @constructor  Password tablet activity
  */
 @AndroidEntryPoint
 class PasswordTabletActivity :

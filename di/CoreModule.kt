@@ -82,9 +82,16 @@ object CoreModule {
     @Retention(AnnotationRetention.BINARY)
     annotation class RetrofitXml
 
+    /**
+     * Provide core service without live data
+     *
+     * @param coreApiEventLogger
+     * @return
+     */
     @Singleton
     @RetrofitWithoutLiveDataAdapter
     @Provides
+
     fun provideCoreServiceWithoutLiveData(coreApiEventLogger: CoreApiEventLogger): Retrofit {
         val logging =
             if (BuildConfig.LOG_CORE_API_EVENT) HttpLoggingInterceptor(coreApiEventLogger) else HttpLoggingInterceptor()
@@ -102,6 +109,11 @@ object CoreModule {
             .build()
     }
 
+    /**
+     * Provide core service for error log
+     *
+     * @return
+     */
     @Singleton
     @RetrofitForErrorLogAdapter
     @Provides
@@ -119,6 +131,12 @@ object CoreModule {
             .build()
     }
 
+    /**
+     * Provide core service live data
+     *
+     * @param coreApiEventLogger
+     * @return
+     */
     @Singleton
     @RetrofitWithLiveDataAdapter
     @Provides
@@ -138,6 +156,12 @@ object CoreModule {
             .build()
     }
 
+    /**
+     * Provide point plus service
+     *
+     * @param pointPlusEventLogger
+     * @return
+     */
     @Singleton
     @RetrofitXml
     @Provides
@@ -178,6 +202,11 @@ object CoreModule {
             .build()
     }
 
+    /**
+     * Ignore all ssl errors
+     *
+     * @return
+     */
     private fun OkHttpClient.Builder.ignoreAllSSLErrors(): OkHttpClient.Builder {
         val naiveTrustManager = object : X509TrustManager {
             override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()

@@ -10,7 +10,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Topup process fragment dialog
  *
- * @constructor Create empty Topup process fragment dialog
+ * @constructor  Topup process fragment dialog
  */
 class TopupProcessFragmentDialog :
     BaseFragmentDialog<FragmentTopupProcessBinding, FoodShopViewModel>() {

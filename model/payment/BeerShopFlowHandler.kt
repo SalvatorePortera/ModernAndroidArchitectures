@@ -9,7 +9,7 @@ package com.nereus.craftbeer.model.payment
  * @property isExecuted
  * @property isBeerPouringCorrectionDone
  * @property paymentResult
- * @constructor Create empty Beer shop flow handler
+ * @constructor  Beer shop flow handler
  */
 data class BeerShopFlowHandler(
 

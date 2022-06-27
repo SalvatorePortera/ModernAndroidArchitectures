@@ -104,7 +104,7 @@ class BeerViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor Create empty View holder
+     * @constructor  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewBeersLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -391,7 +391,7 @@ class BeerViewAdapter(
 /**
  * Beer click call back
  *
- * @constructor Create empty Beer click call back
+ * @constructor  Beer click call back
  */
 internal interface BeerClickCallBack {
     fun onClick(beer: CombinationBeersInfo)

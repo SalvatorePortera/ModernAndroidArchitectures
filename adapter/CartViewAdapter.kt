@@ -64,7 +64,7 @@ class CartViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor Create empty View holder
+     * @constructor  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewSelectedItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -104,7 +104,7 @@ class CartViewAdapter(
 /**
  * Cart click callback
  *
- * @constructor Create empty Cart click callback
+ * @constructor  Cart click callback
  */
 internal interface CartClickCallback {
     fun onClickPayment()

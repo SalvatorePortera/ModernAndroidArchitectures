@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.fragment_update_id.*
 /**
  * Update id fragment
  *
- * @constructor Create empty Update id fragment
+ * @constructor  Update id fragment
  */
 class UpdateIdFragment :
     BaseFragment<FragmentUpdateIdBinding, UpdateIdViewModel>(),

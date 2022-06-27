@@ -23,7 +23,7 @@ import kotlin.math.roundToInt
 /**
  * Free price input fragment dialog
  *
- * @constructor Create empty Free price input fragment dialog
+ * @constructor  Free price input fragment dialog
  */
 class FreePriceInputFragmentDialog :
     BaseFragmentDialog<FragmentFreePriceInputDialogBinding, FoodShopViewModel>() {

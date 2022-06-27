@@ -15,7 +15,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Customer attribute fragmentdialog
  *
- * @constructor Create empty Customer attribute fragmentdialog
+ * @constructor  Customer attribute fragmentdialog
  */
 class CustomerAttributeFragmentdialog :
     BaseFragmentDialog<FragmentCustomerAttributeFragmentdialogBinding, FoodShopViewModel>() {

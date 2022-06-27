@@ -26,7 +26,7 @@ import com.nereus.craftbeer.model.CombinationGoodsInfo
  * @property sellingPrice
  * @property taxReduction
  * @property taxRate
- * @constructor Create empty Goods
+ * @constructor  Goods
  */
 @Entity(tableName = "goods")
 data class Goods(

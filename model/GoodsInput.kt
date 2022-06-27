@@ -6,7 +6,7 @@ package com.nereus.craftbeer.model
  * @property barcode
  * @property productCd
  * @property sellingPrice
- * @constructor Create empty Goods input
+ * @constructor  Goods input
  */
 data class GoodsInput(
 

@@ -7,7 +7,7 @@ package com.nereus.craftbeer.model
  * @property price
  * @property id
  * @property status
- * @constructor Create empty Food
+ * @constructor  Food
  */
 class Food(var name: String, var price: Int, var id: Int, var status: Boolean) {
 
