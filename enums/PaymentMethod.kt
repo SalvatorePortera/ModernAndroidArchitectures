@@ -10,7 +10,7 @@ import timber.log.Timber
  *
  * @property text
  * @property value
- * @constructor Create empty Payment method
+ * コンストラクタ  Payment method
  */
 enum class PaymentMethod(private val text: String, private val value: Short) {
     PAYMENT_HOUSE_MONEY(getStringResource(R.string.payment_house_money), 1),

@@ -16,9 +16,9 @@ import com.nereus.craftbeer.viewmodel.BaseViewModel
 import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
 
 /**
- * Unsync sale logs fragment
+ * 販売ログの同期を解除する
  *
- * @constructor Create empty Unsync sale logs fragment
+ * コンストラクタ UnsyncSaleLogsFragment
  */
 class UnsyncSaleLogsFragment :
     BaseFragment<FragmentUnsyncSaleLogsBinding, SettingMasterViewModel>() {

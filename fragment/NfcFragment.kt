@@ -37,7 +37,7 @@ import kotlin.jvm.Throws
 /**
  * Nfc fragment
  *
- * @constructor  Nfc fragment
+ * コンストラクタ  Nfc fragment
  */
 class NfcFragment :
     BaseFragment<ActivityReadCustomerCodeBinding, DefaultViewModel>() {
@@ -120,7 +120,7 @@ class NfcFragment :
     /**
      * Ui State
      *
-     * @constructor  Ui State
+     * コンストラクタ  Ui State
      */
     internal enum class UI_STATE {
         DISCONNECTED, READYTOCONNECT, DIRECT, CONNECTED

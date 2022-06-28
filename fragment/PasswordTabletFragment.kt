@@ -25,7 +25,7 @@ import kotlinx.coroutines.runBlocking
 /**
  * Password tablet fragment
  *
- * @constructor  Password tablet fragment
+ * コンストラクタ  Password tablet fragment
  */
 class PasswordTabletFragment :
     BaseFragment<FragmentPasswordTabletBinding, PasswordTabletViewModel>() {

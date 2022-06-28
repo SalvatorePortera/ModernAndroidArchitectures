@@ -11,7 +11,7 @@ private lateinit var context: Context
 /**
  * Nfc util
  *
- * @constructor
+ * コンストラクタ
  *
  * @param contexts
  */

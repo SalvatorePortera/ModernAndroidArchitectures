@@ -7,7 +7,7 @@ package com.nereus.craftbeer.util
  * @property status
  * @property data
  * @property message
- * @constructor Create empty Resource
+ * コンストラクタ  Resource
  */
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 

@@ -5,7 +5,7 @@ import com.nereus.craftbeer.BuildConfig
 /**
  * Card util
  *
- * @constructor Create empty Card util
+ * コンストラクタ  Card util
  */
 class CardUtil {
 

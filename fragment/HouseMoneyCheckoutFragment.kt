@@ -13,7 +13,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * House money checkout fragment
  *
- * @constructor Create empty House money checkout fragment
+ * コンストラクタ  House money checkout fragment
  */
 class HouseMoneyCheckoutFragment : BaseFragmentDialog<FragmentCheckoutBinding, FoodShopViewModel>() {
 

@@ -19,7 +19,7 @@ import timber.log.Timber
 /**
  * Food shop activity
  *
- * @constructor  Food shop activity
+ * コンストラクタ  FoodShopActivity
  */
 @AndroidEntryPoint
 class FoodShopActivity : BaseController<ActivityFoodShopBinding, FoodShopViewModel>() {

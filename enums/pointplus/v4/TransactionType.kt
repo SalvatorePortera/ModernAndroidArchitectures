@@ -6,7 +6,7 @@ import timber.log.Timber
  * Transaction type
  *
  * @property value
- * @constructor Create empty Transaction type
+ * コンストラクタ  Transaction type
  */
 enum class TransactionType(private val value: String) {
     UN_RESEND( "0"),

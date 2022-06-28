@@ -8,7 +8,7 @@ import com.nereus.craftbeer.database.entity.SaleLogWithSaleLogDetail
 /**
  * Sale log list dao
  *
- * @constructor  Sale log list dao
+ * コンストラクタ  SaleLogListDao
  */
 @Dao
 interface SaleLogListDao {

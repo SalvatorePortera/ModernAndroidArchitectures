@@ -25,7 +25,7 @@ import javax.inject.Inject
  *
  * @property apiService
  * @property errorLogDao
- * @constructor Create empty Error log repository
+ * コンストラクタ  Error log repository
  */
 class ErrorLogRepository
 @Inject constructor(

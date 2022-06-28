@@ -6,7 +6,7 @@ import javax.smartcardio.ATR
 /**
  * Ble
  *
- * @constructor Create empty Ble
+ * コンストラクタ  Ble
  */
 class BLE {
     companion object {

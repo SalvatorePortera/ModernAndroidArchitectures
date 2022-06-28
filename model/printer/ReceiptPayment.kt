@@ -8,7 +8,7 @@ import com.nereus.craftbeer.util.getStringResource
  * Receipt payment
  *
  * @property receipt
- * @constructor  Receipt payment
+ * コンストラクタ  Receipt payment
  */
 abstract class ReceiptPayment(val receipt: Receipt) {
     abstract fun build(): List<PdfLine>

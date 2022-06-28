@@ -17,7 +17,7 @@ import timber.log.Timber
 /**
  * Payment method fragment dialog
  *
- * @constructor  Payment method fragment dialog
+ * コンストラクタ  Payment method fragment dialog
  */
 class PaymentMethodFragmentDialog :
     BaseFragmentDialog<FragmentPaymentMethodBinding, FoodShopViewModel>() {

@@ -19,9 +19,9 @@ import com.nereus.craftbeer.viewmodel.UpdateIdViewModel
 import kotlinx.android.synthetic.main.fragment_update_id.*
 
 /**
- * Update id fragment
+ * IDを更新 fragment
  *
- * @constructor  Update id fragment
+ * コンストラクタ  Update id fragment
  */
 class UpdateIdFragment :
     BaseFragment<FragmentUpdateIdBinding, UpdateIdViewModel>(),
@@ -139,7 +139,7 @@ class UpdateIdFragment :
     }
 
     /**
-     * On change company code
+     * ショップコードを変更する場合
      *
      */
     private fun onChangeCompanyCode() {
@@ -148,7 +148,7 @@ class UpdateIdFragment :
     }
 
     /**
-     * On item selected
+     * 選択したアイテムについて
      *
      * @param arg0
      * @param arg1

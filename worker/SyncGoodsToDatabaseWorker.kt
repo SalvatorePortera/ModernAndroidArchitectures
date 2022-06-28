@@ -36,7 +36,7 @@ import timber.log.Timber
  * Sync goods to database worker
  *
  * @property goodsRepository
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * 設定アクティビティ
  *
- * @constructor  Setting master activity
+ * コンストラクタ  SettingMasterActivity
  */
 @AndroidEntryPoint
 class SettingMasterActivity :

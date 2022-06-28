@@ -11,7 +11,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Cash summary fragment dialog
  *
- * @constructor Create empty Cash summary fragment dialog
+ * コンストラクタ  Cash summary fragment dialog
  */
 class CashSummaryFragmentDialog :
     BaseFragmentDialog<FragmentCashSummaryBinding, FoodShopViewModel>() {

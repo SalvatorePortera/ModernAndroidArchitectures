@@ -17,7 +17,7 @@ import timber.log.Timber
  * @property amount
  * @property purchaseCost
  * @property sellingPrice
- * @constructor  Sale log detail
+ * コンストラクタ  Sale log detail
  */
 data class SaleLogDetail constructor(
 

@@ -25,7 +25,7 @@ import java.time.LocalDateTime
  * @property topUpName
  * @property paymentMethod
  * @property createdAt
- * @constructor  Top up
+ * コンストラクタ  Top up
  */
 @Entity(tableName = "top_up")
 data class TopUp(

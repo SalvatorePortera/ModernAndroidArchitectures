@@ -9,7 +9,7 @@ import retrofit2.http.*
 /**
  * Point plus api without live data
  *
- * @constructor Create empty Point plus api without live data
+ * コンストラクタ  Point plus api without live data
  */
 interface PointPlusApiWithoutLiveData {
     /**

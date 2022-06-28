@@ -134,7 +134,7 @@ data class ApiSuccessResponse<T>(
  *
  * @param T
  * @property body
- * @constructor Create empty Api error response
+ * コンストラクタ  Api error response
  */
 data class ApiErrorResponse<T>(val body: ErrorBody) : ApiResponse<T>()
 
@@ -144,7 +144,7 @@ data class ApiErrorResponse<T>(val body: ErrorBody) : ApiResponse<T>()
  * @property statusCode
  * @property message
  * @property error
- * @constructor Create empty Error body
+ * コンストラクタ  Error body
  */
 data class ErrorBody(val statusCode: Int, val message: List<String>, val error: String?)
 
@@ -154,6 +154,6 @@ data class ErrorBody(val statusCode: Int, val message: List<String>, val error: 
  * @property statusCode
  * @property message
  * @property error
- * @constructor Create empty Single message error body
+ * コンストラクタ  Single message error body
  */
 data class SingleMessageErrorBody(val statusCode: Int, val message: String, val error: String?)

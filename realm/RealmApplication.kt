@@ -20,7 +20,7 @@ import kotlin.math.floor
 /**
  * Realm application
  *
- * @constructor  Realm application
+ * コンストラクタ  Realm application
  */
 @HiltAndroidApp
 class RealmApplication : Application(), Configuration.Provider {

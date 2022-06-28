@@ -18,7 +18,7 @@ import javax.inject.Inject
  * Shop repository
  *
  * @property apiService
- * @constructor  Shop repository
+ * コンストラクタ  Shop repository
  */
 class ShopRepository
 @Inject constructor(

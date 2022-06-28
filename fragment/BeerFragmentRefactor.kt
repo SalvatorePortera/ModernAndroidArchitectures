@@ -23,7 +23,7 @@ import timber.log.Timber
 /**
  * Beer fragment refactor
  *
- * @constructor Create empty Beer fragment refactor
+ * コンストラクタ  Beer fragment refactor
  */
 class BeerFragmentRefactor :
     BaseFragment<ActivityBeerFragmentRefactorBinding, BeerShopViewModel>() {

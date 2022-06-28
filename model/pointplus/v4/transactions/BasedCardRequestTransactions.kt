@@ -9,7 +9,7 @@ import org.simpleframework.xml.Root
 /**
  * Based card request transactions
  *
- * @constructor
+ * コンストラクタ
  *
  * @param requestType
  */

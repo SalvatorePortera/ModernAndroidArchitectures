@@ -31,7 +31,7 @@ import java.time.LocalDateTime
  * @property paymentMethod
  * @property isFirstPrinting
  * @property createdAt
- * @constructor  Receipt
+ * コンストラクタ  Receipt
  */
 abstract class Receipt constructor(
 

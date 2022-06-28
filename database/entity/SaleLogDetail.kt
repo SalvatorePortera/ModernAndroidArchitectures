@@ -18,7 +18,7 @@ import com.nereus.craftbeer.model.SaleLogCreateRequest
  * @property taxRate
  * @property purchaseCost
  * @property sellingPrice
- * @constructor Create empty Sale log detail
+ * コンストラクタ  Sale log detail
  */
 @Entity(tableName = "sale_logs_detail")
 data class SaleLogDetail(

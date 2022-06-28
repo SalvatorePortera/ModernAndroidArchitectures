@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 /**
  * Payment strategy
  *
- * @constructor  Payment strategy
+ * コンストラクタ  Payment strategy
  */
 interface PaymentStrategy {
     suspend fun pay(payment: Payment) : PaymentResult
@@ -19,7 +19,7 @@ interface PaymentStrategy {
 /**
  * Payment
  *
- * @constructor  Payment
+ * コンストラクタ  Payment
  */
 abstract class Payment {
     var total: Int = 0
@@ -37,7 +37,7 @@ abstract class Payment {
  * @property balanceAfter
  * @property isSuccess
  * @property paymentMethod
- * @constructor  Payment result
+ * コンストラクタ  Payment result
  */
 open class PaymentResult(
     // Balance after payment
@@ -54,7 +54,7 @@ open class PaymentResult(
  * Failed payment result
  *
  * @property isSuccess
- * @constructor  Failed payment result
+ * コンストラクタ  Failed payment result
  */
 data class FailedPaymentResult(
     override var isSuccess: Boolean = false

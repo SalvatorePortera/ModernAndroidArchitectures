@@ -27,7 +27,7 @@ import java.lang.reflect.Type
 /**
  * Live data call adapter factory
  *
- * @constructor Create empty Live data call adapter factory
+ * コンストラクタ  Live data call adapter factory
  */
 class LiveDataCallAdapterFactory : Factory() {
     override fun get(

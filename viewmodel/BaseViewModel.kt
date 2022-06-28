@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 /**
  * ベースモデル
  *
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

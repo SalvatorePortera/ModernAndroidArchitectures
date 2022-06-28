@@ -15,7 +15,7 @@ import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
  * Unsync sale log view adapter
  *
  * @property viewModel
- * @constructor
+ * コンストラクタ
  *
  * @param context
  */
@@ -59,7 +59,7 @@ class UnsyncSaleLogViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor  View holder
+     * コンストラクタ  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewSaleLogItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -103,7 +103,7 @@ class UnsyncSaleLogViewAdapter(
 /**
  * Sa le log diff call back
  *
- * @constructor  Sa le log diff call back
+ * コンストラクタ  Sa le log diff call back
  */
 class SaLeLogDiffCallBack : DiffUtil.ItemCallback<UnsyncLog>() {
 
@@ -139,7 +139,7 @@ class SaLeLogDiffCallBack : DiffUtil.ItemCallback<UnsyncLog>() {
 /**
  * Unsync log click callback
  *
- * @constructor  Unsync log click callback
+ * コンストラクタ  Unsync log click callback
  */
 internal interface UnsyncLogClickCallback {
     fun onClick(saleLog: UnsyncLog?)

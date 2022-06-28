@@ -22,7 +22,7 @@ import kotlin.jvm.Throws
  *
  * @property pointPlusService
  * @property coreService
- * @constructor  Point plus repository
+ * コンストラクタ  Point plus repository
  */
 class PointPlusRepository
 @Inject constructor(

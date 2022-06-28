@@ -27,7 +27,7 @@ import kotlin.math.roundToInt
 /**
  * Beer pouring fragment new
  *
- * @constructor Create empty Beer pouring fragment new
+ * コンストラクタ  Beer pouring fragment new
  */
 @AndroidEntryPoint
 class BeerPouringFragmentNew :

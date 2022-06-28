@@ -25,7 +25,7 @@ import javax.inject.Inject
  *
  * @property apiService
  * @property topUpDao
- * @constructor Create empty Top up repository
+ * コンストラクタ  Top up repository
  */
 class TopUpRepository
 @Inject constructor(

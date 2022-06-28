@@ -62,7 +62,7 @@ import kotlin.math.roundToInt
  * @property pointPlusRepository
  * @property _errorLogRepository
  * @property mSocket
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

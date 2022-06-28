@@ -15,7 +15,7 @@ import java.io.OutputStreamWriter
  * @property serializer
  * @property mediaType
  * @property charset
- * @constructor Create empty Simple xml request body converter
+ * コンストラクタ  Simple xml request body converter
  */
 internal class SimpleXmlRequestBodyConverter<T>(
     private val serializer: Serializer,

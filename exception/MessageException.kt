@@ -8,7 +8,7 @@ import java.util.concurrent.Callable
  *
  * @property messagesModel
  * @property callback
- * @constructor
+ * コンストラクタ
  *
  * @param cause
  */

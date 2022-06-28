@@ -22,7 +22,7 @@ import java.util.concurrent.Callable
  * @property authRepository
  * @property savedStateHandle
  * @property _errorLogRepository
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

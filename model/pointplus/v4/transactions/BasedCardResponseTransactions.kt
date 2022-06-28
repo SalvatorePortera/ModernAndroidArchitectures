@@ -9,7 +9,7 @@ import org.simpleframework.xml.Root
 /**
  * Based card response transactions
  *
- * @constructor  Based card response transactions
+ * コンストラクタ  Based card response transactions
  */
 @Root(name = "transactions", strict = false)
 class BasedCardResponseTransactions() : ResponseTransactions() {

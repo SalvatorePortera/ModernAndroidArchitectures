@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * Update password activity
  *
- * @constructor  Update password activity
+ * コンストラクタ  UpdatePasswordActivity
  */
 @AndroidEntryPoint
 class UpdatePasswordActivity :

@@ -13,7 +13,7 @@ import com.nereus.craftbeer.database.entity.*
 /**
  * Craft beer database
  *
- * @constructor  Craft beer database
+ * コンストラクタ  CraftBeerDatabase
  */
 @Database(entities = [SaleLog::class, Goods::class, SaleLogDetail::class, TopUp::class, ErrorLog::class], version =  14, exportSchema = false)
 @TypeConverters(LocalDateTimeConverter::class)

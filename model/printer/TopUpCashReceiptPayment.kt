@@ -8,7 +8,7 @@ import com.nereus.craftbeer.util.toThousandSeparatorString
 /**
  * Top up cash receipt payment
  *
- * @constructor
+ * コンストラクタ
  *
  * @param receipt
  */
@@ -73,7 +73,7 @@ class TopUpCashReceiptPayment(receipt: Receipt) :
 /**
  * Top up default receipt payment
  *
- * @constructor
+ * コンストラクタ
  *
  * @param receipt
  */

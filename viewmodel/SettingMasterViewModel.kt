@@ -47,7 +47,7 @@ import java.util.concurrent.Callable
  * @property topUpRepository
  * @property _errorLogRepository
  * @property mSocket
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

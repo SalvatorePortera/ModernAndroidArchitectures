@@ -14,7 +14,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Food fragment
  *
- * @constructor Create empty Food fragment
+ * コンストラクタ  Food fragment
  */
 class FoodFragment : BaseFragment<ActivityFoodFragmentBinding, FoodShopViewModel>() {
 

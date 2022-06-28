@@ -7,7 +7,7 @@ package com.nereus.craftbeer.model
  * @property companyId
  * @property hardwareCode
  * @property hardwareName
- * @constructor Create empty Device
+ * コンストラクタ  Device
  */
 data class Device(
     val shopId: String,
@@ -20,7 +20,7 @@ data class Device(
  * Device list
  *
  * @property data
- * @constructor Create empty Device list
+ * コンストラクタ  Device list
  */
 data class DeviceList(
     val data: List<Device>
@@ -32,7 +32,7 @@ data class DeviceList(
  * @property hardwareCode
  * @property newPassword
  * @property password
- * @constructor Create empty Update pass request
+ * コンストラクタ  Update pass request
  */
 data class UpdatePassRequest(
     val hardwareCode: String,

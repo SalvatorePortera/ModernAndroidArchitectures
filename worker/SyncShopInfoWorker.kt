@@ -34,7 +34,7 @@ import timber.log.Timber
  * Sync shop info worker
  *
  * @property shopRepository
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

@@ -35,7 +35,7 @@ import timber.log.Timber
  * Printer worker
  *
  * @property shopRepository
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

@@ -9,7 +9,7 @@ import com.nereus.craftbeer.R
 /**
  * Cart view holder
  *
- * @constructor
+ * コンストラクタ
  *
  * @param itemView
  */

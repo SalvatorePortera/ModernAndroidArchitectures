@@ -11,7 +11,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Goods input fragment
  *
- * @constructor Create empty Goods input fragment
+ * コンストラクタ  Goods input fragment
  */
 class GoodsInputFragment : BaseFragmentDialog<FragmentGoodsInputBinding, FoodShopViewModel>() {
 

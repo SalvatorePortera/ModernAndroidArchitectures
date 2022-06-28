@@ -20,7 +20,7 @@ import java.time.LocalDateTime
  * @property logName
  * @property saleLog
  * @property topUp
- * @constructor Create empty Unsync log
+ * コンストラクタ  Unsync log
  */
 data class UnsyncLog constructor(
 

@@ -13,7 +13,7 @@ import timber.log.Timber
  * Sale receipt generator
  *
  * @property receipt
- * @constructor  Sale receipt generator
+ * コンストラクタ  Sale receipt generator
  */
 class SaleReceiptGenerator(val receipt: SaleReceipt) : ReceiptGenerator(receipt = receipt) {
     override fun getCanvasHeight(): Int {

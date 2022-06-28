@@ -17,7 +17,7 @@ import kotlinx.coroutines.runBlocking
 /**
  * Splash fragment
  *
- * @constructor Create empty Splash fragment
+ * コンストラクタ  Splash fragment
  */
 class SplashFragment :
     BaseFragment<FragmentSplashBinding, DefaultViewModel>() {

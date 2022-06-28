@@ -27,7 +27,7 @@ import java.lang.Exception
 /**
  * Select mode fragment
  *
- * @constructor  Select mode fragment
+ * コンストラクタ  Select mode fragment
  */
 class SelectModeFragment :
     BaseFragment<FragmentSelectModeBinding, DefaultViewModel>() {

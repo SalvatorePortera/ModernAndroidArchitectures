@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * Update id activity
  *
- * @constructor  Update id activity
+ * コンストラクタ  UpdateIdActivity
  */
 @AndroidEntryPoint
 class UpdateIdActivity : BaseController<ActivityUpdateIdBinding, UpdateIdViewModel>() {

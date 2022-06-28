@@ -24,7 +24,7 @@ import java.io.File
 /**
  * More info fragment
  *
- * @constructor  More info fragment
+ * コンストラクタ  More info fragment
  */
 class MoreInfoFragment : BaseFragment<ActivityMoreInfoFragmentBinding, BeerShopViewModel>() {
 

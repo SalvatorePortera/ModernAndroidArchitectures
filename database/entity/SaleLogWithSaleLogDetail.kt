@@ -7,7 +7,7 @@ import androidx.room.*
  *
  * @property saleLog
  * @property saleList
- * @constructor  Sale log with sale log detail
+ * コンストラクタ  Sale log with sale log detail
  */
 data class SaleLogWithSaleLogDetail(
     @Embedded val saleLog: SaleLog,

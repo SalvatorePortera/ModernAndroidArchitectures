@@ -11,7 +11,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Top up complete fragment
  *
- * @constructor Create empty Top up complete fragment
+ * コンストラクタ TopUpCompleteFragment
  */
 class TopUpCompleteFragment :
     BaseFragmentDialog<FragmentTopUpCompleteBinding, FoodShopViewModel>() {

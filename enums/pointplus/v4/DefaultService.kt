@@ -6,7 +6,7 @@ import timber.log.Timber
  * Default service
  *
  * @property value
- * @constructor Create empty Default service
+ * コンストラクタ  Default service
  */
 enum class DefaultService(private val value: Int) {
     APPLY( 1),

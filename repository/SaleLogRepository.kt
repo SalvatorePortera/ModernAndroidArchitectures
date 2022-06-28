@@ -31,7 +31,7 @@ import javax.inject.Inject
  * @property saleLogDao
  * @property saleLogDetailDao
  * @property saleLogListDao
- * @constructor  Sale log repository
+ * コンストラクタ  Sale log repository
  */
 class SaleLogRepository
 @Inject constructor(

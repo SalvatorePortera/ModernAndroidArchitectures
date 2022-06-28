@@ -5,7 +5,7 @@ package com.nereus.craftbeer.model
  *
  * @property hardwareCode
  * @property password
- * @constructor  Login request
+ * コンストラクタ  Login request
  */
 data class LoginRequest(
     val hardwareCode: String,
@@ -20,7 +20,7 @@ data class LoginRequest(
  * @property shopId
  * @property companyId
  * @property hardwareName
- * @constructor  Login response
+ * コンストラクタ  Login response
  */
 data class LoginResponse(
     val id: String,

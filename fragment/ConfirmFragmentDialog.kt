@@ -12,7 +12,7 @@ import com.nereus.craftbeer.viewmodel.DefaultViewModel
 /**
  * Confirm fragment dialog
  *
- * @constructor  Confirm fragment dialog
+ * コンストラクタ  Confirm fragment dialog
  */
 class ConfirmFragmentDialog :
     BaseFragmentDialog<FragmentConfirmDialogBinding, DefaultViewModel>() {

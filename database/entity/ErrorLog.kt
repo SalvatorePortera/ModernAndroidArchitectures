@@ -15,7 +15,7 @@ import java.time.LocalDateTime
  * @property deviceCode
  * @property message
  * @property occurredAt
- * @constructor Create empty Error log
+ * コンストラクタ  Error log
  */
 @Entity(tableName = "error_logs")
 data class ErrorLog(

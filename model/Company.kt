@@ -10,7 +10,7 @@ import com.nereus.craftbeer.util.getShopInfoPref
  * @property id
  * @property companyName
  * @property companyCode
- * @constructor Create empty Company
+ * コンストラクタ  Company
  */
 data class Company constructor(
 

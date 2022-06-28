@@ -18,7 +18,7 @@ abstract class Transactions {
 /**
  * Request transactions
  *
- * @constructor  Request transactions
+ * コンストラクタ  Request transactions
  */
 abstract class RequestTransactions : Transactions() {
 
@@ -31,7 +31,7 @@ abstract class RequestTransactions : Transactions() {
 /**
  * Response transactions
  *
- * @constructor  Response transactions
+ * コンストラクタ  Response transactions
  */
 abstract class ResponseTransactions() : Transactions() {
 
@@ -43,7 +43,7 @@ abstract class ResponseTransactions() : Transactions() {
 /**
  * Transaction
  *
- * @constructor  Transaction
+ * コンストラクタ  Transaction
  */
 abstract class Transaction
 

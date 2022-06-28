@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  *
  * @param R
  * @property responseType
- * @constructor Create empty Live data call adapter
+ * コンストラクタ  Live data call adapter
  */
 class LiveDataCallAdapter<R>(private val responseType: Type) :
     CallAdapter<R, LiveData<ApiResponse<R>>> {

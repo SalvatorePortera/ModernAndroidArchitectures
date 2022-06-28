@@ -17,7 +17,7 @@ import kotlin.jvm.Throws
 /**
  * Point plus payment strategy
  *
- * @constructor  Point plus payment strategy
+ * コンストラクタ  Point plus payment strategy
  */
 class PointPlusPaymentStrategy : PaymentStrategy {
     /**
@@ -94,7 +94,7 @@ class PointPlusPaymentStrategy : PaymentStrategy {
  * @property cardAuthInfo
  * @property repository
  * @property receivedAmount
- * @constructor  E money payment
+ * コンストラクタ  E money payment
  */
 data class EMoneyPayment(
     var pointPlusId: String,

@@ -48,7 +48,7 @@ var colorList = ArrayList<String>()
  * Beer view adapter
  *
  * @property viewModel
- * @constructor
+ * コンストラクタ
  *
  * @param context
  */
@@ -104,7 +104,7 @@ class BeerViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor  View holder
+     * コンストラクタ  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewBeersLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -391,7 +391,7 @@ class BeerViewAdapter(
 /**
  * Beer click call back
  *
- * @constructor  Beer click call back
+ * コンストラクタ  BeerClickCallBack
  */
 internal interface BeerClickCallBack {
     fun onClick(beer: CombinationBeersInfo)

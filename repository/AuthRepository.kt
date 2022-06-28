@@ -21,7 +21,7 @@ import javax.inject.Inject
  *
  * @property apiService
  * @property coreApiWithoutLiveData
- * @constructor Create empty Auth repository
+ * コンストラクタ  Auth repository
  */
 class AuthRepository @Inject constructor(
 

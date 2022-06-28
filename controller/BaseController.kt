@@ -37,7 +37,7 @@ import timber.log.Timber
  *
  * @param TBinding
  * @param TViewModel
- * @constructor Create empty Base controller
+ * コンストラクタ BaseController
  */
 abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewModel>() :
     AppCompatActivity() {

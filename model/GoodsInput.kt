@@ -6,7 +6,7 @@ package com.nereus.craftbeer.model
  * @property barcode
  * @property productCd
  * @property sellingPrice
- * @constructor  Goods input
+ * コンストラクタ  Goods input
  */
 data class GoodsInput(
 

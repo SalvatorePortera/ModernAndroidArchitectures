@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 /**
  * Splash activity
  *
- * @constructor  Splash activity
+ * コンストラクタ  SplashActivity
  */
 @AndroidEntryPoint
 class SplashActivity : BaseController<ActivitySplashBinding, DefaultViewModel>() {

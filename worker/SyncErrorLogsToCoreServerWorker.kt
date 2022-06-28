@@ -37,7 +37,7 @@ import timber.log.Timber
  * Sync error logs to core server worker
  *
  * @property errorLogRepository
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

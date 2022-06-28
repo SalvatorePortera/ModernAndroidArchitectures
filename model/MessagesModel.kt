@@ -9,7 +9,7 @@ import com.nereus.craftbeer.util.getStringResource
 /**
  * Messages model
  *
- * @constructor Create empty Messages model
+ * コンストラクタ  Messages model
  */
 class MessagesModel {
     private var tabletMessages = mutableListOf<String>()

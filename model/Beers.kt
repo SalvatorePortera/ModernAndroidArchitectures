@@ -32,7 +32,7 @@ import com.nereus.craftbeer.database.entity.SaleLogDetail
  * @property sellingPrice
  * @property colour
  * @property tapBeerShops
- * @constructor Create empty Tap beer
+ * コンストラクタ  Tap beer
  */
 data class TapBeer(
     val id: String,

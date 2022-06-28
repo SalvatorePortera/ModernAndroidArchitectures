@@ -10,7 +10,7 @@ import timber.log.Timber
  *
  * @property text
  * @property value
- * @constructor Create empty Gender
+ * コンストラクタ  Gender
  */
 enum class Gender(private val text: String, private val value: Short) {
     MALE(getStringResource(R.string.gender_male), 1),

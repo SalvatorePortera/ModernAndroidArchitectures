@@ -16,7 +16,7 @@ import java.time.LocalDateTime
  * @property deviceCode
  * @property message
  * @property eventType
- * @constructor Create empty Message log
+ * コンストラクタ  Message log
  */
 @Entity(tableName = "message_logs")
 data class MessageLog(

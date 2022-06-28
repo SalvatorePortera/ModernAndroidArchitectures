@@ -12,7 +12,7 @@ import com.seikoinstruments.sdk.thermalprinter.printerenum.*
  * @property isMultiplePrinting
  * @property isIssued
  * @property isTopUp
- * @constructor  Printer response
+ * コンストラクタ  Printer response
  */
 data class PrinterResponse(
 

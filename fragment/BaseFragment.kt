@@ -33,7 +33,7 @@ import kotlinx.coroutines.withContext
  *
  * @param TBinding
  * @param TViewModel
- * @constructor Create empty Base fragment
+ * コンストラクタ  Base fragment
  */
 abstract class BaseFragment<TBinding : ViewDataBinding, TViewModel : BaseViewModel> :
     Fragment() {

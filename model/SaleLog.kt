@@ -25,7 +25,7 @@ import java.time.LocalDateTime
  * @property createdAt
  * @property receiptCode
  * @property saleLogDetails
- * @constructor Create empty Sale log
+ * コンストラクタ  Sale log
  */
 data class SaleLog constructor(
 

@@ -30,7 +30,7 @@ import timber.log.Timber
  * Beer server view adapter
  *
  * @property viewModel
- * @constructor
+ * コンストラクタ
  *
  * @param context
  */
@@ -71,7 +71,7 @@ class BeerServerViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor  View holder
+     * コンストラクタ  ViewHolder
      */
     class ViewHolder private constructor(val binding: RecyclerviewBeerserverItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -287,7 +287,7 @@ class BeerServerViewAdapter(
 /**
  * Beer server click call back
  *
- * @constructor  Beer server click call back
+ * コンストラクタ  BeerServerClickCallBack
  */
 internal interface BeerServerClickCallBack {
 //    fun onCheck(beer: CombinationBeersInfo)
@@ -299,7 +299,7 @@ internal interface BeerServerClickCallBack {
 /**
  * Beer diff call back
  *
- * @constructor  Beer diff call back
+ * コンストラクタ  BeerDiffCallBack
  */
 class BeerDiffCallBack : DiffUtil.ItemCallback<CombinationBeersInfo>() {
     override fun areItemsTheSame(

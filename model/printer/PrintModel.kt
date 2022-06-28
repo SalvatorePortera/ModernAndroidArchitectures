@@ -13,7 +13,7 @@ import com.seikoinstruments.sdk.thermalprinter.printerenum.*
  * @property reverse
  * @property font
  * @property scale
- * @constructor  Print model
+ * コンストラクタ  Print model
  */
 data class PrintModel(
 

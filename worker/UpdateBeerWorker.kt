@@ -34,7 +34,7 @@ import java.io.File
 /**
  * Update beer worker
  *
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

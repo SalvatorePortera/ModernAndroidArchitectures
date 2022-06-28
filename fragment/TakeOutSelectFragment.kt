@@ -14,7 +14,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Take out select fragment
  *
- * @constructor Create empty Take out select fragment
+ * コンストラクタ  Take out select fragment
  */
 class TakeOutSelectFragment :
     BaseFragmentDialog<FragmentTakeOutSelectBinding, FoodShopViewModel>() {

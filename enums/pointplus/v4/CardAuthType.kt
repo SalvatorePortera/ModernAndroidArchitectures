@@ -10,7 +10,7 @@ import timber.log.Timber
  *
  * @property text
  * @property value
- * @constructor Create empty Card auth type
+ * コンストラクタ  Card auth type
  */
 enum class CardAuthType(private val text: String, private val value: Int) {
     JIS1(getStringResource(R.string.card_auth_jis1), 1),

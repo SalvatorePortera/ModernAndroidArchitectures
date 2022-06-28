@@ -8,7 +8,7 @@ package com.nereus.craftbeer.model
  * @property deviceCode
  * @property message
  * @property eventType
- * @constructor  Log create request
+ * コンストラクタ  Log create request
  */
 data class LogCreateRequest(
     val eventTime: String,

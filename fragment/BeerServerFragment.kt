@@ -16,7 +16,7 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 /**
  * Beer server fragment
  *
- * @constructor  Beer server fragment
+ * コンストラクタ  Beer server fragment
  */
 class BeerServerFragment : BaseFragment<ActivityBeerServerFragmentBinding, SettingMasterViewModel>() {
 

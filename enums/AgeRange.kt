@@ -10,7 +10,7 @@ import timber.log.Timber
  *
  * @property text
  * @property value
- * @constructor Create empty Age range
+ * コンストラクタ  Age range
  */
 enum class AgeRange(private val text: String, private val value: Short) {
     AGE_10(getStringResource(R.string.age_10), 1),

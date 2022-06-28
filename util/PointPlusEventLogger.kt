@@ -14,7 +14,7 @@ import java.lang.Exception
  * Point plus event logger
  *
  * @property errorLogRepository
- * @constructor Create empty Point plus event logger
+ * コンストラクタ  Point plus event logger
  */
 class PointPlusEventLogger(private val errorLogRepository: ErrorLogRepository) : HttpLoggingInterceptor.Logger {
     private val KEYWORDS = listOf("request", "response")

@@ -52,7 +52,7 @@ import kotlin.math.roundToInt
  * @property pointPlusRepository
  * @property shopRepository
  * @property _errorLogRepository
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

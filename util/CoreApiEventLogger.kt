@@ -14,7 +14,7 @@ import java.lang.Exception
  * Core api event logger
  *
  * @property errorLogRepository
- * @constructor Create empty Core api event logger
+ * コンストラクタ  Core api event logger
  */
 class CoreApiEventLogger(private val errorLogRepository: ErrorLogRepository) : HttpLoggingInterceptor.Logger {
     private val KEYWORDS = listOf("{","-->","<--")

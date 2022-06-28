@@ -19,7 +19,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Check balance fragment dialog
  *
- * @constructor Create empty Check balance fragment dialog
+ * コンストラクタ  Check balance fragment dialog
  */
 class CheckBalanceFragmentDialog :
     BaseFragmentDialog<FragmentCheckBalanceDialogBinding, FoodShopViewModel>() {

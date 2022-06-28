@@ -11,7 +11,7 @@ import com.nereus.craftbeer.util.getStringResource
  *
  * @property tabletMessageId
  * @property coreMessageId
- * @constructor Create empty Message log code
+ * コンストラクタ  Message log code
  */
 enum class MessageLogCode(
     @StringRes private val tabletMessageId: Int?,

@@ -12,7 +12,7 @@ import com.nereus.craftbeer.constant.EMPTY_STRING
  * @property phone
  * @property postalCode
  * @property address
- * @constructor Create empty Shop
+ * コンストラクタ  Shop
  */
 data class Shop(
 

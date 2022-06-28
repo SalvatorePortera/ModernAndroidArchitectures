@@ -19,7 +19,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
  * Food view adapter
  *
  * @property viewModel
- * @constructor
+ * コンストラクタ
  *
  * @param context
  */
@@ -81,7 +81,7 @@ class FoodViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor  View holder
+     * コンストラクタ  View holder
      */
     class ViewHolder private constructor(val binding: RecyclerviewItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -143,7 +143,7 @@ class FoodViewAdapter(
 /**
  * Food diff call back
  *
- * @constructor  Food diff call back
+ * コンストラクタ  Food diff call back
  */
 class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
     override fun areItemsTheSame(
@@ -164,7 +164,7 @@ class FoodDiffCallBack : DiffUtil.ItemCallback<CombinationGoodsInfo>() {
 /**
  * Food click callback
  *
- * @constructor  Food click callback
+ * コンストラクタ  Food click callback
  */
 internal interface FoodClickCallback {
     /**

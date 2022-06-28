@@ -7,7 +7,7 @@ package com.nereus.craftbeer.model
  * @property pointPlusId
  * @property lastUpdateDeviceId
  * @property isLocked
- * @constructor Create empty Lock card status
+ * コンストラクタ  Lock card status
  */
 data class LockCardStatus constructor(
 

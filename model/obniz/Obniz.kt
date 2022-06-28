@@ -4,7 +4,7 @@ package com.nereus.craftbeer.model.obniz
  * Obniz data
  *
  * @property data
- * @constructor  Obniz data
+ * コンストラクタ  Obniz data
  */
 data class ObnizData(
     val data: List<ObnizInfo>
@@ -24,7 +24,7 @@ data class ObnizData(
  * @property shopId
  * @property companyId
  * @property createdAt
- * @constructor  Obniz info
+ * コンストラクタ  Obniz info
  */
 data class ObnizInfo(
     val id: String,

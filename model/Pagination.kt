@@ -6,7 +6,7 @@ import com.nereus.craftbeer.constant.DEFAULT_API_PAGE
 /**
  * Pagination
  *
- * @constructor Create empty Pagination
+ * コンストラクタ  Pagination
  */
 abstract class Pagination {
 

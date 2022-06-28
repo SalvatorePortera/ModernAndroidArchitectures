@@ -18,9 +18,9 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.UpdatePasswordViewModel
 
 /**
- * Update password fragment
+ * パスワードを更新する
  *
- * @constructor  Update password fragment
+ * コンストラクタ  UpdatePasswordFragment
  */
 class UpdatePasswordFragment :
     BaseFragment<FragmentUpdatePasswordBinding, UpdatePasswordViewModel>() {

@@ -16,7 +16,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
  * Cart view adapter
  *
  * @property viewModel
- * @constructor
+ * コンストラクタ
  *
  * @param context
  */
@@ -64,7 +64,7 @@ class CartViewAdapter(
      * View holder
      *
      * @property binding
-     * @constructor  View holder
+     * コンストラクタ  ViewHolder
      */
     class ViewHolder private constructor(val binding: RecyclerviewSelectedItemLayoutBinding) :
         RecyclerView.ViewHolder(
@@ -104,7 +104,7 @@ class CartViewAdapter(
 /**
  * Cart click callback
  *
- * @constructor  Cart click callback
+ * コンストラクタ  Cart click callback
  */
 internal interface CartClickCallback {
     fun onClickPayment()

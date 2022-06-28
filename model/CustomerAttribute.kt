@@ -15,7 +15,7 @@ import com.nereus.craftbeer.util.getStringResource
  * @property gender
  * @property paymentMethod
  * @property isTakeAway
- * @constructor  Customer attribute
+ * コンストラクタ  Customer attribute
  */
 data class CustomerAttribute(
     var ageRange: Short? = AgeRange.AGE_20.getValue(),

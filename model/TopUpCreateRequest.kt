@@ -16,7 +16,7 @@ import com.nereus.craftbeer.database.entity.TopUp
  * @property paymentMethod
  * @property createdAt
  * @property topUp
- * @constructor Create empty Top up create request
+ * コンストラクタ  Top up create request
  */
 data class TopUpCreateRequest(
 

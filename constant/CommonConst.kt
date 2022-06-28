@@ -3,7 +3,7 @@ package com.nereus.craftbeer.constant
 /**
  * Common const
  *
- * @constructor  Common const
+ * コンストラクタ  Common const
  */
 interface CommonConst {
     companion object {

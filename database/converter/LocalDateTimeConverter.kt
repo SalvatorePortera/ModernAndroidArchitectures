@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 /**
  * Local date time converter
  *
- * @constructor Create empty Local date time converter
+ * コンストラクタ LocalDateTimeConverter
  */
 class LocalDateTimeConverter {
     /**

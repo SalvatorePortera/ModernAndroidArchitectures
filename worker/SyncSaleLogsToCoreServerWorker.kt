@@ -37,7 +37,7 @@ import timber.log.Timber
  *
  * @property saleLogRepository
  * @property topupRepository
- * @constructor
+ * コンストラクタ
  *
  * @param ctx
  * @param params

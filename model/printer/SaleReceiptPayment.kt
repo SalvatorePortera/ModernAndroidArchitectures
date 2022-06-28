@@ -8,7 +8,7 @@ import com.nereus.craftbeer.util.toThousandSeparatorString
 /**
  * Point plus receipt payment
  *
- * @constructor
+ * コンストラクタ
  *
  * @param receipt
  */
@@ -52,7 +52,7 @@ class PointPlusReceiptPayment(receipt: Receipt) :
 /**
  * Cash receipt payment
  *
- * @constructor
+ * コンストラクタ
  *
  * @param receipt
  */
@@ -88,7 +88,7 @@ class CashReceiptPayment(receipt: Receipt) :
 /**
  * Default receipt payment
  *
- * @constructor
+ * コンストラクタ
  *
  * @param receipt
  */

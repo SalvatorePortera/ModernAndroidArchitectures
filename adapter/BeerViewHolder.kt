@@ -11,7 +11,7 @@ import com.nereus.craftbeer.R
 /**
  * Beer view holder
  *
- * @constructor
+ * コンストラクタ
  *
  * @param itemView
  */

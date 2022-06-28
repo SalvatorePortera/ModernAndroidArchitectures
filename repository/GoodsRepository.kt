@@ -25,7 +25,7 @@ import javax.inject.Inject
  *
  * @property apiService
  * @property goodsDao
- * @constructor  Goods repository
+ * コンストラクタ  Goods repository
  */
 class GoodsRepository @Inject constructor(
     private val apiService: CoreApiWithoutLiveData,

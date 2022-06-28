@@ -20,7 +20,7 @@ import java.util.concurrent.Callable
  * @property shopRepository
  * @property savedStateHandle
  * @property _errorLogRepository
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

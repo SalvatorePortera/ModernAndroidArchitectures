@@ -21,7 +21,7 @@ import java.util.*
 /**
  * Receipt printer by date time fragment dialog
  *
- * @constructor Create empty Receipt printer by date time fragment dialog
+ * コンストラクタ  Receipt printer by date time fragment dialog
  */
 class ReceiptPrinterByDateTimeFragmentDialog :
     BaseFragmentDialog<FragmentReceiptPrinterByDateTimeDialogBinding, FoodShopViewModel>() {

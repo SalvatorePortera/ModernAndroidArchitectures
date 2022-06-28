@@ -10,7 +10,7 @@ import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 /**
  * Checkout complete fragment
  *
- * @constructor Create empty Checkout complete fragment
+ * コンストラクタ  Checkout complete fragment
  */
 class CheckoutCompleteFragment :
     BaseFragmentDialog<FragmentCheckoutCompleteBinding, FoodShopViewModel>() {

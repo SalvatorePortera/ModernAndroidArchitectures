@@ -11,7 +11,7 @@ import timber.log.Timber
  * Pdf line
  *
  * @property contents
- * @constructor  Pdf line
+ * コンストラクタ  Pdf line
  */
 data class PdfLine(
     var contents: MutableList<PdfPrintModel> = ArrayList(XAxisPosition.values().size)

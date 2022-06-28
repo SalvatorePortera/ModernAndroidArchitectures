@@ -8,7 +8,7 @@ import com.nereus.craftbeer.repository.ErrorLogRepository
  * デフォルトのビューモデル
  *
  * @property _errorLogRepository
- * @constructor
+ * コンストラクタ
  *
  * @param application
  */

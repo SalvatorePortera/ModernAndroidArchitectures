@@ -9,7 +9,7 @@ import com.nereus.craftbeer.util.toThousandSeparatorString
  * Top up receipt generator
  *
  * @property receipt
- * @constructor  Top up receipt generator
+ * コンストラクタ  Top up receipt generator
  */
 class TopUpReceiptGenerator(val receipt: TopUpReceipt) : ReceiptGenerator(receipt = receipt) {
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 /**
  * Endless recycler view scroll listener
  *
- * @constructor Create empty Endless recycler view scroll listener
+ * コンストラクタ  Endless recycler view scroll listener
  */
 abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener {
     // The minimum amount of items to have below your current scroll position

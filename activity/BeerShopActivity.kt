@@ -23,9 +23,9 @@ import timber.log.Timber
 import kotlinx.coroutines.withContext
 
 /**
- * Beer shop activity
+ * ビールショップのリストを見る
  *
- * @constructor  Beer shop activity
+ * コンストラクタ  BeerShopActivity
  */
 @AndroidEntryPoint
 class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewModel>() {
@@ -35,7 +35,7 @@ class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewMod
     override val viewModel: BeerShopViewModel by viewModels()
 
     /**
-     * Get layout
+     * 設定レイアウト
      *
      * @return
      */
@@ -44,7 +44,7 @@ class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewMod
     }
 
     /**
-     * On create
+     * onCreate
      *
      * @param savedInstanceState
      */

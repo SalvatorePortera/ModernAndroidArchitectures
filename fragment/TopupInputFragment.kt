@@ -17,7 +17,7 @@ import java.math.BigInteger
 /**
  * Topup input fragment
  *
- * @constructor  Topup input fragment
+ * コンストラクタ  Topup input fragment
  */
 class TopupInputFragment : BaseFragmentDialog<FragmentTopupBinding, FoodShopViewModel>() {
 

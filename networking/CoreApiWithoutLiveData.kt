@@ -13,7 +13,7 @@ import retrofit2.http.*
 /**
  * Core api without live data
  *
- * @constructor Create empty Core api without live data
+ * コンストラクタ  Core api without live data
  */
 interface CoreApiWithoutLiveData {
     // Login for devices

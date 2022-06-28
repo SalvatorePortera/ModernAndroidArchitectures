@@ -5,7 +5,7 @@ import com.nereus.craftbeer.enums.PaymentMethod
 /**
  * Cash payment strategy
  *
- * @constructor  Cash payment strategy
+ * コンストラクタ  Cash payment strategy
  */
 class CashPaymentStrategy : PaymentStrategy {
 
@@ -36,7 +36,7 @@ class CashPaymentStrategy : PaymentStrategy {
  * Cash payment
  *
  * @property receivedCash
- * @constructor  Cash payment
+ * コンストラクタ  Cash payment
  */
 data class CashPayment(
     var receivedCash: Int

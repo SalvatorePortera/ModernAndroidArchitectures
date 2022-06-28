@@ -13,7 +13,7 @@ import retrofit2.http.*
 /**
  * Core api for logger
  *
- * @constructor Create empty Core api for logger
+ * コンストラクタ  Core api for logger
  */
 interface CoreApiForLogger {
 

@@ -16,7 +16,7 @@ import com.nereus.craftbeer.database.entity.SaleLog
  * @property createdAt
  * @property saleLog
  * @property takeAway
- * @constructor Create empty Sale log create request
+ * コンストラクタ  Sale log create request
  */
 data class SaleLogCreateRequest(
 

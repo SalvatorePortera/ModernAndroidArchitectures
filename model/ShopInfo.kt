@@ -23,7 +23,7 @@ import java.time.LocalDateTime
  * @property beerPouringErrorCorrectionValue
  * @property createAt
  * @property timestamp
- * @constructor Create empty Shop info
+ * コンストラクタ  Shop info
  */
 data class ShopInfo constructor(
 

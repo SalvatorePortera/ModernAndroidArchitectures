@@ -8,9 +8,9 @@ import com.nereus.craftbeer.util.setOnClickDebounce
 import com.nereus.craftbeer.viewmodel.FoodShopViewModel
 
 /**
- * Topup process fragment dialog
+ * 
  *
- * @constructor  Topup process fragment dialog
+ * コンストラクタ  TopupProcessFragmentDialog
  */
 class TopupProcessFragmentDialog :
     BaseFragmentDialog<FragmentTopupProcessBinding, FoodShopViewModel>() {

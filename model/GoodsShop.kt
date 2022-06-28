@@ -19,7 +19,7 @@ import timber.log.Timber
  * @property goodsShortName
  * @property imageKey
  * @property imageUrl
- * @constructor  Goods shop
+ * コンストラクタ  Goods shop
  */
 data class GoodsShop(
     val sellingPrice: Double,
@@ -46,7 +46,7 @@ data class GoodsShop(
  * @property handlingFlag
  * @property soldOutFlag
  * @property goodsShop
- * @constructor  Goods info list
+ * コンストラクタ  Goods info list
  */
 data class GoodsInfoList(
     val id: String,

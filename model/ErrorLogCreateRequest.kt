@@ -8,7 +8,7 @@ package com.nereus.craftbeer.model
  * @property deviceCode
  * @property message
  * @property occurredAt
- * @constructor Create empty Error log create request
+ * コンストラクタ  Error log create request
  */
 data class ErrorLogCreateRequest(
     val errorCode: String,

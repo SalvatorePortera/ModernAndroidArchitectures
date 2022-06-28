@@ -28,7 +28,7 @@ import java.time.LocalDateTime
  * @property balanceAfter
  * @property paymentMethod
  * @property createdAt
- * @constructor Create empty Top up
+ * コンストラクタ  Top up
  */
 data class TopUp(
 
