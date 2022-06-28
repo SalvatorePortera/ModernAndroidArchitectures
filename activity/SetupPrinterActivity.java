@@ -128,238 +128,63 @@ public class SetupPrinterActivity extends FragmentActivity
     private static final int REQUEST_CODE_REGISTER_OPTION_FONT = 9;
 
     // Dialog ID
-    /**
-     * connect
-     */
     public static final int DIALOG_SELECT_PRINTER_MODEL = 1;
-    /**
-     * sendText
-     */
     public static final int DIALOG_INPUT_TEXT = 2;
-    /**
-     * sendBinary
-     */
     public static final int DIALOG_INPUT_BINARY = 3;
-    /**
-     * getPrinterResponse
-     */
     public static final int DIALOG_SELECT_PRINTER_RESPONSE = 4;
-    /**
-     * registerLogo(mobile)
-     */
     public static final int DIALOG_REGISTER_LOGO_ID1 = 5;
-    /**
-     * registerLogo(pos)
-     */
     public static final int DIALOG_REGISTER_LOGO_ID2 = 6;
-    /**
-     * unregisterLogo(mobile)
-     */
     public static final int DIALOG_UNREGISTER_LOGO_ID1 = 7;
-    /**
-     * unregisterLogo(pos)
-     */
     public static final int DIALOG_UNREGISTER_LOGO_ID2 = 8;
-    /**
-     * registerStyleSheet
-     */
     public static final int DIALOG_REGISTER_STYLE_SHEET_NO = 9;
-    /**
-     * unregisterStyleSheet
-     */
     public static final int DIALOG_UNREGISTER_STYLE_SHEET_NO = 10;
-    /**
-     * sendTextEx
-     */
     public static final int DIALOG_INPUT_TEXT_EX = 11;
-    /**
-     * printBarcode
-     */
     public static final int DIALOG_PRINT_BARCODE = 12;
-    /**
-     * printPDF417
-     */
     public static final int DIALOG_PRINT_PDF417 = 13;
-    /**
-     * printQRcode
-     */
     public static final int DIALOG_PRINT_QRCODE = 14;
-    /**
-     * printLogo
-     */
     public static final int DIALOG_CUT_PAPER = 15;
-    /**
-     * printLogo
-     */
     public static final int DIALOG_OPEN_DRAWER = 16;
-    /**
-     * buzzer
-     */
     public static final int DIALOG_BUZZER = 17;
-    /**
-     * externalBuzzer
-     */
     public static final int DIALOG_EXTERNAL_BUZZER = 18;
-    /**
-     * printLogo(mobile)
-     */
     public static final int DIALOG_PRINT_LOGO1 = 19;
-    /**
-     * printLogo(pos)
-     */
     public static final int DIALOG_PRINT_LOGO2 = 20;
-    /**
-     * sendDataFile
-     */
     public static final int DIALOG_SEND_DATA_FILE = 21;
-    /**
-     * printDataMatrix
-     */
     public static final int DIALOG_PRINT_DATAMATRIX = 22;
-    /**
-     * printMaxiCode
-     */
     public static final int DIALOG_PRINT_MAXICODE = 23;
-    /**
-     * printGS1DatabarStacked
-     */
     public static final int DIALOG_PRINT_GS1STACKED = 24;
-    /**
-     * printGS1DatabarStackedOmnidirectional
-     */
     public static final int DIALOG_PRINT_GS1STACKEDOMNIDIRECTIONAL = 25;
-    /**
-     * printGS1DatabarExpandedStacked
-     */
     public static final int DIALOG_PRINT_GS1EXPANDEDSTACKED = 26;
-    /**
-     * showTemplate
-     */
     public static final int DIALOG_SHOW_TEMPLATE = 27;
-    /**
-     * showSlide
-     */
     public static final int DIALOG_SHOW_SLIDE = 28;
-    /**
-     * executeMacro
-     */
     public static final int DIALOG_EXECUTE_MACRO = 29;
-    /**
-     * turnOnScreen
-     */
     public static final int DIALOG_TURN_ON_SCREEN = 30;
-    /**
-     * selectTemplate
-     */
     public static final int DIALOG_SELECT_TEMPLATE = 31;
-    /**
-     * setTemplateImageData
-     */
     public static final int DIALOG_SET_TEMPLATE_IMAGE_DATA = 32;
-    /**
-     * selectTemplateTextObject
-     */
     public static final int DIALOG_SELECT_TEMPLATE_TEXT_OBJECT = 33;
-    /**
-     * setTemplateTextAlignment
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_ALIGNMENT = 34;
-    /**
-     * setTemplateTextData
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_DATA = 35;
-    /**
-     * setTemplateTextLeftMargin
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_LEFT_MARGIN = 36;
-    /**
-     * setTemplateTextLineSpacing
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_LINE_SPACING = 37;
-    /**
-     * setTemplateTextBold
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_BOLD = 38;
-    /**
-     * setTemplateTextUnderline
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_UNDERLINE = 39;
-    /**
-     * setTemplateTextSize
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_SIZE = 40;
-    /**
-     * setTemplateTextFont
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_FONT = 41;
-    /**
-     * setTemplateTextRegisteredFont
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_REGISTERED_FONT = 42;
-    /**
-     * setTemplateTextRightSpacing
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_RIGHT_SPACING = 43;
-    /**
-     * setTemplateTextColor
-     */
     public static final int DIALOG_SET_TEMPLATE_TEXT_COLOR = 44;
-    /**
-     * setTemplateBarcodeData
-     */
     public static final int DIALOG_SET_TEMPLATE_BARCODE_DATA = 45;
-    /**
-     * setTemplateQrcodeData
-     */
     public static final int DIALOG_SET_TEMPLATE_QRCODE_DATA = 46;
-    /**
-     * registerTemplate
-     */
     public static final int DIALOG_REGISTER_TEMPLATE = 47;
-    /**
-     * unregisterTemplate
-     */
     public static final int DIALOG_UNREGISTER_TEMPLATE = 48;
-    /**
-     * registerImageData
-     */
     public static final int DIALOG_REGISTER_IMAGE_DATA = 49;
-    /**
-     * unregisterImageData
-     */
     public static final int DIALOG_UNREGISTER_IMAGE_DATA = 50;
-    /**
-     * registerSlideData
-     */
     public static final int DIALOG_REGISTER_SLIDE_DATA = 51;
-    /**
-     * unregisterSlideData
-     */
     public static final int DIALOG_UNREGISTER_SLIDE_DATA = 52;
-    /**
-     * registerUserDefinedCharacter
-     */
     public static final int DIALOG_REGISTER_USER_DEFINED_CHARACTER = 53;
-    /**
-     * registerOptionFont
-     */
     public static final int DIALOG_REGISTER_OPTION_FONT = 54;
-    /**
-     * controlMacroRegistration
-     */
     public static final int DIALOG_CONTROL_MACRO_REGISTRATION = 55;
-    /**
-     * getDisplayResponse
-     */
     public static final int DIALOG_GET_DISPLAY_RESPONSE = 56;
-    /**
-     * setBarcodeScannerListener
-     */
     public static final int DIALOG_SET_BARCODE_SCANNER_LISTENER = 57;
-
-    /**
-     * Template text color code
-     */
     public static final int TEMPLATE_TEXT_COLOR_BLACK = 0x000000;
     public static final int TEMPLATE_TEXT_COLOR_BLUE = 0x0000FF;
     public static final int TEMPLATE_TEXT_COLOR_GREEN = 0x00FF00;
@@ -370,45 +195,19 @@ public class SetupPrinterActivity extends FragmentActivity
     public static final int TEMPLATE_TEXT_COLOR_WHITE = 0xFFFFFF;
 
     // Log message setting
-    /**
-     * write "in" on log
-     */
     protected static final boolean WRITE_LOG_IN = true;
-    /**
-     * write "out" on log
-     */
     protected static final boolean WRITE_LOG_OUT = false;
-
     /**
      * PrinterManager SDK
      */
     @Inject
     PrinterManager mPrinterManager;
 
-    /**
-     * Select port
-     */
     private int mSelectPort = PrinterManager.PRINTER_TYPE_BLUETOOTH;
-
-    /**
-     * Select file
-     */
     private String mSelectPath = "";
-
-    /**
-     * Set listener
-     */
     private static CallbackFunctionListener mCallbackFunctionListener = null;
     private static BarcodeScannerListener mBarcodeScannerListener = null;
-
-    /**
-     * Barcode data display method
-     */
     private boolean mIsStringDisplay = false;
-
-    /**
-     * Handler to write on log
-     */
     private static final Handler mHandler = new Handler();
 
     /**
@@ -417,14 +216,14 @@ public class SetupPrinterActivity extends FragmentActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+		//ソフト入力領域を非表示にします
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         setContentView(R.layout.activity_setup_printer);
 
         final EditText edtDeviceAddress = (EditText) findViewById(R.id.edittext_device_address);
         final Button btnDeviceList = (Button) findViewById(R.id.button_device_list);
-
+		//以前に返された値を保存します
         Object savedObject = getLastCustomNonConfigurationInstance();
 
         if (savedObject != null

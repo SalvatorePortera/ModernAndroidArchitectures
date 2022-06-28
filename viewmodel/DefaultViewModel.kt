@@ -5,7 +5,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import com.nereus.craftbeer.repository.ErrorLogRepository
 
 /**
- * Default view model
+ * デフォルトのビューモデル
  *
  * @property _errorLogRepository
  * @constructor

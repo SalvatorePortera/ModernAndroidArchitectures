@@ -29,7 +29,9 @@ import kotlinx.coroutines.withContext
  */
 @AndroidEntryPoint
 class BeerShopActivity : BaseController<ActivityBeerShopBinding, BeerShopViewModel>() {
-
+	/**
+     * View model: BeerShopViewModel をロードします
+     */
     override val viewModel: BeerShopViewModel by viewModels()
 
     /**

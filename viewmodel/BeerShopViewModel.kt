@@ -53,7 +53,7 @@ import kotlin.math.roundToInt
 
 
 /**
- * Beer shop view model
+ * ビールショップモデル
  *
  * @property savedStateHandle
  * @property goodsRepository
@@ -134,7 +134,7 @@ class BeerShopViewModel @ViewModelInject constructor(
 
 
     /**
-     * Set selected beer
+     * 選択したビールを設定する
      *
      * @param beersInfo
      */
@@ -155,7 +155,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Add correction amount
+     * 補正量を追加
      *
      * @return
      */
@@ -171,7 +171,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Pour beer
+     * ビールを注ぐ
      *
      * @param amount
      */
@@ -276,7 +276,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set beer pos
+     * ビールのPOSを設定する
      *
      * @param pos
      */
@@ -288,7 +288,7 @@ class BeerShopViewModel @ViewModelInject constructor(
 
 
     /**
-     * Set payment
+     * 支払い
      *
      * @param payment
      */
@@ -299,7 +299,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Get balance string
+     * バランスストリング
      *
      * @param balance
      * @return
@@ -311,7 +311,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Get amount in ml string
+     * 金額を取得する
      *
      * @param amountInMl
      * @return
@@ -323,7 +323,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Get total string
+     * 合計文字列を取得
      *
      * @param total
      * @return
@@ -335,7 +335,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Load beers
+     * ビールをロード
      *
      */
     fun loadBeers() {
@@ -365,7 +365,7 @@ class BeerShopViewModel @ViewModelInject constructor(
 
 
     /**
-     * Get shop info
+     * ショップ情報を取得する
      *
      * @param receipt
      * @return
@@ -380,7 +380,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Get company info
+     * 会社情報を取得する
      *
      * @param receipt
      * @return
@@ -395,7 +395,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Pay
+     * 支払い
      *
      */
     fun pay() {
@@ -441,7 +441,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Get chart data
+     * チャートデータ
      *
      * @return
      */
@@ -483,7 +483,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Check balance
+     * バランスチェック
      *
      */
     fun checkBalance() {
@@ -507,7 +507,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Connect socket
+     * ソケットを接続します
      *
      */
     fun connectSocket() {
@@ -542,7 +542,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Initial event socket
+     * 初期イベントソケット
      *
      */
     private fun initialEventSocket() {
@@ -553,7 +553,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Emit open beer
+     * オープンビールを出す
      *
      */
     private fun emitOpenBeer() {
@@ -653,8 +653,8 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
 
     /**
-     * Divide to pour
-     *Divide amount to pour beer for better display
+     * 
+     * より良い表示のためにビールを注ぐために量を分割します
      * @param amountInMl
      * @param mlPerTime
      * @param delayInMs
@@ -675,7 +675,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Locked
+     * ロック済み
      */
     private val locked =
         Emitter.Listener { args ->
@@ -714,7 +714,7 @@ class BeerShopViewModel @ViewModelInject constructor(
         }
 
     /**
-     * Approve open
+     * オープンを承認
      */
     val approveOpen =
         Emitter.Listener { args ->
@@ -810,7 +810,7 @@ class BeerShopViewModel @ViewModelInject constructor(
             return@Runnable
         }
 
-        // update amount
+        // 更新量
         TLogger.writeln("BeerShopViewModel:paymentAction update amount")
         //Timber.i("BeerShopViewModel:paymentAction update amount")
         _selectedBeer.value!!.amountInMlL = amountInMl
@@ -841,7 +841,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Send sale log
+     * 販売ログを送信する
      *
      */
     private suspend fun sendSaleLog() {
@@ -866,7 +866,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Build sale log
+     * 販売ログを作成する
      *
      * @return
      */
@@ -900,7 +900,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Handle post payment
+     * 後払いを処理する
      *
      */
     fun handlePostPayment() {
@@ -920,7 +920,7 @@ class BeerShopViewModel @ViewModelInject constructor(
 
 
     /**
-     * Setup pouring beer
+     * ビールを注ぐセットアップ
      *
      */
     fun setupPouringBeer() {
@@ -949,7 +949,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Clean card data
+     * カードデータをクリーンアップ
      *
      */
     @SuppressLint("NullSafeMutableLiveData")
@@ -958,7 +958,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set payment timer
+     * 支払いタイマーを設定する
      *
      */
     private fun setPaymentTimer() {
@@ -966,7 +966,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Remove payment timer
+     * 支払いタイマーを削除する
      *
      */
     private fun removePaymentTimer() {
@@ -1030,7 +1030,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Setup beer payment with nfc
+     * nfcでビールの支払いを設定する
      *
      */
     private fun setupBeerPaymentWithNfc() {
@@ -1154,7 +1154,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Analyze and send card info
+     * カード情報を分析して送信する
      *
      * @param cardInfo
      */
@@ -1236,7 +1236,7 @@ class BeerShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Force stop on out of service
+     * サービス停止時に強制停止
      *
      */
     fun forceStopOnOutOfService(){

@@ -8,7 +8,7 @@ import com.nereus.craftbeer.viewmodel.SettingMasterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * Setting master activity
+ * 設定アクティビティ
  *
  * @constructor  Setting master activity
  */

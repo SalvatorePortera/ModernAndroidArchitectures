@@ -16,12 +16,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashActivity : BaseController<ActivitySplashBinding, DefaultViewModel>() {
 
     /**
-     * View model
+     * View model: DefaultViewModel をロードします
      */
     override val viewModel: DefaultViewModel by viewModels()
 
     /**
-     * Get layout
+     * Get layout activity_splash
      *
      * @return
      */
@@ -30,8 +30,8 @@ class SplashActivity : BaseController<ActivitySplashBinding, DefaultViewModel>()
     }
 
     /**
-     * Is token required
-     *
+     * トークンが必要なチェック
+     * 
      * @return
      */
     override fun isTokenRequired(): Boolean {

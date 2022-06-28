@@ -27,8 +27,8 @@ class PasswordTabletActivity :
     }
 
     /**
-     * Is token required
-     *
+     * トークンが必要なチェック
+     * 
      * @return
      */
     override fun isTokenRequired(): Boolean {

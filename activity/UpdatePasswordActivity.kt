@@ -15,6 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class UpdatePasswordActivity :
     BaseController<ActivityUpdatePasswordBinding, UpdatePasswordViewModel>() {
+	/**
+     * View model: UpdatePasswordViewModel をロードします
+     */
     override val viewModel: UpdatePasswordViewModel by viewModels()
 
     /**

@@ -82,8 +82,8 @@ abstract class BaseController<TBinding : ViewDataBinding, TViewModel : BaseViewM
     }
 
     /**
-     * Check token
-     *
+     * チェックトークン
+     * 
      */
     private fun checkToken() {
         if (!isTokenRequired()) {

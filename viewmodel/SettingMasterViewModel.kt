@@ -97,7 +97,7 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Load sale logs
+     * 販売ログを読み込む
      *
      */
     fun loadSaleLogs() {
@@ -127,7 +127,7 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Load beers
+     * ビールをロード
      *
      */
     fun loadBeers() {
@@ -164,7 +164,7 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Update beers status
+     * ビールのステータスを更新する
      *
      * @param beersInfo
      */
@@ -185,7 +185,7 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Send sale logs
+     * 販売ログを送信する
      *
      */
     fun sendSaleLogs() {
@@ -215,7 +215,7 @@ class SettingMasterViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Update tap beer server
+     * ビールサーバーを更新する
      *
      * @param updateTapBeerId
      * @param updateRequest

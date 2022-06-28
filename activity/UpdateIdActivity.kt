@@ -14,6 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
  */
 @AndroidEntryPoint
 class UpdateIdActivity : BaseController<ActivityUpdateIdBinding, UpdateIdViewModel>() {
+	/**
+     * View model: UpdateIdViewModel をロードします
+     */
     override val viewModel: UpdateIdViewModel by viewModels()
 
     /**
@@ -26,7 +29,7 @@ class UpdateIdActivity : BaseController<ActivityUpdateIdBinding, UpdateIdViewMod
     }
 
     /**
-     * Is token required
+     * トークンが必要なチェック
      *
      * @return
      */

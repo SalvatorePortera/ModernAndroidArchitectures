@@ -55,7 +55,7 @@ class PasswordTabletViewModel @ViewModelInject constructor(
         get() = this._loginRequest
 
     /**
-     * Login
+     * ログイン
      *
      */
     fun login() {
@@ -83,7 +83,7 @@ class PasswordTabletViewModel @ViewModelInject constructor(
         get() = this._password
 
     /**
-     * Set password
+     * 設定 パスワード
      *
      * @param value
      */
@@ -92,7 +92,7 @@ class PasswordTabletViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set login request
+     * 設定 login request
      *
      * @param request
      */

@@ -43,7 +43,7 @@ import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 /**
- * Food shop view model
+ * フードショップビューモデル
  *
  * @property state
  * @property goodsRepository
@@ -181,7 +181,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set age range
+     * 設定 age range
      *
      * @param ageRange
      */
@@ -191,7 +191,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set date from
+     * 開始日の設定
      *
      * @param calendar
      */
@@ -208,7 +208,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set date to
+     * 締切日の設定
      *
      * @param calendar
      */
@@ -225,7 +225,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set gender
+     * 男女設定
      *
      * @param gender
      */
@@ -234,7 +234,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set payment method
+     * 支払方法設定
      *
      * @param method
      */
@@ -243,7 +243,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set is take out
+     * 設定テイクアウト
      *
      * @param isTakeOut
      */
@@ -263,7 +263,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set topup point plus
+     * 設定 topup point plus
      *
      * @param pointPlusId
      * @param cardAuthInfo
@@ -277,7 +277,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set topup method
+     * 設定 topup method
      *
      * @param method
      */
@@ -286,7 +286,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set barcode
+     * 設定 barcode
      *
      * @param barcode
      */
@@ -295,7 +295,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set product cd
+     * 設定 product cd
      *
      * @param productCd
      */
@@ -304,7 +304,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set current barcode
+     * 設定 current barcode
      *
      * @param barcode
      */
@@ -314,7 +314,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set payment
+     * 設定 payment
      *
      * @param payment
      */
@@ -323,7 +323,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set payment strategy
+     * 設定 payment strategy
      *
      * @param strategy
      */
@@ -332,7 +332,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set point plus id
+     * 設定 point plus id
      *
      * @param pointPlusId
      */
@@ -341,7 +341,7 @@ class FoodShopViewModel @ViewModelInject constructor(
     }
 
     /**
-     * Set printer response
+     * 設定 printer response
      *
      * @param printerResponse
      */
@@ -803,7 +803,7 @@ class FoodShopViewModel @ViewModelInject constructor(
             _topUp.value?.let {
                 try {
                     state["example"] = "example"
-                    Timber.i("=== set example? %s", state["example"])
+                    Timber.i("=== 設定 example? %s", state["example"])
 
                     val company = withContext(Dispatchers.IO) {
                         getCompanyInfo()

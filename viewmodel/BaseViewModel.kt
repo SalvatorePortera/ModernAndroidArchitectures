@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
- * Base view model
+ * ベースモデル
  *
  * @constructor
  *
@@ -45,7 +45,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
         get() = this._successMessages
 
     /**
-     * Set loading state
+     * 読み込み状態を設定する
      *
      * @param state
      */
@@ -54,7 +54,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Set exception
+     * 例外を設定する
      *
      * @param ex
      */
@@ -63,7 +63,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Set success message
+     * 成功メッセージを設定する
      *
      * @param resId
      * @param formatArgs
@@ -73,7 +73,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Send error log
+     * エラーログを送信する
      *
      * @param messageModel
      */
@@ -84,7 +84,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     /**
-     * Send message log
+     * メッセージログを送信する
      *
      * @param messageModel
      */
